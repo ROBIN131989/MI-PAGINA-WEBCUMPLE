@@ -11,9 +11,58 @@ body {
     line-height: 1.6;
     padding: 16px;
     min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ========== CORAZONES FLOTANTES (FONDO) ========== */
+/* ========== MODO OSCURO ========== */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #eee;
+}
+
+body.dark-mode .mensaje-glass {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .card-img {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode footer {
+    color: #ff99cc;
+}
+
+body.dark-mode .modal-sorpresa-contenido {
+    background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+    color: white;
+}
+
+/* ========== BOTÓN MODO OSCURO ========== */
+.btn-modo {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 2000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-modo:active {
+    transform: scale(0.9);
+}
+
+/* ========== CORAZONES FLOTANTES ========== */
 #corazones-container {
     position: fixed;
     top: 0;
@@ -28,7 +77,7 @@ body {
 .corazon {
     position: absolute;
     font-size: 20px;
-    opacity: 0.6;
+    opacity: 0.5;
     animation: flotarCorazon 12s linear infinite;
     user-select: none;
 }
@@ -38,19 +87,15 @@ body {
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
     }
-    10% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.6;
-    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
     100% {
         transform: translateY(-10vh) rotate(20deg);
         opacity: 0;
     }
 }
 
-/* ========== GLOBOS Y CONFETI ========== */
+/* ========== GLOBOS 3D REALISTAS ========== */
 #globos-container {
     position: fixed;
     bottom: 0;
@@ -64,53 +109,73 @@ body {
 
 .globo {
     position: absolute;
-    bottom: -120px;
-    width: 50px;
-    height: 70px;
-    border-radius: 50% / 60% 60% 40% 40%;
-    box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 0.7),
-                inset 10px 10px 10px rgba(0, 0, 0, 0.2);
-    opacity: 0.9;
-    animation-name: subir;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-}
-
-.globo::after {
-    content: "";
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 8px;
-    background: #b22222;
-    border-radius: 2px 2px 6px 6px;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    border-radius: 50% 50% 50% 50%;
+    animation: flotarGlobo 8s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.3s ease;
 }
 
 .globo::before {
     content: "";
     position: absolute;
-    bottom: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 70px;
-    background: #b22222;
-    opacity: 0.7;
+    top: 15%;
+    left: 20%;
+    width: 25%;
+    height: 20%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 50%;
+    z-index: 2;
 }
 
-@keyframes subir {
+.globo::after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(180deg, #8B4513, #D2691E);
+    transform: translateX(-50%);
+    border-radius: 1px;
+    animation: ondularCuerda 2s ease-in-out infinite;
+}
+
+@keyframes flotarGlobo {
     0% {
         transform: translateY(0) translateX(0);
-        opacity: 0.9;
+        opacity: 0;
     }
+    10% { opacity: 1; }
+    50% {
+        transform: translateY(-60vh) translateX(20px);
+    }
+    90% { opacity: 1; }
     100% {
-        transform: translateY(-110vh) translateX(15px);
+        transform: translateY(-120vh) translateX(-20px);
         opacity: 0;
     }
 }
 
+@keyframes ondularCuerda {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25% { transform: translateX(-50%) rotate(3deg); }
+    75% { transform: translateX(-50%) rotate(-3deg); }
+}
+
+.globo.color1 { background: radial-gradient(circle at 30% 30%, #FF6B8A, #C2185B); }
+.globo.color2 { background: radial-gradient(circle at 30% 30%, #FFB6C1, #E91E63); }
+.globo.color3 { background: radial-gradient(circle at 30% 30%, #FFD1DC, #FF69B4); }
+.globo.color4 { background: radial-gradient(circle at 30% 30%, #FF99CC, #FF1493); }
+.globo.color5 { background: radial-gradient(circle at 30% 30%, #FFC0CB, #DB7093); }
+.globo.color6 { background: radial-gradient(circle at 30% 30%, #FFA6C9, #FF4081); }
+.globo.color7 { background: radial-gradient(circle at 30% 30%, #F8BBD0, #EC407A); }
+.globo.color8 { background: radial-gradient(circle at 30% 30%, #FCE4EC, #D81B60); }
+
+/* ========== CONFETI ========== */
 .confeti {
     position: absolute;
     width: 8px;
@@ -133,7 +198,7 @@ body {
     }
 }
 
-/* ========== HEADER PREMIUM ========== */
+/* ========== HEADER ========== */
 header {
     text-align: center;
     padding: 30px 16px;
@@ -161,7 +226,7 @@ header p {
     opacity: 0.9;
 }
 
-/* ========== EFECTO GLASS (Mensaje premium) ========== */
+/* ========== EFECTO GLASS ========== */
 .mensaje-glass {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(12px);
@@ -174,8 +239,8 @@ header p {
     transition: transform 0.3s ease;
 }
 
-.mensaje-glass:hover {
-    transform: scale(1.01);
+.mensaje-glass:active {
+    transform: scale(0.99);
 }
 
 .mensaje-glass h2 {
@@ -185,13 +250,7 @@ header p {
     text-align: center;
 }
 
-.mensaje-texto {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #2c1a24;
-}
-
-/* ========== GALERÍA CON TARJETAS PREMIUM ========== */
+/* ========== GALERÍA ========== */
 .galeria {
     display: flex;
     justify-content: center;
@@ -205,17 +264,17 @@ header p {
     backdrop-filter: blur(8px);
     border-radius: 24px;
     padding: 12px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .card-img:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
 .card-img img {
-    height: 280px;
+    height: 250px;
     width: auto;
     object-fit: contain;
     border-radius: 16px;
@@ -223,7 +282,28 @@ header p {
     max-width: 100%;
 }
 
-/* ========== VIDEOS PREMIUM ========== */
+/* ========== MODAL ZOOM ========== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.modal-contenido {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 10%;
+}
+
+/* ========== VIDEOS ========== */
 .videos-vertical {
     max-width: 100%;
     margin: 30px auto;
@@ -239,7 +319,7 @@ header p {
     border-radius: 24px;
     border: 3px solid #ff69b4;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease;
     cursor: pointer;
 }
 
@@ -247,20 +327,26 @@ header p {
     transform: scale(0.98);
 }
 
-/* ========== BOTÓN LATIDO (Touch friendly) ========== */
+/* ========== BOTÓN LATIDO CON FLECHA CENTRADA ========== */
 .btn-latido {
     background-color: #ff69b4;
     color: white;
-    font-size: 28px;
-    padding: 16px 24px;
+    font-size: 32px;
+    font-weight: bold;
     border: none;
-    border-radius: 60px;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    width: 70px;
-    height: 70px;
+    width: 65px;
+    height: 65px;
     animation: latido 1.5s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
 }
 
 .btn-latido:active {
@@ -274,7 +360,64 @@ header p {
     100% { transform: scale(1); box-shadow: 0 0 10px #ff69b4; }
 }
 
-/* ========== RELOJ ANALÓGICO ========== */
+/* ========== BOTÓN SORPRESA ========== */
+.btn-sorpresa {
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+}
+
+.btn-sorpresa:active {
+    transform: scale(0.95);
+}
+
+/* ========== MODAL SORPRESA ========== */
+.modal-sorpresa {
+    display: none;
+    position: fixed;
+    z-index: 4000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-sorpresa-contenido {
+    background: linear-gradient(135deg, #fff0f6, #ffe0ed);
+    margin: 20% auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 30px;
+    text-align: center;
+    animation: aparecerSorpresa 0.4s ease;
+}
+
+@keyframes aparecerSorpresa {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.cerrar-sorpresa {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* ========== RELOJ ========== */
 .contenedor-reloj-contador {
     display: flex;
     flex-direction: column;
@@ -304,49 +447,12 @@ header p {
     border-radius: 4px;
 }
 
-.manecilla.hora {
-    width: 5px;
-    height: 40px;
-    background-color: #a83254;
-    z-index: 3;
-}
+.manecilla.hora { width: 5px; height: 40px; background-color: #a83254; z-index: 3; }
+.manecilla.minuto { width: 3.5px; height: 55px; background-color: #d6336c; z-index: 4; }
+.manecilla.segundo { width: 2px; height: 65px; background-color: #ff4b6e; z-index: 5; }
+.centro { position: absolute; width: 10px; height: 10px; background-color: #a83254; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 6; }
 
-.manecilla.minuto {
-    width: 3.5px;
-    height: 55px;
-    background-color: #d6336c;
-    z-index: 4;
-}
-
-.manecilla.segundo {
-    width: 2px;
-    height: 65px;
-    background-color: #ff4b6e;
-    z-index: 5;
-}
-
-.centro {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #a83254;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 6;
-}
-
-/* ========== FOOTER ========== */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-style: italic;
-    color: #a83254;
-    font-size: 0.9rem;
-    padding: 20px;
-}
-
+/* ========== CONTADOR ========== */
 #contador-cumple {
     font-size: 1rem;
     padding: 12px;
@@ -354,39 +460,65 @@ footer {
     backdrop-filter: blur(8px);
     border-radius: 40px;
     margin: 16px;
+    text-align: center;
 }
 
-/* ========== RESPONSIVE (MÓVIL PERFECTO) ========== */
+/* ========== ONDAS ========== */
+.ondas {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+
+.onda {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: repeating-linear-gradient(45deg, #ff69b4, #ff69b4 20px, #ffb6c1 20px, #ffb6c1 40px);
+    animation: moverOnda 3s linear infinite;
+}
+
+.onda:nth-child(2) {
+    bottom: 15px;
+    opacity: 0.7;
+    animation-duration: 4s;
+}
+
+.onda:nth-child(3) {
+    bottom: 30px;
+    opacity: 0.4;
+    animation-duration: 5s;
+}
+
+@keyframes moverOnda {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50px); }
+}
+
+/* ========== FOOTER ========== */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    color: #a83254;
+    font-size: 0.9rem;
+    padding: 20px;
+}
+
+/* ========== RESPONSIVE MÓVIL ========== */
 @media (max-width: 600px) {
-    body {
-        padding: 12px;
-    }
-    
-    header h1 {
-        font-size: 1.8rem;
-    }
-    
-    .mensaje-glass {
-        padding: 18px;
-        margin: 16px 0;
-    }
-    
-    .card-img img {
-        height: 200px;
-    }
-    
-    .btn-latido {
-        width: 60px;
-        height: 60px;
-        font-size: 24px;
-    }
-    
-    .reloj-analogico {
-        width: 150px;
-        height: 150px;
-    }
-    
+    body { padding: 12px; }
+    header h1 { font-size: 1.8rem; }
+    .mensaje-glass { padding: 18px; margin: 16px 0; }
+    .card-img img { height: 180px; }
+    .btn-latido { width: 60px; height: 60px; font-size: 30px; }
+    .reloj-analogico { width: 150px; height: 150px; }
     .manecilla.hora { height: 33px; }
     .manecilla.minuto { height: 45px; }
     .manecilla.segundo { height: 55px; }
+    .btn-modo { width: 45px; height: 45px; font-size: 20px; top: 10px; right: 10px; }
 }
