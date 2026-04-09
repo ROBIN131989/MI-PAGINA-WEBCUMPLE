@@ -5,119 +5,52 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fff0f6;
+    font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fff0f6 0%, #ffe0ed 100%);
     color: #333;
     line-height: 1.6;
-    padding: 20px;
+    padding: 16px;
+    min-height: 100vh;
 }
 
-/* HEADER CON ANIMACIÓN */
-header {
-    background: linear-gradient(135deg, #f8e8f3, #ffe6f0, #fceff9);
-    background-size: 400% 400%;
-    animation: fondoEncabezado 12s ease infinite;
-    text-align: center;
-    padding: 40px 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #e0c4d6;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+/* ========== CORAZONES FLOTANTES (FONDO) ========== */
+#corazones-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
 }
 
-header h1 {
-    opacity: 0;
-    transform: translateY(20px) scale(0.98);
-    animation: editorialEntrada 1.4s ease-out 0.3s forwards;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 2.5rem;
-    color: #a8325b;
-    letter-spacing: 1px;
-    font-weight: 600;
-    margin-bottom: 10px;
+.corazon {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.6;
+    animation: flotarCorazon 12s linear infinite;
+    user-select: none;
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #5a2e3f;
-    opacity: 0.8;
-    animation: fadeText 2s ease 1.2s forwards;
-    opacity: 0;
-}
-
-/* ANIMACIONES DEL HEADER */
-@keyframes fondoEncabezado {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-@keyframes editorialEntrada {
+@keyframes flotarCorazon {
     0% {
+        transform: translateY(100vh) rotate(0deg);
         opacity: 0;
-        transform: translateY(20px) scale(0.98);
     }
-    60% {
-        opacity: 0.7;
-        transform: translateY(0) scale(1.01);
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
     }
     100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(-10vh) rotate(20deg);
+        opacity: 0;
     }
 }
 
-@keyframes fadeText {
-    to { opacity: 1; }
-}
-
-/* MAIN Y SECCIONES */
-main section {
-    background-color: #ffe6f0;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-main section h2 {
-    color: #d6336c;
-    margin-bottom: 15px;
-}
-
-main section p {
-    font-size: 1.1rem;
-}
-
-/* GALERÍA DE IMÁGENES */
-.galeria {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.galeria img {
-    height: 450px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-style: italic;
-    color: #a83254;
-}
-
-/* ============================================ */
-/* GLOBOS Y CONFETI (CONTENEDOR) */
-/* ============================================ */
+/* ========== GLOBOS Y CONFETI ========== */
 #globos-container {
     position: fixed;
     bottom: 0;
@@ -127,16 +60,13 @@ footer {
     pointer-events: none;
     overflow: hidden;
     z-index: 1000;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
 }
 
-/* GLOBOS */
 .globo {
     position: absolute;
     bottom: -120px;
     width: 50px;
     height: 70px;
-    background: linear-gradient(135deg, #ff4b6e, #d60043);
     border-radius: 50% / 60% 60% 40% 40%;
     box-shadow: inset -10px -10px 15px rgba(255, 255, 255, 0.7),
                 inset 10px 10px 10px rgba(0, 0, 0, 0.2);
@@ -156,7 +86,6 @@ footer {
     height: 8px;
     background: #b22222;
     border-radius: 2px 2px 6px 6px;
-    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
 }
 
 .globo::before {
@@ -168,7 +97,6 @@ footer {
     width: 2px;
     height: 70px;
     background: #b22222;
-    border-radius: 1px;
     opacity: 0.7;
 }
 
@@ -183,7 +111,6 @@ footer {
     }
 }
 
-/* CONFETI (VERSIÓN CORREGIDA) */
 .confeti {
     position: absolute;
     width: 8px;
@@ -206,59 +133,168 @@ footer {
     }
 }
 
-/* GUIRNALDA DECORATIVA */
-.guirnalda {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    background: repeating-linear-gradient(
-        45deg,
-        #ff6f91,
-        #ff6f91 20px,
-        #ff9671 20px,
-        #ff9671 40px
-    );
-    clip-path: polygon(
-        0 0,
-        10% 100%,
-        20% 0,
-        30% 100%,
-        40% 0,
-        50% 100%,
-        60% 0,
-        70% 100%,
-        80% 0,
-        90% 100%,
-        100% 0
-    );
-    z-index: 1500;
-    pointer-events: none;
+/* ========== HEADER PREMIUM ========== */
+header {
+    text-align: center;
+    padding: 30px 16px;
+    background: rgba(255, 204, 221, 0.4);
+    backdrop-filter: blur(12px);
+    border-radius: 32px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
 }
 
-/* ============================================ */
-/* RELOJ ANALÓGICO (CORREGIDO) */
-/* ============================================ */
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #a8325b;
+    margin-bottom: 8px;
+    min-height: 80px;
+}
+
+header p {
+    font-size: 1rem;
+    color: #5a2e3f;
+    opacity: 0.9;
+}
+
+/* ========== EFECTO GLASS (Mensaje premium) ========== */
+.mensaje-glass {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
+    border-radius: 32px;
+    padding: 24px;
+    margin: 24px auto;
+    max-width: 600px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.mensaje-glass:hover {
+    transform: scale(1.01);
+}
+
+.mensaje-glass h2 {
+    color: #d6336c;
+    margin-bottom: 16px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.mensaje-texto {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #2c1a24;
+}
+
+/* ========== GALERÍA CON TARJETAS PREMIUM ========== */
+.galeria {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.card-img {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-img:active {
+    transform: scale(0.98);
+}
+
+.card-img img {
+    height: 280px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    display: block;
+    max-width: 100%;
+}
+
+/* ========== VIDEOS PREMIUM ========== */
+.videos-vertical {
+    max-width: 100%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.video-premium {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 24px;
+    border: 3px solid #ff69b4;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.video-premium:active {
+    transform: scale(0.98);
+}
+
+/* ========== BOTÓN LATIDO (Touch friendly) ========== */
+.btn-latido {
+    background-color: #ff69b4;
+    color: white;
+    font-size: 28px;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 60px;
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 70px;
+    height: 70px;
+    animation: latido 1.5s ease infinite;
+}
+
+.btn-latido:active {
+    transform: scale(0.92);
+    background-color: #ff1493;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); box-shadow: 0 0 10px #ff69b4; }
+    50% { transform: scale(1.08); box-shadow: 0 0 25px #ff69b4; }
+    100% { transform: scale(1); box-shadow: 0 0 10px #ff69b4; }
+}
+
+/* ========== RELOJ ANALÓGICO ========== */
 .contenedor-reloj-contador {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 2;
 }
 
 .reloj-analogico {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border: 8px solid #ff69b4;
+    width: 180px;
+    height: 180px;
+    border: 6px solid #ff69b4;
     border-radius: 50%;
     margin: 20px auto;
     background: radial-gradient(circle at center, #fff 60%, #ffe6f0 100%);
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Base para todas las manecillas */
 .manecilla {
     position: absolute;
     bottom: 50%;
@@ -268,53 +304,89 @@ footer {
     border-radius: 4px;
 }
 
-/* Manecilla de HORA */
 .manecilla.hora {
-    width: 6px;
-    height: 45px;
+    width: 5px;
+    height: 40px;
     background-color: #a83254;
     z-index: 3;
 }
 
-/* Manecilla de MINUTO */
 .manecilla.minuto {
-    width: 4px;
-    height: 65px;
+    width: 3.5px;
+    height: 55px;
     background-color: #d6336c;
     z-index: 4;
 }
 
-/* Manecilla de SEGUNDO */
 .manecilla.segundo {
     width: 2px;
-    height: 75px;
+    height: 65px;
     background-color: #ff4b6e;
     z-index: 5;
 }
 
-/* Centro del reloj */
 .centro {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: #a83254;
     border-radius: 50%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 6;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
 }
 
-/* Marcas de las horas (opcional, para que se vea más bonito) */
-.marca {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    width: 3px;
-    height: 12px;
-    background: #a83254;
-    transform-origin: bottom center;
-    border-radius: 2px;
-    z-index: 1;
+/* ========== FOOTER ========== */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+    color: #a83254;
+    font-size: 0.9rem;
+    padding: 20px;
+}
+
+#contador-cumple {
+    font-size: 1rem;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 40px;
+    margin: 16px;
+}
+
+/* ========== RESPONSIVE (MÓVIL PERFECTO) ========== */
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .mensaje-glass {
+        padding: 18px;
+        margin: 16px 0;
+    }
+    
+    .card-img img {
+        height: 200px;
+    }
+    
+    .btn-latido {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+    
+    .reloj-analogico {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .manecilla.hora { height: 33px; }
+    .manecilla.minuto { height: 45px; }
+    .manecilla.segundo { height: 55px; }
 }
