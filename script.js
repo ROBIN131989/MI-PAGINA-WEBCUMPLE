@@ -168,17 +168,15 @@ function abrirSorpresa() {
     const modal = document.getElementById('modalSorpresa');
     modal.style.display = 'block';
     vibrarSiSePuede();
-    lanzarConfeti(); // Confeti extra al abrir sorpresa
+    lanzarConfeti();
 }
 
 function cerrarSorpresa() {
     document.getElementById('modalSorpresa').style.display = 'none';
 }
 
-// Evento botón sorpresa
 document.getElementById('btnSorpresa').addEventListener('click', abrirSorpresa);
 
-// Cerrar modal sorpresa al hacer clic fuera
 window.onclick = function(event) {
     const modalSorpresa = document.getElementById('modalSorpresa');
     const modalImagen = document.getElementById('modalImagen');
@@ -187,7 +185,7 @@ window.onclick = function(event) {
 }
 
 // ============================================
-// MODO OSCURO / CLARO
+// MODO OSCURO
 // ============================================
 const btnModo = document.getElementById('btnModoOscuro');
 let modoOscuro = false;
@@ -208,14 +206,13 @@ function vibrarSiSePuede() {
     }
 }
 
-// Aplicar vibración a elementos táctiles
 document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
     el.addEventListener('touchstart', () => vibrarSiSePuede());
     el.addEventListener('click', () => vibrarSiSePuede());
 });
 
 // ============================================
-// VIDEOS CON EFECTO EXPANDIR AL TOCAR
+// VIDEOS EFECTO EXPANDIR
 // ============================================
 document.querySelectorAll('.video-premium').forEach(video => {
     video.addEventListener('touchstart', () => {
@@ -227,12 +224,12 @@ document.querySelectorAll('.video-premium').forEach(video => {
 });
 
 // ============================================
-// AUTO-REPRODUCCIÓN DE VIDEOS AL APARECER
+// AUTO-REPRODUCCIÓN DE VIDEOS
 // ============================================
 const observerVideos = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.play().catch(e => console.log('Auto-play bloqueado por el navegador'));
+            entry.target.play().catch(e => console.log('Auto-play bloqueado'));
         } else {
             entry.target.pause();
         }
@@ -244,14 +241,13 @@ document.querySelectorAll('.video-premium').forEach(video => {
 });
 
 // ============================================
-// INICIALIZACIÓN AL CARGAR
+// INICIALIZACIÓN
 // ============================================
 window.addEventListener('load', () => {
     escribirTitulo();
     lanzarGlobos();
     lanzarConfeti();
     
-    // Limpiar globos después de 8 segundos
     setTimeout(() => {
         if (container) {
             container.style.display = 'none';
