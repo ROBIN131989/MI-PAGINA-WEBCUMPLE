@@ -12,25 +12,66 @@ body {
     padding: 20px;
 }
 
+/* HEADER CON ANIMACIÓN */
 header {
+    background: linear-gradient(135deg, #f8e8f3, #ffe6f0, #fceff9);
+    background-size: 400% 400%;
+    animation: fondoEncabezado 12s ease infinite;
     text-align: center;
-    padding: 30px 0;
-    background-color: #ffccdd;
+    padding: 40px 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    border-bottom: 1px solid #e0c4d6;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 header h1 {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    animation: editorialEntrada 1.4s ease-out 0.3s forwards;
+    font-family: 'Segoe UI', sans-serif;
     font-size: 2.5rem;
-    color: #d6336c;
+    color: #a8325b;
+    letter-spacing: 1px;
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 header p {
     font-size: 1.2rem;
-    color: #a83254;
+    color: #5a2e3f;
+    opacity: 0.8;
+    animation: fadeText 2s ease 1.2s forwards;
+    opacity: 0;
 }
 
+/* ANIMACIONES DEL HEADER */
+@keyframes fondoEncabezado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes editorialEntrada {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    60% {
+        opacity: 0.7;
+        transform: translateY(0) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeText {
+    to { opacity: 1; }
+}
+
+/* MAIN Y SECCIONES */
 main section {
     background-color: #ffe6f0;
     padding: 20px;
@@ -48,13 +89,7 @@ main section p {
     font-size: 1.1rem;
 }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-style: italic;
-    color: #a83254;
-}
-
+/* GALERÍA DE IMÁGENES */
 .galeria {
     display: flex;
     justify-content: center;
@@ -72,6 +107,17 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* FOOTER */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+    color: #a83254;
+}
+
+/* ============================================ */
+/* GLOBOS Y CONFETI (CONTENEDOR) */
+/* ============================================ */
 #globos-container {
     position: fixed;
     bottom: 0;
@@ -84,6 +130,7 @@ footer {
     filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
 }
 
+/* GLOBOS */
 .globo {
     position: absolute;
     bottom: -120px;
@@ -136,28 +183,16 @@ footer {
     }
 }
 
+/* CONFETI (VERSIÓN CORREGIDA) */
 .confeti {
     position: absolute;
     width: 8px;
     height: 8px;
-    background-color: red;
     opacity: 0.9;
     border-radius: 2px;
     animation-name: caer;
     animation-timing-function: linear;
     animation-iteration-count: 1;
-}
-
-.confeti:nth-child(2n) {
-    background-color: yellow;
-    width: 6px;
-    height: 6px;
-}
-
-.confeti:nth-child(3n) {
-    background-color: blue;
-    width: 7px;
-    height: 7px;
 }
 
 @keyframes caer {
@@ -171,6 +206,7 @@ footer {
     }
 }
 
+/* GUIRNALDA DECORATIVA */
 .guirnalda {
     position: fixed;
     top: 0;
@@ -201,210 +237,115 @@ footer {
     pointer-events: none;
 }
 
+/* ============================================ */
+/* RELOJ ANALÓGICO (VERSIÓN ÚNICA) */
+/* ============================================ */
+.contenedor-reloj-contador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
 .reloj-analogico {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  border: 8px solid #ff69b4;
-  border-radius: 50%;
-  margin-top: 10px;
-  background: #fff0f6;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border: 6px solid #ff69b4;
+    border-radius: 50%;
+    margin: 40px auto 20px;
+    background: radial-gradient(circle at center, #fff 60%, #ffe6f0 100%);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
 }
 
 .manecilla {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  transform-origin: bottom center;
-  transform: rotate(90deg);
-  background: #d6336c;
+    position: absolute;
+    width: 4px;
+    background-color: #a83254;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: rotate(90deg);
+    transition: transform 0.5s ease;
+    z-index: 10;
 }
 
 .manecilla.hora {
-  width: 6px;
-  height: 50px;
-  background: #a83254;
-  z-index: 3;
+    height: 45px;
+    background-color: #a83254;
+    z-index: 3;
 }
 
 .manecilla.minuto {
-  width: 4px;
-  height: 70px;
-  background: #d6336c;
-  z-index: 2;
+    height: 60px;
+    background-color: #d6336c;
+    z-index: 4;
 }
 
 .manecilla.segundo {
-  width: 2px;
-  height: 80px;
-  background: #ff69b4;
-  z-index: 1;
+    height: 70px;
+    background-color: #ff4b6e;
+    z-index: 5;
 }
 
 .centro {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  background: #a83254;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #a83254;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
 }
-
 
 .marca {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  width: 4px;
-  height: 12px;
-  background: #a83254;
-  transform-origin: bottom center;
-  border-radius: 2px;
-}
-.contenedor-reloj-contador {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 4px;
+    height: 10px;
+    background: #a83254;
+    transform-origin: bottom center;
+    border-radius: 2px;
+    z-index: 1;
 }
 
 #contador-cumple {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 1.1rem;
-  color: #a83254;
-}
-.reloj-analogico {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  border: 6px solid #ff69b4;
-  border-radius: 50%;
-  margin: 40px auto 20px; /* espacio arriba y abajo */
-  background: radial-gradient(circle at center, #fff 60%, #ffe6f0 100%);
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #a83254;
 }
 
-.manecilla {
-  position: absolute;
-  width: 4px;
-  background-color: #a83254;
-  top: 50%;
-  left: 50%;
-  transform-origin: bottom center;
-  transform: rotate(90deg);
-  transition: transform 0.5s ease;
-  z-index: 10;
+/* VIDEOS VERTICALES */
+.videos-vertical {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
 }
 
-.manecilla.hora {
-  height: 45px;
-  background-color: #a83254;
-  z-index: 3;
-}
-
-.manecilla.minuto {
-  height: 60px;
-  background-color: #d6336c;
-  z-index: 4;
-}
-
-.manecilla.segundo {
-  height: 70px;
-  background-color: #ff4b6e;
-  z-index: 5;
-}
-
-.centro {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #a83254;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 6;
-}
-
-.marca {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  width: 4px;
-  height: 10px;
-  background: #a83254;
-  transform-origin: bottom center;
-  border-radius: 2px;
-  z-index: 1;
-}
-/* ANIMACIÓN ELEGANTE PARA EL TÍTULO */
-header {
-  background: linear-gradient(135deg, #f8e8f3, #ffe6f0, #fceff9);
-  background-size: 400% 400%;
-  animation: fondoEncabezado 12s ease infinite;
-  text-align: center;
-  padding: 40px 20px;
-  border-bottom: 1px solid #e0c4d6;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-}
-
-header h1 {
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  animation: editorialEntrada 1.4s ease-out 0.3s forwards;
-  font-family: 'Segoe UI', sans-serif;
-  font-size: 2.5rem;
-  color: #a8325b;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-header p {
-  font-size: 1.2rem;
-  color: #5a2e3f;
-  opacity: 0.8;
-  animation: fadeText 2s ease 1.2s forwards;
-  opacity: 0;
-}
-
-/* FONDO ANIMADO */
-@keyframes fondoEncabezado {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* ANIMACIÓN DE ENTRADA DEL TÍTULO */
-@keyframes editorialEntrada {
-  0% {
+.videos-vertical video {
+    width: 320px;
+    border: 4px solid #ff69b4;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
     opacity: 0;
-    transform: translateY(20px) scale(0.98);
-  }
-  60% {
-    opacity: 0.7;
-    transform: translateY(0) scale(1.01);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+    transform: translateY(30px);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.6s ease;
+    cursor: pointer;
 }
 
-/* ANIMACIÓN DEL PÁRRAFO PEQUEÑO */
-@keyframes fadeText {
-  to {
+.videos-vertical video.visible {
     opacity: 1;
-  }
+    transform: translateY(0);
+}
+
+.videos-vertical video:hover {
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.9);
+    transform: scale(1.05);
 }
