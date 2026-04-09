@@ -151,4 +151,112 @@ actualizarContador();
 // ============================================
 function abrirModal(imgSrc) {
     const modal = document.getElementById('modalImagen');
-    const modal
+    const modalImg = document.getElementById('modalImg');
+    modal.style.display = 'block';
+    modalImg.src = imgSrc;
+    vibrarSiSePuede();
+}
+
+function cerrarModal() {
+    document.getElementById('modalImagen').style.display = 'none';
+}
+
+// ============================================
+// MODAL SORPRESA
+// ============================================
+function abrirSorpresa() {
+    const modal = document.getElementById('modalSorpresa');
+    modal.style.display = 'block';
+    vibrarSiSePuede();
+    lanzarConfeti(); // Confeti extra al abrir sorpresa
+}
+
+function cerrarSorpresa() {
+    document.getElementById('modalSorpresa').style.display = 'none';
+}
+
+// Evento botón sorpresa
+document.getElementById('btnSorpresa').addEventListener('click', abrirSorpresa);
+
+// Cerrar modal sorpresa al hacer clic fuera
+window.onclick = function(event) {
+    const modalSorpresa = document.getElementById('modalSorpresa');
+    const modalImagen = document.getElementById('modalImagen');
+    if (event.target === modalSorpresa) cerrarSorpresa();
+    if (event.target === modalImagen) cerrarModal();
+}
+
+// ============================================
+// MODO OSCURO / CLARO
+// ============================================
+const btnModo = document.getElementById('btnModoOscuro');
+let modoOscuro = false;
+
+btnModo.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    modoOscuro = !modoOscuro;
+    btnModo.innerHTML = modoOscuro ? '☀️' : '🌙';
+    vibrarSiSePuede();
+});
+
+// ============================================
+// VIBRACIÓN (Feedback táctil)
+// ============================================
+function vibrarSiSePuede() {
+    if (navigator.vibrate) {
+        navigator.vibrate(50);
+    }
+}
+
+// Aplicar vibración a elementos táctiles
+document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
+    el.addEventListener('touchstart', () => vibrarSiSePuede());
+    el.addEventListener('click', () => vibrarSiSePuede());
+});
+
+// ============================================
+// VIDEOS CON EFECTO EXPANDIR AL TOCAR
+// ============================================
+document.querySelectorAll('.video-premium').forEach(video => {
+    video.addEventListener('touchstart', () => {
+        video.style.transform = 'scale(1.02)';
+    });
+    video.addEventListener('touchend', () => {
+        video.style.transform = '';
+    });
+});
+
+// ============================================
+// AUTO-REPRODUCCIÓN DE VIDEOS AL APARECER
+// ============================================
+const observerVideos = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.play().catch(e => console.log('Auto-play bloqueado por el navegador'));
+        } else {
+            entry.target.pause();
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.video-premium').forEach(video => {
+    observerVideos.observe(video);
+});
+
+// ============================================
+// INICIALIZACIÓN AL CARGAR
+// ============================================
+window.addEventListener('load', () => {
+    escribirTitulo();
+    lanzarGlobos();
+    lanzarConfeti();
+    
+    // Limpiar globos después de 8 segundos
+    setTimeout(() => {
+        if (container) {
+            container.style.display = 'none';
+            container.innerHTML = '';
+            container.style.display = '';
+        }
+    }, 8000);
+});
