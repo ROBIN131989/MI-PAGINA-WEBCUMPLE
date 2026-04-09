@@ -15,12 +15,15 @@
   <!-- Contenedor de globos y confeti (capa superior) -->
   <div id="globos-container"></div>
 
+  <!-- Botón modo oscuro -->
+  <button id="btnModoOscuro" class="btn-modo">🌙</button>
+
   <header>
     <h1 id="titulo-escritura"></h1>
     <p id="subtitulo">Celebrando 8 años de amistad 💖</p>
   </header>
 
-  <div id="contador-cumple" style="text-align:center; font-size: 1.3rem; margin: 20px 0; color: #a8323c;"></div>
+  <div id="contador-cumple"></div>
 
   <div class="contenedor-reloj-contador">
     <div class="reloj-analogico">
@@ -33,10 +36,10 @@
 
   <main>
     <div class="galeria">
-      <div class="card-img">
+      <div class="card-img" onclick="abrirModal('img/cumple1.png')">
         <img src="img/cumple1.png" alt="Imagen 1" />
       </div>
-      <div class="card-img">
+      <div class="card-img" onclick="abrirModal('img/feliz.jpg')">
         <img src="img/feliz.jpg" alt="Imagen 2" />
       </div>
     </div>
@@ -69,7 +72,7 @@
          nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
          hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
          vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
-          lo que eres y de lo que estás construyendo.
+         lo que eres y de lo que estás construyendo.
         </br>
         <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
         presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
@@ -103,18 +106,39 @@
     </section>
 
     <div class="videos-vertical">
-      <video controls class="video-premium">
+      <video controls class="video-premium" playsinline>
         <source src="videos/PRIMERVID.mp4" type="video/mp4" />
       </video>
-      <video controls class="video-premium">
+      <video controls class="video-premium" playsinline>
         <source src="videos/SEGUNDOVID.mp4" type="video/mp4" />
       </video>
+    </div>
+
+    <!-- Botón sorpresa -->
+    <div style="text-align:center; margin: 20px 0;">
+      <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
     </div>
 
     <div style="text-align:center; margin: 30px 0;">
       <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
     </div>
   </main>
+
+  <!-- Modal para zoom de imágenes -->
+  <div id="modalImagen" class="modal" onclick="cerrarModal()">
+    <img id="modalImg" class="modal-contenido">
+  </div>
+
+  <!-- Modal sorpresa -->
+  <div id="modalSorpresa" class="modal-sorpresa">
+    <div class="modal-sorpresa-contenido">
+      <span class="cerrar-sorpresa" onclick="cerrarSorpresa()">&times;</span>
+      <h2>💖 ¡Sorpresa! 💖</h2>
+      <p>Eres una persona increíble y valoro mucho nuestra amistad.</p>
+      <p>Que este nuevo año de vida te traiga todo lo que mereces.</p>
+      <p>¡Te quiero mucho! 🎂🎈</p>
+    </div>
+  </div>
 
   <footer>
     <p>Averiguamos de qué estamos hechos,</p>
@@ -127,6 +151,12 @@
   </footer>
   
   <footer>© Todos los derechos reservados</footer>
+
+  <div class="ondas">
+    <div class="onda"></div>
+    <div class="onda"></div>
+    <div class="onda"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>
