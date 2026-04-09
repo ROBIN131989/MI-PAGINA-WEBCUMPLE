@@ -4,101 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>¡Feliz Cumpleaños, Amiga!</title>
-  
-
   <link rel="stylesheet" href="style.css" />
-  <style>
-    
-    
-    /* TAMAÑOS  DE LOS VIIIEIDEOS, COMO SI FUERNA MUCHOS LOL//pongo esto para no perderlo */
-    /*A VER SI OTRA EVZ SALE, LO PUSE HASTA ABAJO PERO NO SALIO ,A VER SI ACA ARRIBA SI SALE/ EL 13 ES MI NUMERO PREDILECTO*/
-    /*TAYLOR ALISON SIWIFT*/
-    /* CUAL ES SU SONG FAVORITA??*/
-    .videos-vertical {
-      max-width: 700px;
-      margin: 0 auto 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .videos-vertical video {
-      width: 320px;
-      border: 4px solid #ff69b4;
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.6s ease;
-      cursor: pointer;
-    }
-
-    .videos-vertical video.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .videos-vertical video:hover {
-      box-shadow: 0 0 20px rgba(255, 182, 193, 0.9);
-      transform: scale(1.05);
-    }
-
-    /*  GLOBOSSSS, COLOR, TAMAÑOS, CUANTOS, ETC ETC ETC */
-    .globo {
-      position: absolute;
-      width: 40px;
-      height: 55px;
-      background: #ff69b4;
-      border-radius: 50% 50% 45% 45%;
-      animation: flotar 5s linear infinite;
-      opacity: 0.8;
-      z-index: 999;
-    }
-
-    .globo::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      width: 2px;
-      height: 10px;
-      background: #888;
-    }
-
-    @keyframes flotar {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    canvas.confetti-canvas {
-      position: fixed;
-      pointer-events: none;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
-    /* Hola sia lguien esta leyendo esto por favor diganme en la palabra BINOG, o IDK LA QUE SEA JAJA*/
-  </style>
 </head>
 <body>
+  <!-- CONTENEDOR PARA GLOBOS Y CONFETI (OBLIGATORIO) -->
   <div id="globos-container"></div>
+  
   <div class="BANDERAS O GUIRNALDAS COMO SE LLAMNE"></div>
-  <div id="globos-container"></div>
 
   <header>
     <h1>¡Feliz cumpleaños, amiga!</h1>
     <p>Celebrando 8 años de amistad 💖</p>
   </header>
-<div id="contador-cumple" style="text-align:center; font-size: 1.3rem; margin: 20px 0; color: #a8323c;"></div>
+
+  <div id="contador-cumple" style="text-align:center; font-size: 1.3rem; margin: 20px 0; color: #a8323c;"></div>
+
+  <div class="contenedor-reloj-contador">
+    <div class="reloj-analogico">
+      <div class="manecilla hora"></div>
+      <div class="manecilla minuto"></div>
+      <div class="manecilla segundo"></div>
+      <div class="centro"></div>
+    </div>
+  </div>
 
   <main>
     <div class="galeria">
@@ -113,21 +41,19 @@
       La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
        no podía dejar pasar esta fecha sin escribirte algo. 
        Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
-       y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan h
-       echo presentes interfiriendo :(.
-.
+       y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
+       hecho presentes interfiriendo :(.
       </br>
       <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
        Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
        pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
         unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
         también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
-
       </br>
       <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
       hemos vivido cosas que nos han transformado, 
       y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
-      Pero eso no borra lo que fuimos ni el aprecio  que te tengo.
+      Pero eso no borra lo que fuimos ni el aprecio que te tengo.
       </br>
       <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
       compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
@@ -136,7 +62,6 @@
        hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
        vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
         lo que eres y de lo que estás construyendo.
-
       </br>
       <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
       presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
@@ -145,41 +70,35 @@
        esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
         nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
          es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
-
       </br>
-<p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
 
-<br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
-como nos quita momentos que nos gustara volver a repetir:</br>
+      <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
 
-<br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
-Las risas de antes suenan ahora como ecos lejanos, 
-y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
-El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
+      <br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
+      como nos quita momentos que nos gustara volver a repetir:</br>
 
-</br>
+      <br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
+      Las risas de antes suenan ahora como ecos lejanos, 
+      y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
+      El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
+      </br>
 
-<br> Caminamos entre días que parecen iguales, 
-pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
-ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
-como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
-
-</br>
-
+      <br> Caminamos entre días que parecen iguales, 
+      pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
+      ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
+      como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
+      </br>
 
       <br>Te mando un abrazo fuerte, de esos que no necesitan palabras, de aquellos que no son de los comunes,
       te mando ese abrazo que se siente en el alma.</br>
-       
     </section>
 
     <div class="videos-vertical">
       <video controls>
-        <source src="../videos/PRIMERVID.mp4" type="video/mp4" />
-        
+        <source src="videos/PRIMERVID.mp4" type="video/mp4" />
       </video>
       <video controls>
-        <source src="../videos/SEGUNDOVID.mp4" type="video/mp4" />
-        
+        <source src="videos/SEGUNDOVID.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -199,138 +118,17 @@ como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie
   </main>
 
   <footer>
-     <p>Averiguamos de qué estamos hechos,</p>
-     <p>cuando seamos llamados para ayudar a nuestros amigos en necesidad,
-</p>
-     <p>y si alguna vez olvidas lo que de verdad significas para mí,</p>
-     <p>todos los días te lo recordaré.
-</p>
-     <br>
+    <p>Averiguamos de qué estamos hechos,</p>
+    <p>cuando seamos llamados para ayudar a nuestros amigos en necesidad,</p>
+    <p>y si alguna vez olvidas lo que de verdad significas para mí,</p>
+    <p>todos los días te lo recordaré.</p>
+    <br>
     <p>Con mucho cariño, tu amigo.</p>
-    <p><strong><em>Marc A. O.</em></strong></p> </br>
-
+    <p><strong><em>Marc A. O.</em></strong></p>
   </footer>
-  <footer> © Todos los derechos reservados</footer>
-  <script>
-    // Videos al ir bajando 
-    document.addEventListener('DOMContentLoaded', () => {
-      const videos = document.querySelectorAll('.videos-vertical video');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      videos.forEach(video => observer.observe(video));
-    });
+  
+  <footer>© Todos los derechos reservados</footer>
 
-    // Boton INICIO , DAR "CLIC" para cargar nuevamente la pagina, para que aparezca los efectos nuevamente
-    function scrollAndReload() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => location.reload(), 500);
-    }
-
-    // GLOBOsssssss
-    function crearGlobo() {
-      const globo = document.createElement('div');
-      globo.classList.add('globo');
-      globo.style.left = Math.random() * 100 + 'vw';
-      globo.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;
-      document.body.appendChild(globo);
-      setTimeout(() => globo.remove(), 6000);
-    }
-
-    function lanzarGlobos() {
-      for (let i = 0; i < 20; i++) {
-        setTimeout(crearGlobo, i * 300);
-      }
-    }
-
-    // CONFETI, O EL INTENTO DE
-    function lanzarConfeti() {
-      const canvas = document.createElement('canvas');
-      canvas.classList.add('confetti-canvas');
-      document.body.appendChild(canvas);
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const confetis = Array.from({ length: 150 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        r: Math.random() * 6 + 2,
-        d: Math.random() * 20 + 10,
-        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
-        tilt: Math.floor(Math.random() * 10) - 10,
-      }));
-
-      let angle = 0;
-      const animar = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        angle += 0.01;
-        confetis.forEach(c => {
-          c.y += Math.cos(angle + c.d) + 1 + c.r / 2;
-          c.x += Math.sin(angle);
-          ctx.beginPath();
-          ctx.lineWidth = c.r;
-          ctx.strokeStyle = c.color;
-          ctx.moveTo(c.x + c.tilt + c.r, c.y);
-          ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r);
-          ctx.stroke();
-        });
-        requestAnimationFrame(animar);
-      };
-
-      animar();
-      setTimeout(() => {
-        canvas.remove();
-      }, 5000);
-    }
-
-    // SALIR GLOBOS Y CONFETI AL CARGRA, O ABRIR A PAGINA NUEVAMENTE ñ_Ñ
-    window.addEventListener('load', () => {
-      lanzarGlobos();
-      lanzarConfeti();
-    });
-  </script>
-  <script>
-function actualizarContador() {
-  const contador = document.getElementById('contador-cumple');
-  const ahora = new Date();
-
-  const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-
-  const diaSemana = diasSemana[ahora.getDay()];
-  const dia = ahora.getDate();
-  const mes = meses[ahora.getMonth()];
-  const año = ahora.getFullYear();
-
-  let proximoCumple = new Date(año, 5, 18, 0, 0, 0); // JUNIOS es 5 porque enero es IGUl A 0
-  if (ahora > proximoCumple) {
-    proximoCumple = new Date(año + 1, 5, 18, 0, 0, 0);
-  }
-
-  const diff = proximoCumple - ahora;
-
-  const segundosTotales = Math.floor(diff / 1000);
-  const diasRestantes = Math.floor(segundosTotales / (3600 * 24));
-  const horasRestantes = Math.floor((segundosTotales % (3600 * 24)) / 3600);
-  const minutosRestantes = Math.floor((segundosTotales % 3600) / 60);
-  const segundosRestantes = segundosTotales % 60;
-
-contador.innerHTML = `Hola Andy, hoy es <strong>${diaSemana} ${dia} de ${mes} de ${año}</strong>, faltan <strong>${diasRestantes} días</strong>, ${horasRestantes} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos para tu próximo cumpleaños 🎂🎈, mientras todo este bien.`;
-}
-/*el 13 es mi numero predilecto*/
-/*TAYLOR ALISON SWIFT*/
-setInterval(actualizarContador, 1000);
-actualizarContador();
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
