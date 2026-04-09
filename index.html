@@ -2,19 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¡Feliz Cumpleaños, Amiga!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+  <title>🎂 ¡Feliz Cumpleaños, Amiga! ✨</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- CONTENEDOR PARA GLOBOS Y CONFETI (OBLIGATORIO) -->
-  <div id="globos-container"></div>
+
+  <!-- Contenedor de corazones flotantes (fondo) -->
+  <div id="corazones-container"></div>
   
-  <div class="BANDERAS O GUIRNALDAS COMO SE LLAMNE"></div>
+  <!-- Contenedor de globos y confeti (capa superior) -->
+  <div id="globos-container"></div>
 
   <header>
-    <h1>¡Feliz cumpleaños, amiga!</h1>
-    <p>Celebrando 8 años de amistad 💖</p>
+    <h1 id="titulo-escritura"></h1>
+    <p id="subtitulo">Celebrando 8 años de amistad 💖</p>
   </header>
 
   <div id="contador-cumple" style="text-align:center; font-size: 1.3rem; margin: 20px 0; color: #a8323c;"></div>
@@ -30,90 +33,86 @@
 
   <main>
     <div class="galeria">
-      <img src="img/cumple1.png" alt="Imagen 1" />
-      <img src="img/feliz.jpg" alt="Imagen 2" />
+      <div class="card-img">
+        <img src="img/cumple1.png" alt="Imagen 1" />
+      </div>
+      <div class="card-img">
+        <img src="img/feliz.jpg" alt="Imagen 2" />
+      </div>
     </div>
 
-    <section>
-      <h2>¿21 años ya? WOOW</h2>
-      <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
-      <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
-      La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
-       no podía dejar pasar esta fecha sin escribirte algo. 
-       Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
-       y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
-       hecho presentes interfiriendo :(.
-      </br>
-      <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
-       Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
-       pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
-        unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
-        también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
-      </br>
-      <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
-      hemos vivido cosas que nos han transformado, 
-      y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
-      Pero eso no borra lo que fuimos ni el aprecio que te tengo.
-      </br>
-      <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
-      compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
-       ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
-       nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
-       hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
-       vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
-        lo que eres y de lo que estás construyendo.
-      </br>
-      <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
-      presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
-       sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
-       decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
-       esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
-        nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
-         es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
-      </br>
+    <section class="mensaje-glass">
+      <h2>🎈 ¿21 años ya? WOOW 🎈</h2>
+      <div class="mensaje-texto">
+        <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
+        <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
+        La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
+         no podía dejar pasar esta fecha sin escribirte algo. 
+         Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
+         y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
+         hecho presentes interfiriendo :(.
+        </br>
+        <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
+         Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
+         pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
+          unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
+          también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
+        </br>
+        <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
+        hemos vivido cosas que nos han transformado, 
+        y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
+        Pero eso no borra lo que fuimos ni el aprecio que te tengo.
+        </br>
+        <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
+        compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
+         ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
+         nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
+         hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
+         vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
+          lo que eres y de lo que estás construyendo.
+        </br>
+        <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
+        presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
+         sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
+         decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
+         esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
+          nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
+           es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
+        </br>
 
-      <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
+        <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
 
-      <br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
-      como nos quita momentos que nos gustara volver a repetir:</br>
+        <br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
+        como nos quita momentos que nos gustara volver a repetir:</br>
 
-      <br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
-      Las risas de antes suenan ahora como ecos lejanos, 
-      y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
-      El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
-      </br>
+        <br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
+        Las risas de antes suenan ahora como ecos lejanos, 
+        y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
+        El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
+        </br>
 
-      <br> Caminamos entre días que parecen iguales, 
-      pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
-      ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
-      como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
-      </br>
+        <br> Caminamos entre días que parecen iguales, 
+        pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
+        ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
+        como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
+        </br>
 
-      <br>Te mando un abrazo fuerte, de esos que no necesitan palabras, de aquellos que no son de los comunes,
-      te mando ese abrazo que se siente en el alma.</br>
+        <br>Te mando un abrazo fuerte, de esos que no necesitan palabras, de aquellos que no son de los comunes,
+        te mando ese abrazo que se siente en el alma.</br>
+      </div>
     </section>
 
     <div class="videos-vertical">
-      <video controls>
+      <video controls class="video-premium">
         <source src="videos/PRIMERVID.mp4" type="video/mp4" />
       </video>
-      <video controls>
+      <video controls class="video-premium">
         <source src="videos/SEGUNDOVID.mp4" type="video/mp4" />
       </video>
     </div>
 
     <div style="text-align:center; margin: 30px 0;">
-      <button onclick="scrollAndReload()" style="
-        background-color: #ff69b4;
-        color: white;
-        font-size: 24px;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 50%;
-        box-shadow: 0 0 10px rgba(255,105,180,0.5);
-        cursor: pointer;
-        transition: transform 0.2s;
-      ">↑</button>
+      <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
     </div>
   </main>
 
