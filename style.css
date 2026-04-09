@@ -463,12 +463,12 @@ header p {
     text-align: center;
 }
 
-/* ========== ONDAS ========== */
+/* ========== ONDAS PREMIUM (CORREGIDAS) ========== */
 .ondas {
     position: relative;
     width: 100%;
-    height: 80px;
-    margin-top: 40px;
+    height: 100px;
+    margin-top: 30px;
     overflow: hidden;
 }
 
@@ -476,27 +476,35 @@ header p {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
-    height: 40px;
-    background: repeating-linear-gradient(45deg, #ff69b4, #ff69b4 20px, #ffb6c1 20px, #ffb6c1 40px);
-    animation: moverOnda 3s linear infinite;
+    width: 200%;
+    height: 45px;
+    background: repeating-linear-gradient(45deg, 
+        #ff69b4 0px, #ff69b4 25px, 
+        #ffb6c1 25px, #ffb6c1 50px,
+        #ff1493 50px, #ff1493 75px);
+    opacity: 0.85;
+    animation: moverOnda 4s linear infinite;
+    border-radius: 50% 50% 0 0;
 }
 
 .onda:nth-child(2) {
     bottom: 15px;
-    opacity: 0.7;
-    animation-duration: 4s;
+    opacity: 0.6;
+    animation-duration: 5s;
+    animation-direction: reverse;
+    height: 38px;
 }
 
 .onda:nth-child(3) {
     bottom: 30px;
     opacity: 0.4;
-    animation-duration: 5s;
+    animation-duration: 6s;
+    height: 30px;
 }
 
 @keyframes moverOnda {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50px); }
+    100% { transform: translateX(-50%); }
 }
 
 /* ========== FOOTER ========== */
@@ -521,4 +529,7 @@ footer {
     .manecilla.minuto { height: 45px; }
     .manecilla.segundo { height: 55px; }
     .btn-modo { width: 45px; height: 45px; font-size: 20px; top: 10px; right: 10px; }
+    .onda { height: 35px; }
+    .onda:nth-child(2) { height: 28px; }
+    .onda:nth-child(3) { height: 22px; }
 }
