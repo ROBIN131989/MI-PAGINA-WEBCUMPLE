@@ -74,9 +74,7 @@ function scrollAndReload() {
     setTimeout(() => location.reload(), 500);
 }
 
-// ============================================
 // RELOJ ANALÓGICO
-// ============================================
 function actualizarReloj() {
     const ahora = new Date();
     const horas = ahora.getHours() % 12;
@@ -91,10 +89,14 @@ function actualizarReloj() {
     const minutoElem = document.querySelector('.manecilla.minuto');
     const segundoElem = document.querySelector('.manecilla.segundo');
 
-    if (horaElem) horaElem.style.transform = `rotate(${horaDeg}deg)`;
-    if (minutoElem) minutoElem.style.transform = `rotate(${minutoDeg}deg)`;
-    if (segundoElem) segundoElem.style.transform = `rotate(${segundoDeg}deg)`;
+    if (horaElem) horaElem.style.transform = `translateX(-50%) rotate(${horaDeg}deg)`;
+    if (minutoElem) minutoElem.style.transform = `translateX(-50%) rotate(${minutoDeg}deg)`;
+    if (segundoElem) segundoElem.style.transform = `translateX(-50%) rotate(${segundoDeg}deg)`;
 }
+
+// Iniciar el reloj
+setInterval(actualizarReloj, 1000);
+actualizarReloj();
 
 // ============================================
 // CONTADOR DE CUMPLEAÑOS
