@@ -63,3 +63,8 @@ window.addEventListener('load', () => {
   }, 7000);
 });
 
+// Botón para subir y recargar (efecto renovar)
+function scrollAndReload() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => location.reload(), 500);
+}
