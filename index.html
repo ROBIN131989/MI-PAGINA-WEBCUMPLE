@@ -158,100 +158,27 @@
     <div class="onda"></div>
   </div>
 
-  <!-- ============================================ -->
-  <!-- MODO MANTENIMIENTO (VERSIÓN CORREGIDA) -->
-  <!-- ============================================ -->
+<!-- ============================================ -->
+<!-- MODO MANTENIMIENTO GLOBAL (SOLO TÚ PUEDES VER) -->
+<!-- ============================================ -->
 
-  <style>
-    /* Pantalla de mantenimiento (oculta por defecto) */
-    #pantalla-mantenimiento {
+<style>
+    /* Pantalla de mantenimiento (visible para todos por defecto) */
+    #pantalla-mantenimiento-global {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background: linear-gradient(135deg, #ff69b4, #ff1493);
-        z-index: 99999;
-        display: none;
+        z-index: 999999;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         color: white;
         font-family: 'Quicksand', sans-serif;
-    }
-
-    /* Botón secreto (siempre visible, por encima de todo) */
-    .btn-secreto {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.8);
-        color: white;
-        border: 2px solid #ff69b4;
-        border-radius: 50px;
-        padding: 12px 20px;
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        z-index: 999999;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(255,105,180,0.5);
-    }
-
-    .btn-secreto:hover {
-        background: #ff69b4;
-        color: white;
-        transform: scale(1.05);
-    }
-
-    /* Popup de contraseña */
-    .popup-contraseña {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        z-index: 9999999;
-        box-shadow: 0 0 50px rgba(0,0,0,0.5);
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        min-width: 280px;
-    }
-
-    .popup-contraseña input {
-        padding: 12px;
-        font-size: 16px;
-        border: 2px solid #ff69b4;
-        border-radius: 25px;
-        text-align: center;
-    }
-
-    .popup-contraseña button {
-        background: #ff69b4;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    .popup-contraseña button:hover {
-        background: #ff1493;
-    }
-
-    .cerrar-popup {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 20px;
-        cursor: pointer;
-        color: #999;
     }
 
     .contenido-mantenimiento {
@@ -275,10 +202,33 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-  </style>
 
-  <!-- Pantalla de mantenimiento (oculta al inicio) -->
-  <div id="pantalla-mantenimiento">
+    /* Botón para ADMIN (solo visible si pones la clave) */
+    .admin-panel {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.8);
+        color: white;
+        border: 2px solid #ff69b4;
+        border-radius: 50px;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 9999999;
+        transition: all 0.3s ease;
+        display: none;
+    }
+
+    .admin-panel:hover {
+        background: #ff69b4;
+        transform: scale(1.05);
+    }
+</style>
+
+<!-- Pantalla de mantenimiento (visible para todos por defecto) -->
+<div id="pantalla-mantenimiento-global">
     <div class="contenido-mantenimiento">
         <h1 style="font-size: 4rem; margin: 0;">🚧</h1>
         <h2 style="font-size: 2rem; margin: 20px 0;">Página en mantenimiento</h2>
@@ -286,89 +236,36 @@
         <p style="font-size: 1rem; margin-top: 20px;">✨ Vuelve pronto ✨</p>
         <div class="spinner"></div>
     </div>
-  </div>
+</div>
 
-  <!-- Popup para contraseña -->
-  <div id="popup-contraseña" class="popup-contraseña">
-    <span class="cerrar-popup" onclick="cerrarPopup()">&times;</span>
-    <h3>🔒 Acceso de administrador</h3>
-    <p>Ingresa la contraseña para activar/desactivar el modo mantenimiento:</p>
-    <input type="password" id="pass-input" placeholder="Contraseña">
-    <button onclick="verificarContraseña()">Aceptar</button>
-  </div>
+<!-- Panel de admin (solo visible para ti) -->
+<div id="admin-panel" class="admin-panel" onclick="desactivarMantenimientoGlobal()">
+    🔧 DESACTIVAR MANTENIMIENTO
+</div>
 
-  <!-- Botón secreto (siempre visible) -->
-  <button class="btn-secreto" onclick="mostrarPopup()">🔧 MANTENIMIENTO</button>
-
-  <script>
-    // CONTRASEÑA CORRECTA (cámbiala por la que quieras)
-    const CONTRASENA_ADMIN = "activar123";
+<script>
+    // CLAVE SECRETA PARA VER LA PÁGINA
+    // Para que TÚ veas la página normal, añade ?ver=true al final del enlace
+    // Ejemplo: https://tu-pagina.netlify.app/?ver=true
     
-    // Variable para saber si el modo mantenimiento está activo
-    let modoMantenimientoActivo = false;
-
-    // Función para DETENER todos los videos y sonidos
-    function detenerTodosLosVideos() {
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-            video.pause();
-            video.currentTime = 0;
-        });
+    const urlParams = new URLSearchParams(window.location.search);
+    const tieneAcceso = urlParams.get('ver') === 'true';
+    
+    if (tieneAcceso) {
+        // TÚ tienes acceso: ocultas la pantalla de mantenimiento y muestras el panel admin
+        document.getElementById('pantalla-mantenimiento-global').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'block';
+    } else {
+        // LOS DEMÁS: ven la pantalla de mantenimiento
+        document.getElementById('pantalla-mantenimiento-global').style.display = 'flex';
     }
-
-    // Función para mostrar el popup de contraseña
-    function mostrarPopup() {
-        document.getElementById('popup-contraseña').style.display = 'flex';
-        document.getElementById('pass-input').value = '';
-        document.getElementById('pass-input').focus();
+    
+    function desactivarMantenimientoGlobal() {
+        // Esto desactiva temporalmente para todos (solo mientras tú estás viendo)
+        // Para que otros puedan ver, necesitas quitar el modo manualmente
+        document.getElementById('pantalla-mantenimiento-global').style.display = 'none';
+        alert('🔓 Modo mantenimiento desactivado TEMPORALMENTE. Recarga la página para volver a activarlo.');
     }
+</script>
 
-    // Función para cerrar el popup
-    function cerrarPopup() {
-        document.getElementById('popup-contraseña').style.display = 'none';
-    }
-
-    // Función para verificar la contraseña
-    function verificarContraseña() {
-        const inputPass = document.getElementById('pass-input').value;
-        
-        if (inputPass === CONTRASENA_ADMIN) {
-            // Cambiar el estado del modo mantenimiento
-            modoMantenimientoActivo = !modoMantenimientoActivo;
-            
-            if (modoMantenimientoActivo) {
-                // ACTIVAR modo mantenimiento
-                document.getElementById('pantalla-mantenimiento').style.display = 'flex';
-                // DETENER TODOS LOS VIDEOS
-                detenerTodosLosVideos();
-                // Guardar en localStorage
-                localStorage.setItem('modoMantenimiento', 'activo');
-                alert('🔒 Modo mantenimiento ACTIVADO');
-            } else {
-                // DESACTIVAR modo mantenimiento
-                document.getElementById('pantalla-mantenimiento').style.display = 'none';
-                localStorage.setItem('modoMantenimiento', 'inactivo');
-                alert('🔓 Modo mantenimiento DESACTIVADO');
-            }
-            
-            cerrarPopup();
-        } else {
-            alert('❌ Contraseña incorrecta');
-            document.getElementById('pass-input').value = '';
-        }
-    }
-
-    // Verificar estado al cargar la página
-    window.addEventListener('load', () => {
-        const estadoGuardado = localStorage.getItem('modoMantenimiento');
-        if (estadoGuardado === 'activo') {
-            modoMantenimientoActivo = true;
-            document.getElementById('pantalla-mantenimiento').style.display = 'flex';
-            detenerTodosLosVideos();
-        }
-    });
-  </script>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<!-- FIN MODO MANTENIMIENTO GLOBAL -->
