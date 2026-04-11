@@ -1,8 +1,168 @@
-<!-- ============================================ -->
-<!-- MODO MANTENIMIENTO (VERSIÓN CORREGIDA) -->
-<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
+  <title>🎂 ¡Feliz Cumpleaños, Amiga! ✨</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-<style>
+  <!-- Contenedor de corazones flotantes (fondo) -->
+  <div id="corazones-container"></div>
+  
+  <!-- Contenedor de globos y confeti (capa superior) -->
+  <div id="globos-container"></div>
+
+  <!-- Botón modo oscuro -->
+  <button id="btnModoOscuro" class="btn-modo">🌙</button>
+
+  <header>
+    <h1 id="titulo-escritura"></h1>
+    <p id="subtitulo">Celebrando 8 años de amistad 💖</p>
+  </header>
+
+  <div id="contador-cumple"></div>
+
+  <div class="contenedor-reloj-contador">
+    <div class="reloj-analogico">
+      <div class="manecilla hora"></div>
+      <div class="manecilla minuto"></div>
+      <div class="manecilla segundo"></div>
+      <div class="centro"></div>
+    </div>
+  </div>
+
+  <main>
+    <div class="galeria">
+      <div class="card-img" onclick="abrirModal('img/cumple1.png')">
+        <img src="img/cumple1.png" alt="Imagen 1" />
+      </div>
+      <div class="card-img" onclick="abrirModal('img/feliz.jpg')">
+        <img src="img/feliz.jpg" alt="Imagen 2" />
+      </div>
+    </div>
+
+    <section class="mensaje-glass">
+      <h2>🎈 ¿21 años ya? WOOW 🎈</h2>
+      <div class="mensaje-texto">
+        <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
+        <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
+        La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
+         no podía dejar pasar esta fecha sin escribirte algo. 
+         Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
+         y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
+         hecho presentes interfiriendo :(.
+        </br>
+        <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
+         Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
+         pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
+          unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
+          también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
+        </br>
+        <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
+        hemos vivido cosas que nos han transformado, 
+        y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
+        Pero eso no borra lo que fuimos ni el aprecio que te tengo.
+        </br>
+        <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
+        compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
+         ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
+         nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
+         hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
+         vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
+         lo que eres y de lo que estás construyendo.
+        </br>
+        <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
+        presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
+         sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
+         decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
+         esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
+          nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
+           es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
+        </br>
+
+        <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
+
+        <br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
+        como nos quita momentos que nos gustara volver a repetir:</br>
+
+        <br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
+        Las risas de antes suenan ahora como ecos lejanos, 
+        y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
+        El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
+        </br>
+
+        <br> Caminamos entre días que parecen iguales, 
+        pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
+        ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
+        como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
+        </br>
+
+        <br>Te mando un abrazo fuerte, de esos que no necesitan palabras, de aquellos que no son de los comunes,
+        te mando ese abrazo que se siente en el alma.</br>
+      </div>
+    </section>
+
+    <div class="videos-vertical">
+      <video controls class="video-premium" playsinline>
+        <source src="videos/PRIMERVID.mp4" type="video/mp4" />
+      </video>
+      <video controls class="video-premium" playsinline>
+        <source src="videos/SEGUNDOVID.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Botón sorpresa -->
+    <div style="text-align:center; margin: 20px 0;">
+      <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
+    </div>
+
+    <div style="text-align:center; margin: 30px 0;">
+      <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
+    </div>
+  </main>
+
+  <!-- Modal para zoom de imágenes -->
+  <div id="modalImagen" class="modal" onclick="cerrarModal()">
+    <img id="modalImg" class="modal-contenido">
+  </div>
+
+  <!-- Modal sorpresa -->
+  <div id="modalSorpresa" class="modal-sorpresa">
+    <div class="modal-sorpresa-contenido">
+      <span class="cerrar-sorpresa" onclick="cerrarSorpresa()">&times;</span>
+      <h2>💖 ¡Sorpresa! 💖</h2>
+      <p>Eres una persona increíble y valoro mucho nuestra amistad.</p>
+      <p>Que este nuevo año de vida te traiga todo lo que mereces.</p>
+      <p>¡Te quiero mucho! 🎂🎈</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Averiguamos de qué estamos hechos,</p>
+    <p>cuando seamos llamados para ayudar a nuestros amigos en necesidad,</p>
+    <p>y si alguna vez olvidas lo que de verdad significas para mí,</p>
+    <p>todos los días te lo recordaré.</p>
+    <br>
+    <p>Con mucho cariño, tu amigo.</p>
+    <p><strong><em>Marc A. O.</em></strong></p>
+    <p>© Todos los derechos reservados</p>
+  </footer>
+
+  <!-- ONDAS PREMIUM -->
+  <div class="ondas">
+    <div class="onda"></div>
+    <div class="onda"></div>
+    <div class="onda"></div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- MODO MANTENIMIENTO (VERSIÓN CORREGIDA) -->
+  <!-- ============================================ -->
+
+  <style>
     /* Pantalla de mantenimiento (oculta por defecto) */
     #pantalla-mantenimiento {
         position: fixed;
@@ -26,12 +186,12 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background: rgba(0,0,0,0.7);
+        background: rgba(0,0,0,0.8);
         color: white;
         border: 2px solid #ff69b4;
         border-radius: 50px;
         padding: 12px 20px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
         cursor: pointer;
         z-index: 999999;
@@ -115,10 +275,10 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-</style>
+  </style>
 
-<!-- Pantalla de mantenimiento (oculta al inicio) -->
-<div id="pantalla-mantenimiento">
+  <!-- Pantalla de mantenimiento (oculta al inicio) -->
+  <div id="pantalla-mantenimiento">
     <div class="contenido-mantenimiento">
         <h1 style="font-size: 4rem; margin: 0;">🚧</h1>
         <h2 style="font-size: 2rem; margin: 20px 0;">Página en mantenimiento</h2>
@@ -126,21 +286,21 @@
         <p style="font-size: 1rem; margin-top: 20px;">✨ Vuelve pronto ✨</p>
         <div class="spinner"></div>
     </div>
-</div>
+  </div>
 
-<!-- Popup para contraseña -->
-<div id="popup-contraseña" class="popup-contraseña">
+  <!-- Popup para contraseña -->
+  <div id="popup-contraseña" class="popup-contraseña">
     <span class="cerrar-popup" onclick="cerrarPopup()">&times;</span>
     <h3>🔒 Acceso de administrador</h3>
     <p>Ingresa la contraseña para activar/desactivar el modo mantenimiento:</p>
     <input type="password" id="pass-input" placeholder="Contraseña">
     <button onclick="verificarContraseña()">Aceptar</button>
-</div>
+  </div>
 
-<!-- Botón secreto (siempre visible) -->
-<button class="btn-secreto" onclick="mostrarPopup()">🔧 MANTENIMIENTO</button>
+  <!-- Botón secreto (siempre visible) -->
+  <button class="btn-secreto" onclick="mostrarPopup()">🔧 MANTENIMIENTO</button>
 
-<script>
+  <script>
     // CONTRASEÑA CORRECTA (cámbiala por la que quieras)
     const CONTRASENA_ADMIN = "activar123";
     
@@ -154,12 +314,6 @@
             video.pause();
             video.currentTime = 0;
         });
-    }
-
-    // Función para REANUDAR videos (opcional)
-    function reanudarVideos() {
-        // No reanudamos automáticamente, solo los dejamos en pausa
-        // Para que la persona los active manualmente
     }
 
     // Función para mostrar el popup de contraseña
@@ -189,12 +343,12 @@
                 detenerTodosLosVideos();
                 // Guardar en localStorage
                 localStorage.setItem('modoMantenimiento', 'activo');
-                alert('🔒 Modo mantenimiento ACTIVADO. Todos los videos se han detenido.');
+                alert('🔒 Modo mantenimiento ACTIVADO');
             } else {
                 // DESACTIVAR modo mantenimiento
                 document.getElementById('pantalla-mantenimiento').style.display = 'none';
                 localStorage.setItem('modoMantenimiento', 'inactivo');
-                alert('🔓 Modo mantenimiento DESACTIVADO. La página vuelve a ser visible.');
+                alert('🔓 Modo mantenimiento DESACTIVADO');
             }
             
             cerrarPopup();
@@ -204,20 +358,17 @@
         }
     }
 
-    // Observador para cuando se activa el modo mantenimiento desde localStorage
-    function verificarYDetenerVideosSiEsNecesario() {
+    // Verificar estado al cargar la página
+    window.addEventListener('load', () => {
         const estadoGuardado = localStorage.getItem('modoMantenimiento');
         if (estadoGuardado === 'activo') {
             modoMantenimientoActivo = true;
             document.getElementById('pantalla-mantenimiento').style.display = 'flex';
             detenerTodosLosVideos();
         }
-    }
-
-    // Al cargar la página, verificar si el modo mantenimiento estaba activo
-    window.addEventListener('load', () => {
-        verificarYDetenerVideosSiEsNecesario();
     });
-</script>
+  </script>
 
-<!-- FIN MODO MANTENIMIENTO -->
+  <script src="script.js"></script>
+</body>
+</html>
