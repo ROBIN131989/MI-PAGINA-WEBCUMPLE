@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
   <title>🎂 ¡Feliz Cumpleaños, Amiga! ✨</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,6 +17,11 @@
 
   <!-- Botón modo oscuro -->
   <button id="btnModoOscuro" class="btn-modo">🌙</button>
+
+  <!-- Aviso para el admin cuando el modo mantenimiento está activo -->
+  <div id="aviso-admin" style="position: fixed; top: 80px; left: 20px; background: #ff69b4; color: white; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: bold; z-index: 10000; display: none; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
+    🔧 MODO MANTENIMIENTO ACTIVADO - Los demás ven la pantalla de reparación
+  </div>
 
   <header>
     <h1 id="titulo-escritura"></h1>
@@ -158,114 +163,750 @@
     <div class="onda"></div>
   </div>
 
-<!-- ============================================ -->
-<!-- MODO MANTENIMIENTO GLOBAL (SOLO TÚ PUEDES VER) -->
-<!-- ============================================ -->
+  <!-- ============================================ -->
+  <!-- PANTALLA DE MANTENIMIENTO PREMIUM (Nivel Dios) -->
+  <!-- ============================================ -->
 
-<style>
-    /* Pantalla de mantenimiento (visible para todos por defecto) */
-    #pantalla-mantenimiento-global {
+  <style>
+    /* Pantalla de mantenimiento premium */
+    #pantalla-mantenimiento-premium {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #ff69b4, #ff1493);
-        z-index: 999999;
-        display: flex;
+        background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 25%, #1a1a3e 50%, #0f0f2a 75%, #0a0a1a 100%);
+        background-size: 200% 200%;
+        animation: fondoAnimado 12s ease infinite;
+        z-index: 999998;
+        display: none;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
         color: white;
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Space Mono', 'Quicksand', monospace;
+        overflow: hidden;
     }
 
-    .contenido-mantenimiento {
-        background: rgba(255,255,255,0.2);
-        padding: 40px;
-        border-radius: 50px;
-        backdrop-filter: blur(10px);
+    @keyframes fondoAnimado {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
 
-    .spinner {
+    /* Grid holográfico de fondo */
+    .grid-holografico {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        animation: moverGrid 20s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes moverGrid {
+        0% { transform: translateX(0) translateY(0); }
+        100% { transform: translateX(40px) translateY(40px); }
+    }
+
+    /* Estrellas fugaces */
+    .estrella-fugaz {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: estrellaFugaz 4s linear infinite;
+        opacity: 0;
+    }
+
+    @keyframes estrellaFugaz {
+        0% {
+            transform: translateX(0) translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(-200px) translateY(200px);
+            opacity: 0;
+        }
+    }
+
+    /* Partículas cuánticas */
+    .particula-cuantica {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #00ffff;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ffff;
+        animation: orbita 8s linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes orbita {
+        0% {
+            transform: rotate(0deg) translateX(150px) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: rotate(360deg) translateX(150px) rotate(-360deg);
+            opacity: 0.3;
+        }
+    }
+
+    /* Ondas de choque */
+    .onda-choque {
+        position: absolute;
         width: 50px;
         height: 50px;
-        border: 5px solid white;
-        border-top-color: transparent;
+        border: 2px solid #00ffff;
         border-radius: 50%;
-        animation: girar 1s linear infinite;
+        animation: expandirOnda 3s ease-out infinite;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    @keyframes expandirOnda {
+        0% {
+            width: 20px;
+            height: 20px;
+            opacity: 0.8;
+        }
+        100% {
+            width: 300px;
+            height: 300px;
+            opacity: 0;
+        }
+    }
+
+    /* Tarjeta holograma */
+    .tarjeta-holograma {
+        background: rgba(0, 20, 40, 0.4);
+        backdrop-filter: blur(15px);
+        border-radius: 40px;
+        padding: 40px 30px;
+        margin: 20px;
+        max-width: 420px;
+        width: 85%;
+        border: 1px solid rgba(0, 255, 255, 0.4);
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
+        animation: aparecerTarjeta 0.8s ease-out, flotarTarjeta 3s ease-in-out infinite;
+        position: relative;
+        z-index: 10;
+    }
+
+    @keyframes aparecerTarjeta {
+        from {
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    @keyframes flotarTarjeta {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    /* Borde holográfico animado */
+    .tarjeta-holograma::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #00ffff, #0088ff, #00ffff, #0088ff);
+        background-size: 400%;
+        border-radius: 42px;
+        z-index: -1;
+        animation: brilloHolograma 3s linear infinite;
+        opacity: 0.6;
+    }
+
+    @keyframes brilloHolograma {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+
+    /* Icono principal animado */
+    .icono-reparacion {
+        font-size: 70px;
+        animation: girarIcono 4s ease-in-out infinite, latidoIcono 2s ease-in-out infinite;
+        display: inline-block;
+        filter: drop-shadow(0 0 10px #00ffff);
+    }
+
+    @keyframes girarIcono {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(15deg); }
+        75% { transform: rotate(-15deg); }
+    }
+
+    @keyframes latidoIcono {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    /* Título neón */
+    .titulo-neon {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 20px 0 10px;
+        letter-spacing: 3px;
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #0088ff;
+        animation: parpadeoNeon 2s ease-in-out infinite;
+    }
+
+    @keyframes parpadeoNeon {
+        0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
+        50% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
+    }
+
+    /* Barra de progreso futurista */
+    .barra-futurista {
+        width: 90%;
+        height: 8px;
+        background: rgba(0, 255, 255, 0.2);
+        border-radius: 10px;
+        margin: 25px auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .barra-futurista-llenado {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #00ffff, #0088ff, #00ffff);
+        border-radius: 10px;
+        animation: cargaInfinita 3s ease-in-out infinite;
+        box-shadow: 0 0 10px #00ffff;
+    }
+
+    @keyframes cargaInfinita {
+        0% { width: 0%; margin-left: 0%; }
+        50% { width: 100%; margin-left: 0%; }
+        100% { width: 0%; margin-left: 100%; }
+    }
+
+    /* Terminal de comandos */
+    .terminal-comandos {
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        padding: 15px;
+        margin: 20px 0;
+        text-align: left;
+        font-family: 'Space Mono', monospace;
+        font-size: 11px;
+        border-left: 3px solid #00ffff;
+    }
+
+    .linea-terminal {
+        color: #00ffff;
+        margin: 5px 0;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: escribirLinea 0.5s steps(30);
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 8px;
+        height: 14px;
+        background: #00ffff;
+        vertical-align: middle;
+        animation: parpadear 1s step-end infinite;
+    }
+
+    @keyframes parpadear {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* Radar */
+    .radar-container {
+        width: 100px;
+        height: 100px;
         margin: 20px auto;
+        position: relative;
     }
 
-    @keyframes girar {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+    .radar-circulo {
+        width: 100%;
+        height: 100%;
+        border: 2px solid #00ffff;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
     }
 
-    /* Botón para ADMIN (solo visible si pones la clave) */
-    .admin-panel {
+    .radar-onda {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        animation: radarOnda 2s linear infinite;
+    }
+
+    .radar-linea {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        height: 2px;
+        background: #00ffff;
+        transform-origin: 0% 50%;
+        animation: radarGiro 3s linear infinite;
+        box-shadow: 0 0 5px #00ffff;
+    }
+
+    @keyframes radarOnda {
+        0% {
+            box-shadow: inset 0 0 0 0 rgba(0, 255, 255, 0.5);
+        }
+        100% {
+            box-shadow: inset 0 0 0 30px rgba(0, 255, 255, 0);
+        }
+    }
+
+    @keyframes radarGiro {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Botón de administrador */
+    .btn-admin {
         position: fixed;
         bottom: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.8);
-        color: white;
-        border: 2px solid #ff69b4;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #00ffff;
+        border: 1px solid #00ffff;
         border-radius: 50px;
-        padding: 12px 20px;
-        font-size: 14px;
+        padding: 10px 18px;
+        font-size: 12px;
         font-weight: bold;
         cursor: pointer;
         z-index: 9999999;
         transition: all 0.3s ease;
-        display: none;
+        font-family: 'Space Mono', monospace;
+        backdrop-filter: blur(5px);
     }
 
-    .admin-panel:hover {
-        background: #ff69b4;
+    .btn-admin:hover {
+        background: #00ffff;
+        color: #000;
+        box-shadow: 0 0 20px #00ffff;
         transform: scale(1.05);
     }
-</style>
 
-<!-- Pantalla de mantenimiento (visible para todos por defecto) -->
-<div id="pantalla-mantenimiento-global">
-    <div class="contenido-mantenimiento">
-        <h1 style="font-size: 4rem; margin: 0;">🚧</h1>
-        <h2 style="font-size: 2rem; margin: 20px 0;">Página en mantenimiento</h2>
-        <p style="font-size: 1.2rem;">Estamos preparando una sorpresa muy especial para ti... 🎁</p>
-        <p style="font-size: 1rem; margin-top: 20px;">✨ Vuelve pronto ✨</p>
-        <div class="spinner"></div>
+    /* Popup de contraseña */
+    .popup-password {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(10, 10, 30, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 10000000;
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        min-width: 280px;
+        border: 1px solid #00ffff;
+    }
+
+    .popup-password input {
+        padding: 12px;
+        font-size: 16px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #00ffff;
+        border-radius: 25px;
+        text-align: center;
+        color: white;
+        font-family: 'Space Mono', monospace;
+    }
+
+    .popup-password button {
+        background: linear-gradient(135deg, #00ffff, #0088ff);
+        color: #000;
+        border: none;
+        padding: 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+
+    .popup-password button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 20px #00ffff;
+    }
+
+    .cerrar-popup {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #00ffff;
+    }
+
+    /* Mensaje de error con humor */
+    .mensaje-error {
+        background: rgba(255, 0, 0, 0.2);
+        border-left: 3px solid #ff4444;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        animation: sacudir 0.3s ease-in-out 0s 2;
+        font-size: 13px;
+    }
+
+    @keyframes sacudir {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    /* Responsive móvil */
+    @media (max-width: 600px) {
+        .tarjeta-holograma { padding: 25px 20px; }
+        .titulo-neon { font-size: 1.3rem; }
+        .icono-reparacion { font-size: 50px; }
+        .terminal-comandos { font-size: 8px; padding: 10px; }
+        .btn-admin { padding: 8px 14px; font-size: 10px; }
+        .linea-terminal { white-space: normal; word-break: break-all; }
+    }
+  </style>
+
+  <!-- Pantalla de mantenimiento premium -->
+  <div id="pantalla-mantenimiento-premium">
+    <div class="grid-holografico"></div>
+    <div id="estrellas-container"></div>
+    <div id="particulas-container"></div>
+    <div id="ondas-container"></div>
+    
+    <div class="tarjeta-holograma">
+      <div class="icono-reparacion">🔧⚙️🔧</div>
+      <h1 class="titulo-neon">SISTEMA EN MANTENIMIENTO</h1>
+      <p style="margin: 15px 0; opacity: 0.9;">Estamos trabajando para ofrecerte una experiencia increíble</p>
+      
+      <div class="barra-futurista">
+        <div class="barra-futurista-llenado"></div>
+      </div>
+      
+      <div class="terminal-comandos" id="terminal">
+        <div class="linea-terminal">> iniciando protocolo de reparación...</div>
+        <div class="linea-terminal">> verificando archivos del sistema... <span style="color:#00ff00;">OK</span></div>
+        <div class="linea-terminal">> optimizando sorpresa especial...</div>
+        <div class="linea-terminal">> <span id="texto-dinamico">reparando componentes</span><span class="cursor"></span></div>
+      </div>
+      
+      <div class="radar-container">
+        <div class="radar-circulo">
+          <div class="radar-onda"></div>
+          <div class="radar-linea"></div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Disculpa las molestias, en breve volveremos</p>
+      <p style="font-size: 0.8rem; opacity: 0.5;">✨ Gracias por tu paciencia ✨</p>
     </div>
-</div>
+  </div>
 
-<!-- Panel de admin (solo visible para ti) -->
-<div id="admin-panel" class="admin-panel" onclick="desactivarMantenimientoGlobal()">
-    🔧 DESACTIVAR MANTENIMIENTO
-</div>
+  <!-- Popup de contraseña -->
+  <div id="popup-password" class="popup-password">
+    <span class="cerrar-popup" onclick="cerrarPopupPassword()">&times;</span>
+    <h3 style="color:#00ffff;">🔒 ACCESO ADMINISTRADOR</h3>
+    <p style="font-size: 14px;">Ingresa la contraseña para gestionar el modo mantenimiento</p>
+    <input type="password" id="password-input" placeholder="Contraseña">
+    <div id="mensaje-error-container"></div>
+    <button onclick="verificarPassword()">Aceptar</button>
+  </div>
 
-<script>
-    // CLAVE SECRETA PARA VER LA PÁGINA
-    // Para que TÚ veas la página normal, añade ?ver=true al final del enlace
-    // Ejemplo: https://tu-pagina.netlify.app/?ver=true
+  <!-- Botón de administrador (visible para todos) -->
+  <button id="btn-admin" class="btn-admin">🔧 ADMIN</button>
+
+  <script>
+    // ============================================
+    // CONTRASEÑA CORRECTA
+    // ============================================
+    const CONTRASENA_ADMIN = "192480014-5";
     
-    const urlParams = new URLSearchParams(window.location.search);
-    const tieneAcceso = urlParams.get('ver') === 'true';
+    // Variables de control
+    let modoMantenimientoActivo = false;
+    let intentosFallidos = 0;
+    let bloqueado = false;
+    let tiempoBloqueo = 0;
     
-    if (tieneAcceso) {
-        // TÚ tienes acceso: ocultas la pantalla de mantenimiento y muestras el panel admin
-        document.getElementById('pantalla-mantenimiento-global').style.display = 'none';
-        document.getElementById('admin-panel').style.display = 'block';
-    } else {
-        // LOS DEMÁS: ven la pantalla de mantenimiento
-        document.getElementById('pantalla-mantenimiento-global').style.display = 'flex';
+    // Elementos
+    const pantallaMantenimiento = document.getElementById('pantalla-mantenimiento-premium');
+    const btnAdmin = document.getElementById('btn-admin');
+    const popupPassword = document.getElementById('popup-password');
+    const passwordInput = document.getElementById('password-input');
+    const mensajeErrorContainer = document.getElementById('mensaje-error-container');
+    const avisoAdmin = document.getElementById('aviso-admin');
+    
+    // ============================================
+    // FUNCIONES DE ANIMACIÓN DE LA PANTALLA DE MANTENIMIENTO
+    // ============================================
+    
+    // Crear estrellas fugaces
+    function crearEstrellasFugaces() {
+        const container = document.getElementById('estrellas-container');
+        if (!container) return;
+        for (let i = 0; i < 30; i++) {
+            const estrella = document.createElement('div');
+            estrella.classList.add('estrella-fugaz');
+            estrella.style.top = Math.random() * 100 + '%';
+            estrella.style.left = Math.random() * 100 + '%';
+            estrella.style.animationDelay = Math.random() * 8 + 's';
+            estrella.style.animationDuration = 2 + Math.random() * 3 + 's';
+            container.appendChild(estrella);
+        }
     }
     
-    function desactivarMantenimientoGlobal() {
-        // Esto desactiva temporalmente para todos (solo mientras tú estás viendo)
-        // Para que otros puedan ver, necesitas quitar el modo manualmente
-        document.getElementById('pantalla-mantenimiento-global').style.display = 'none';
-        alert('🔓 Modo mantenimiento desactivado TEMPORALMENTE. Recarga la página para volver a activarlo.');
+    // Crear partículas cuánticas
+    function crearParticulas() {
+        const container = document.getElementById('particulas-container');
+        if (!container) return;
+        const centros = [
+            { x: '20%', y: '30%' }, { x: '80%', y: '70%' },
+            { x: '50%', y: '20%' }, { x: '30%', y: '80%' },
+            { x: '70%', y: '40%' }, { x: '85%', y: '15%' }
+        ];
+        centros.forEach(centro => {
+            for (let i = 0; i < 3; i++) {
+                const particula = document.createElement('div');
+                particula.classList.add('particula-cuantica');
+                particula.style.left = centro.x;
+                particula.style.top = centro.y;
+                particula.style.animationDuration = 6 + Math.random() * 4 + 's';
+                particula.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(particula);
+            }
+        });
     }
-</script>
+    
+    // Crear ondas de choque
+    function crearOndas() {
+        const container = document.getElementById('ondas-container');
+        if (!container) return;
+        setInterval(() => {
+            const onda = document.createElement('div');
+            onda.classList.add('onda-choque');
+            onda.style.left = '50%';
+            onda.style.top = '50%';
+            onda.style.transform = 'translate(-50%, -50%)';
+            container.appendChild(onda);
+            setTimeout(() => onda.remove(), 3000);
+        }, 4000);
+    }
+    
+    // Texto dinámico en la terminal
+    const textosDinamicos = [
+        'reparando componentes',
+        'escaneando archivos...',
+        'optimizando sorpresa',
+        'cargando hologramas',
+        'verificando integridad',
+        'aplicando parches',
+        'calibrando sistemas'
+    ];
+    let indiceTexto = 0;
+    
+    function actualizarTextoDinamico() {
+        const elemento = document.getElementById('texto-dinamico');
+        if (elemento) {
+            indiceTexto = (indiceTexto + 1) % textosDinamicos.length;
+            elemento.textContent = textosDinamicos[indiceTexto];
+        }
+    }
+    setInterval(actualizarTextoDinamico, 3000);
+    
+    // ============================================
+    // FUNCIONES DEL MODO MANTENIMIENTO
+    // ============================================
+    
+    function detenerTodosLosVideos() {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.pause();
+            video.currentTime = 0;
+        });
+    }
+    
+    function activarModoMantenimiento() {
+        modoMantenimientoActivo = true;
+        pantallaMantenimiento.style.display = 'flex';
+        detenerTodosLosVideos();
+        localStorage.setItem('modoMantenimientoGlobal', 'activo');
+        if (avisoAdmin) avisoAdmin.style.display = 'block';
+    }
+    
+    function desactivarModoMantenimiento() {
+        modoMantenimientoActivo = false;
+        pantallaMantenimiento.style.display = 'none';
+        localStorage.setItem('modoMantenimientoGlobal', 'inactivo');
+        if (avisoAdmin) avisoAdmin.style.display = 'none';
+    }
+    
+    // ============================================
+    // VERIFICAR CONTRASEÑA CON HUMOR
+    // ============================================
+    
+    function mostrarMensajeError(mensaje, esError = true) {
+        mensajeErrorContainer.innerHTML = `<div class="mensaje-error" style="color: ${esError ? '#ff8888' : '#88ff88'}">${mensaje}</div>`;
+        setTimeout(() => {
+            mensajeErrorContainer.innerHTML = '';
+        }, 3000);
+    }
+    
+    function verificarPassword() {
+        if (bloqueado) {
+            mostrarMensajeError(`🔒 Bloqueado. Espera ${Math.ceil((tiempoBloqueo - Date.now()) / 1000)} segundos`, true);
+            return;
+        }
+        
+        const password = passwordInput.value;
+        
+        if (password === CONTRASENA_ADMIN) {
+            // Contraseña correcta
+            intentosFallidos = 0;
+            cerrarPopupPassword();
+            
+            if (modoMantenimientoActivo) {
+                desactivarModoMantenimiento();
+                mostrarMensajeError('✅ Bienvenido, Administrador. Modo mantenimiento DESACTIVADO', false);
+            } else {
+                activarModoMantenimiento();
+                mostrarMensajeError('✅ Bienvenido, Administrador. Modo mantenimiento ACTIVADO', false);
+            }
+        } else {
+            // Contraseña incorrecta - con humor
+            intentosFallidos++;
+            const intentosRestantes = 3 - intentosFallidos;
+            
+            let mensaje = '';
+            switch(intentosFallidos) {
+                case 1:
+                    mensaje = '❌ Nope. Solo para admins. ¿Otra vez? 😏';
+                    break;
+                case 2:
+                    mensaje = '❌ Jajaja... No, no, no. Sigue soñando. 😈';
+                    break;
+                case 3:
+                    mensaje = '❌ Última oportunidad... ¡Y fallaste! 🔒 Espera 10 segundos';
+                    break;
+                default:
+                    mensaje = '❌ Contraseña incorrecta';
+            }
+            
+            if (intentosRestantes > 0) {
+                mensaje += `<br>Intentos restantes: ${intentosRestantes}`;
+            }
+            
+            mostrarMensajeError(mensaje, true);
+            
+            if (intentosFallidos >= 3) {
+                bloqueado = true;
+                tiempoBloqueo = Date.now() + 10000;
+                setTimeout(() => {
+                    bloqueado = false;
+                    intentosFallidos = 0;
+                    mostrarMensajeError('✅ Bloqueo terminado. Puedes volver a intentarlo.', false);
+                }, 10000);
+                cerrarPopupPassword();
+            }
+            
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+    }
+    
+    // ============================================
+    // FUNCIONES DEL POPUP
+    // ============================================
+    
+    function mostrarPopupPassword() {
+        popupPassword.style.display = 'flex';
+        passwordInput.value = '';
+        passwordInput.focus();
+        mensajeErrorContainer.innerHTML = '';
+    }
+    
+    function cerrarPopupPassword() {
+        popupPassword.style.display = 'none';
+        intentosFallidos = 0;
+    }
+    
+    // ============================================
+    // VERIFICAR ESTADO AL CARGAR
+    // ============================================
+    
+    function verificarEstadoMantenimiento() {
+        const estadoGuardado = localStorage.getItem('modoMantenimientoGlobal');
+        if (estadoGuardado === 'activo') {
+            modoMantenimientoActivo = true;
+            pantallaMantenimiento.style.display = 'flex';
+            if (avisoAdmin) avisoAdmin.style.display = 'block';
+        } else {
+            modoMantenimientoActivo = false;
+            pantallaMantenimiento.style.display = 'none';
+            if (avisoAdmin) avisoAdmin.style.display = 'none';
+        }
+    }
+    
+    // ============================================
+    // EVENTOS
+    // ============================================
+    
+    btnAdmin.addEventListener('click', mostrarPopupPassword);
+    
+    document.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && popupPassword.style.display === 'flex') {
+            verificarPassword();
+        }
+    });
+    
+    // Cerrar popup al hacer clic fuera
+    window.onclick = function(event) {
+        if (event.target === popupPassword) {
+            cerrarPopupPassword();
+        }
+    }
+    
+    // ============================================
+    // INICIALIZACIÓN
+    // ============================================
+    
+    window.addEventListener('load', () => {
+        verificarEstadoMantenimiento();
+        crearEstrellasFugaces();
+        crearParticulas();
+        crearOndas();
+        
+        // Texto dinámico de terminal
+        const lineas = document.querySelectorAll('.linea-terminal');
+        lineas.forEach((linea, index) => {
+            linea.style.animationDelay = index * 0.5 + 's';
+        });
+    });
+  </script>
 
-<!-- FIN MODO MANTENIMIENTO GLOBAL -->
+  <script src="script.js"></script>
+</body>
+</html>
