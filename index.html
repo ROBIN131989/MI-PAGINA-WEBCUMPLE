@@ -164,7 +164,7 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA DE MANTENIMIENTO PREMIUM (Nivel Dios) -->
+  <!-- PANTALLA DE MANTENIMIENTO PREMIUM (CORREGIDA) -->
   <!-- ============================================ -->
 
   <style>
@@ -178,7 +178,7 @@
         background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 25%, #1a1a3e 50%, #0f0f2a 75%, #0a0a1a 100%);
         background-size: 200% 200%;
         animation: fondoAnimado 12s ease infinite;
-        z-index: 999998;
+        z-index: 999999;
         display: none;
         flex-direction: column;
         align-items: center;
@@ -195,7 +195,7 @@
         100% { background-position: 0% 50%; }
     }
 
-    /* Grid holográfico de fondo */
+    /* Grid holográfico */
     .grid-holografico {
         position: absolute;
         width: 100%;
@@ -213,88 +213,18 @@
         100% { transform: translateX(40px) translateY(40px); }
     }
 
-    /* Estrellas fugaces */
-    .estrella-fugaz {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        animation: estrellaFugaz 4s linear infinite;
-        opacity: 0;
-    }
-
-    @keyframes estrellaFugaz {
-        0% {
-            transform: translateX(0) translateY(0);
-            opacity: 1;
-        }
-        100% {
-            transform: translateX(-200px) translateY(200px);
-            opacity: 0;
-        }
-    }
-
-    /* Partículas cuánticas */
-    .particula-cuantica {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: #00ffff;
-        border-radius: 50%;
-        box-shadow: 0 0 10px #00ffff;
-        animation: orbita 8s linear infinite;
-        pointer-events: none;
-    }
-
-    @keyframes orbita {
-        0% {
-            transform: rotate(0deg) translateX(150px) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: rotate(360deg) translateX(150px) rotate(-360deg);
-            opacity: 0.3;
-        }
-    }
-
-    /* Ondas de choque */
-    .onda-choque {
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        border: 2px solid #00ffff;
-        border-radius: 50%;
-        animation: expandirOnda 3s ease-out infinite;
-        pointer-events: none;
-        opacity: 0;
-    }
-
-    @keyframes expandirOnda {
-        0% {
-            width: 20px;
-            height: 20px;
-            opacity: 0.8;
-        }
-        100% {
-            width: 300px;
-            height: 300px;
-            opacity: 0;
-        }
-    }
-
     /* Tarjeta holograma */
     .tarjeta-holograma {
-        background: rgba(0, 20, 40, 0.4);
+        background: rgba(0, 20, 40, 0.6);
         backdrop-filter: blur(15px);
         border-radius: 40px;
         padding: 40px 30px;
         margin: 20px;
         max-width: 420px;
         width: 85%;
-        border: 1px solid rgba(0, 255, 255, 0.4);
-        box-shadow: 0 0 50px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.1);
-        animation: aparecerTarjeta 0.8s ease-out, flotarTarjeta 3s ease-in-out infinite;
+        border: 1px solid rgba(0, 255, 255, 0.5);
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.2);
+        animation: aparecerTarjeta 0.8s ease-out;
         position: relative;
         z-index: 10;
     }
@@ -310,12 +240,6 @@
         }
     }
 
-    @keyframes flotarTarjeta {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-    }
-
-    /* Borde holográfico animado */
     .tarjeta-holograma::before {
         content: '';
         position: absolute;
@@ -336,10 +260,9 @@
         100% { background-position: 100% 50%; }
     }
 
-    /* Icono principal animado */
     .icono-reparacion {
         font-size: 70px;
-        animation: girarIcono 4s ease-in-out infinite, latidoIcono 2s ease-in-out infinite;
+        animation: girarIcono 4s ease-in-out infinite;
         display: inline-block;
         filter: drop-shadow(0 0 10px #00ffff);
     }
@@ -350,27 +273,14 @@
         75% { transform: rotate(-15deg); }
     }
 
-    @keyframes latidoIcono {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-    }
-
-    /* Título neón */
     .titulo-neon {
         font-size: 1.8rem;
         font-weight: 700;
         margin: 20px 0 10px;
         letter-spacing: 3px;
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #0088ff;
-        animation: parpadeoNeon 2s ease-in-out infinite;
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
     }
 
-    @keyframes parpadeoNeon {
-        0%, 100% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
-        50% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
-    }
-
-    /* Barra de progreso futurista */
     .barra-futurista {
         width: 90%;
         height: 8px;
@@ -378,16 +288,14 @@
         border-radius: 10px;
         margin: 25px auto;
         overflow: hidden;
-        position: relative;
     }
 
     .barra-futurista-llenado {
         width: 0%;
         height: 100%;
-        background: linear-gradient(90deg, #00ffff, #0088ff, #00ffff);
+        background: linear-gradient(90deg, #00ffff, #0088ff);
         border-radius: 10px;
         animation: cargaInfinita 3s ease-in-out infinite;
-        box-shadow: 0 0 10px #00ffff;
     }
 
     @keyframes cargaInfinita {
@@ -396,7 +304,6 @@
         100% { width: 0%; margin-left: 100%; }
     }
 
-    /* Terminal de comandos */
     .terminal-comandos {
         background: rgba(0, 0, 0, 0.7);
         border-radius: 15px;
@@ -408,29 +315,6 @@
         border-left: 3px solid #00ffff;
     }
 
-    .linea-terminal {
-        color: #00ffff;
-        margin: 5px 0;
-        white-space: nowrap;
-        overflow: hidden;
-        animation: escribirLinea 0.5s steps(30);
-    }
-
-    .cursor {
-        display: inline-block;
-        width: 8px;
-        height: 14px;
-        background: #00ffff;
-        vertical-align: middle;
-        animation: parpadear 1s step-end infinite;
-    }
-
-    @keyframes parpadear {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-    }
-
-    /* Radar */
     .radar-container {
         width: 100px;
         height: 100px;
@@ -447,14 +331,6 @@
         overflow: hidden;
     }
 
-    .radar-onda {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        animation: radarOnda 2s linear infinite;
-    }
-
     .radar-linea {
         position: absolute;
         top: 50%;
@@ -464,16 +340,6 @@
         background: #00ffff;
         transform-origin: 0% 50%;
         animation: radarGiro 3s linear infinite;
-        box-shadow: 0 0 5px #00ffff;
-    }
-
-    @keyframes radarOnda {
-        0% {
-            box-shadow: inset 0 0 0 0 rgba(0, 255, 255, 0.5);
-        }
-        100% {
-            box-shadow: inset 0 0 0 30px rgba(0, 255, 255, 0);
-        }
     }
 
     @keyframes radarGiro {
@@ -497,14 +363,12 @@
         z-index: 9999999;
         transition: all 0.3s ease;
         font-family: 'Space Mono', monospace;
-        backdrop-filter: blur(5px);
     }
 
     .btn-admin:hover {
         background: #00ffff;
         color: #000;
         box-shadow: 0 0 20px #00ffff;
-        transform: scale(1.05);
     }
 
     /* Popup de contraseña */
@@ -513,7 +377,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: rgba(10, 10, 30, 0.95);
+        background: rgba(10, 10, 30, 0.98);
         backdrop-filter: blur(20px);
         padding: 30px;
         border-radius: 20px;
@@ -547,12 +411,6 @@
         cursor: pointer;
         font-size: 16px;
         font-weight: bold;
-        transition: all 0.3s ease;
-    }
-
-    .popup-password button:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 20px #00ffff;
     }
 
     .cerrar-popup {
@@ -565,7 +423,7 @@
     }
 
     /* Mensaje de error con humor */
-    .mensaje-error {
+    .mensaje-error-admin {
         background: rgba(255, 0, 0, 0.2);
         border-left: 3px solid #ff4444;
         padding: 10px;
@@ -573,6 +431,17 @@
         border-radius: 10px;
         animation: sacudir 0.3s ease-in-out 0s 2;
         font-size: 13px;
+        color: #ff8888;
+    }
+
+    .mensaje-exito-admin {
+        background: rgba(0, 255, 0, 0.2);
+        border-left: 3px solid #00ff00;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 10px;
+        font-size: 13px;
+        color: #88ff88;
     }
 
     @keyframes sacudir {
@@ -581,23 +450,18 @@
         75% { transform: translateX(5px); }
     }
 
-    /* Responsive móvil */
     @media (max-width: 600px) {
         .tarjeta-holograma { padding: 25px 20px; }
         .titulo-neon { font-size: 1.3rem; }
         .icono-reparacion { font-size: 50px; }
-        .terminal-comandos { font-size: 8px; padding: 10px; }
+        .terminal-comandos { font-size: 8px; }
         .btn-admin { padding: 8px 14px; font-size: 10px; }
-        .linea-terminal { white-space: normal; word-break: break-all; }
     }
   </style>
 
-  <!-- Pantalla de mantenimiento premium -->
+  <!-- Pantalla de mantenimiento (INICIALMENTE OCULTA, se muestra SOLO si el modo está activado) -->
   <div id="pantalla-mantenimiento-premium">
     <div class="grid-holografico"></div>
-    <div id="estrellas-container"></div>
-    <div id="particulas-container"></div>
-    <div id="ondas-container"></div>
     
     <div class="tarjeta-holograma">
       <div class="icono-reparacion">🔧⚙️🔧</div>
@@ -608,16 +472,15 @@
         <div class="barra-futurista-llenado"></div>
       </div>
       
-      <div class="terminal-comandos" id="terminal">
-        <div class="linea-terminal">> iniciando protocolo de reparación...</div>
-        <div class="linea-terminal">> verificando archivos del sistema... <span style="color:#00ff00;">OK</span></div>
-        <div class="linea-terminal">> optimizando sorpresa especial...</div>
-        <div class="linea-terminal">> <span id="texto-dinamico">reparando componentes</span><span class="cursor"></span></div>
+      <div class="terminal-comandos">
+        <div style="color: #00ffff;">> iniciando protocolo de reparación...</div>
+        <div style="color: #00ff00;">> verificando archivos del sistema... OK</div>
+        <div style="color: #00ffff;">> optimizando sorpresa especial...</div>
+        <div style="color: #00ffff;">> reparando componentes<span style="animation: parpadear 1s step-end infinite;">_</span></div>
       </div>
       
       <div class="radar-container">
         <div class="radar-circulo">
-          <div class="radar-onda"></div>
           <div class="radar-linea"></div>
         </div>
       </div>
@@ -646,7 +509,7 @@
     // ============================================
     const CONTRASENA_ADMIN = "192480014-5";
     
-    // Variables de control
+    // Variables
     let modoMantenimientoActivo = false;
     let intentosFallidos = 0;
     let bloqueado = false;
@@ -659,83 +522,6 @@
     const passwordInput = document.getElementById('password-input');
     const mensajeErrorContainer = document.getElementById('mensaje-error-container');
     const avisoAdmin = document.getElementById('aviso-admin');
-    
-    // ============================================
-    // FUNCIONES DE ANIMACIÓN DE LA PANTALLA DE MANTENIMIENTO
-    // ============================================
-    
-    // Crear estrellas fugaces
-    function crearEstrellasFugaces() {
-        const container = document.getElementById('estrellas-container');
-        if (!container) return;
-        for (let i = 0; i < 30; i++) {
-            const estrella = document.createElement('div');
-            estrella.classList.add('estrella-fugaz');
-            estrella.style.top = Math.random() * 100 + '%';
-            estrella.style.left = Math.random() * 100 + '%';
-            estrella.style.animationDelay = Math.random() * 8 + 's';
-            estrella.style.animationDuration = 2 + Math.random() * 3 + 's';
-            container.appendChild(estrella);
-        }
-    }
-    
-    // Crear partículas cuánticas
-    function crearParticulas() {
-        const container = document.getElementById('particulas-container');
-        if (!container) return;
-        const centros = [
-            { x: '20%', y: '30%' }, { x: '80%', y: '70%' },
-            { x: '50%', y: '20%' }, { x: '30%', y: '80%' },
-            { x: '70%', y: '40%' }, { x: '85%', y: '15%' }
-        ];
-        centros.forEach(centro => {
-            for (let i = 0; i < 3; i++) {
-                const particula = document.createElement('div');
-                particula.classList.add('particula-cuantica');
-                particula.style.left = centro.x;
-                particula.style.top = centro.y;
-                particula.style.animationDuration = 6 + Math.random() * 4 + 's';
-                particula.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(particula);
-            }
-        });
-    }
-    
-    // Crear ondas de choque
-    function crearOndas() {
-        const container = document.getElementById('ondas-container');
-        if (!container) return;
-        setInterval(() => {
-            const onda = document.createElement('div');
-            onda.classList.add('onda-choque');
-            onda.style.left = '50%';
-            onda.style.top = '50%';
-            onda.style.transform = 'translate(-50%, -50%)';
-            container.appendChild(onda);
-            setTimeout(() => onda.remove(), 3000);
-        }, 4000);
-    }
-    
-    // Texto dinámico en la terminal
-    const textosDinamicos = [
-        'reparando componentes',
-        'escaneando archivos...',
-        'optimizando sorpresa',
-        'cargando hologramas',
-        'verificando integridad',
-        'aplicando parches',
-        'calibrando sistemas'
-    ];
-    let indiceTexto = 0;
-    
-    function actualizarTextoDinamico() {
-        const elemento = document.getElementById('texto-dinamico');
-        if (elemento) {
-            indiceTexto = (indiceTexto + 1) % textosDinamicos.length;
-            elemento.textContent = textosDinamicos[indiceTexto];
-        }
-    }
-    setInterval(actualizarTextoDinamico, 3000);
     
     // ============================================
     // FUNCIONES DEL MODO MANTENIMIENTO
@@ -765,38 +551,47 @@
     }
     
     // ============================================
-    // VERIFICAR CONTRASEÑA CON HUMOR
+    // MOSTRAR MENSAJES
     // ============================================
     
-    function mostrarMensajeError(mensaje, esError = true) {
-        mensajeErrorContainer.innerHTML = `<div class="mensaje-error" style="color: ${esError ? '#ff8888' : '#88ff88'}">${mensaje}</div>`;
+    function mostrarMensaje(mensaje, tipo) {
+        const className = tipo === 'error' ? 'mensaje-error-admin' : 'mensaje-exito-admin';
+        mensajeErrorContainer.innerHTML = `<div class="${className}">${mensaje}</div>`;
         setTimeout(() => {
             mensajeErrorContainer.innerHTML = '';
-        }, 3000);
+        }, 4000);
     }
     
+    // ============================================
+    // VERIFICAR CONTRASEÑA
+    // ============================================
+    
     function verificarPassword() {
+        // Verificar si está bloqueado
         if (bloqueado) {
-            mostrarMensajeError(`🔒 Bloqueado. Espera ${Math.ceil((tiempoBloqueo - Date.now()) / 1000)} segundos`, true);
+            const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
+            mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos antes de volver a intentar.`, 'error');
             return;
         }
         
         const password = passwordInput.value;
         
         if (password === CONTRASENA_ADMIN) {
-            // Contraseña correcta
+            // ÉXITO - Contraseña correcta
             intentosFallidos = 0;
-            cerrarPopupPassword();
             
             if (modoMantenimientoActivo) {
                 desactivarModoMantenimiento();
-                mostrarMensajeError('✅ Bienvenido, Administrador. Modo mantenimiento DESACTIVADO', false);
+                mostrarMensaje('✅ ¡Bienvenido, Administrador! Modo mantenimiento DESACTIVADO. Todos pueden ver la página ahora.', 'exito');
             } else {
                 activarModoMantenimiento();
-                mostrarMensajeError('✅ Bienvenido, Administrador. Modo mantenimiento ACTIVADO', false);
+                mostrarMensaje('✅ ¡Bienvenido, Administrador! Modo mantenimiento ACTIVADO. Los demás verán la pantalla de mantenimiento.', 'exito');
             }
+            
+            cerrarPopupPassword();
+            
         } else {
-            // Contraseña incorrecta - con humor
+            // ERROR - Contraseña incorrecta
             intentosFallidos++;
             const intentosRestantes = 3 - intentosFallidos;
             
@@ -809,25 +604,26 @@
                     mensaje = '❌ Jajaja... No, no, no. Sigue soñando. 😈';
                     break;
                 case 3:
-                    mensaje = '❌ Última oportunidad... ¡Y fallaste! 🔒 Espera 10 segundos';
+                    mensaje = '❌ ÚLTIMA OPORTUNIDAD... ¡Y fallaste! 🔒 Acceso bloqueado por 10 segundos';
                     break;
                 default:
                     mensaje = '❌ Contraseña incorrecta';
             }
             
-            if (intentosRestantes > 0) {
+            if (intentosRestantes > 0 && intentosFallidos < 3) {
                 mensaje += `<br>Intentos restantes: ${intentosRestantes}`;
             }
             
-            mostrarMensajeError(mensaje, true);
+            mostrarMensaje(mensaje, 'error');
             
+            // Bloquear después de 3 intentos fallidos
             if (intentosFallidos >= 3) {
                 bloqueado = true;
                 tiempoBloqueo = Date.now() + 10000;
                 setTimeout(() => {
                     bloqueado = false;
                     intentosFallidos = 0;
-                    mostrarMensajeError('✅ Bloqueo terminado. Puedes volver a intentarlo.', false);
+                    mostrarMensaje('✅ Bloqueo terminado. Puedes volver a intentarlo.', 'exito');
                 }, 10000);
                 cerrarPopupPassword();
             }
@@ -842,6 +638,11 @@
     // ============================================
     
     function mostrarPopupPassword() {
+        if (bloqueado) {
+            const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
+            mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
+            return;
+        }
         popupPassword.style.display = 'flex';
         passwordInput.value = '';
         passwordInput.focus();
@@ -850,19 +651,20 @@
     
     function cerrarPopupPassword() {
         popupPassword.style.display = 'none';
-        intentosFallidos = 0;
     }
     
     // ============================================
-    // VERIFICAR ESTADO AL CARGAR
+    // VERIFICAR ESTADO AL CARGAR (GLOBAL)
     // ============================================
     
     function verificarEstadoMantenimiento() {
         const estadoGuardado = localStorage.getItem('modoMantenimientoGlobal');
+        
         if (estadoGuardado === 'activo') {
             modoMantenimientoActivo = true;
             pantallaMantenimiento.style.display = 'flex';
             if (avisoAdmin) avisoAdmin.style.display = 'block';
+            detenerTodosLosVideos();
         } else {
             modoMantenimientoActivo = false;
             pantallaMantenimiento.style.display = 'none';
@@ -874,7 +676,9 @@
     // EVENTOS
     // ============================================
     
-    btnAdmin.addEventListener('click', mostrarPopupPassword);
+    if (btnAdmin) {
+        btnAdmin.addEventListener('click', mostrarPopupPassword);
+    }
     
     document.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && popupPassword.style.display === 'flex') {
@@ -882,7 +686,6 @@
         }
     });
     
-    // Cerrar popup al hacer clic fuera
     window.onclick = function(event) {
         if (event.target === popupPassword) {
             cerrarPopupPassword();
@@ -893,18 +696,7 @@
     // INICIALIZACIÓN
     // ============================================
     
-    window.addEventListener('load', () => {
-        verificarEstadoMantenimiento();
-        crearEstrellasFugaces();
-        crearParticulas();
-        crearOndas();
-        
-        // Texto dinámico de terminal
-        const lineas = document.querySelectorAll('.linea-terminal');
-        lineas.forEach((linea, index) => {
-            linea.style.animationDelay = index * 0.5 + 's';
-        });
-    });
+    verificarEstadoMantenimiento();
   </script>
 
   <script src="script.js"></script>
