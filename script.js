@@ -78,7 +78,7 @@ const VERSION_2026 = {
 // ============================================
 function obtenerVersion() {
   const ahora = new Date();
-  const cumple2026 = new Date(2026, 5, 18, 0, 0, 0); // 18 junio 2026 00:00:00
+  const cumple2026 = new Date(2026, 5, 17, 17, 3, 0); // 18 junio 2026 00:00:00
   return ahora >= cumple2026 ? VERSION_2026 : VERSION_2025;
 }
  
