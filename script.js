@@ -66,22 +66,28 @@ const VERSION_2026 = {
   mensajePrincipal: `
     <p>¡Hola, Andy! 🌟</p>
     <br>
-    Hoy cumples 22 años, y aunque el tiempo pase volando, hay cosas que no cambian: el cariño que te tengo y la gratitud por todos estos años de amistad.
+    Otro año más y aquí estamos, celebrándote. Hoy cumples 22, y aunque el tiempo no perdona, hay cosas que solo se fortalecen con los años… como esta amistad que ya casi llega a la década.
     </br>
     <br>
-    Ya son 9 años desde que nos conocimos. Nueve años llenos de historias, de risas, de momentos que se quedan grabados en la memoria. Desde aquellos días de secundaria hasta ahora, adultos con caminos distintos pero con un lazo que no se rompe.
+    Porque sí, ya casi son 10 años. Bueno, yo los cuento desde septiembre de 2016, así que técnicamente aún faltan unos meses para la década completa. Pero la cifra da igual: lo bonito es mirar atrás y ver todo lo que hemos vivido. Qué nostalgia pensar que hace 10 años éramos unos pollitos de colores, recién empezando, sin saber bien qué hacíamos… y ahora, aunque todavía lo somos un poco, al menos ya tenemos un poquito más de razón. O eso creemos. 😅
     </br>
     <br>
-    La vida nos ha llevado por rumbos diferentes, pero siempre llevo conmigo los buenos recuerdos que construimos juntos. Porque las personas que dejan huella no se olvidan, simplemente se guardan en un lugar especial del corazón.
+    Y no ha sido fácil llegar hasta aquí. Pero si algo sé es que la universidad no es solo aprender de libros, es también aprender a sobrevivir entre compañeros, trabajos en equipo que parecen misiones imposibles, exposiciones que te dejan la voz ronca, tráficos interminables para llegar a tiempo y docentes que a veces te inspiran y otras te ponen a prueba. Todo eso forma parte del camino, y aunque en su momento desespera, después se vuelve parte de la historia que vale la pena contar.
     </br>
     <br>
-    Hoy quiero desearte un año lleno de cosas bonitas: alegría, paz, éxitos y, sobre todo, mucha claridad para seguir construyendo tu camino. Que los 22 te traigan todo lo que mereces y más.
+    Y justo este año… ¡te gradúas! No sé si ya fue o será en estos días, pero quiero que sepas lo orgulloso que estoy de ti. Llegar hasta aquí no es fácil. Decir "ya terminé" suena sencillo, pero hacerlo, sacrificarse, madrugar, lidiar con todo lo que implica este proceso… eso es de valientes. Y tú lo lograste. No cualquiera se convierte en una gran pedagoga, pero estoy seguro de que tú ya lo eres, y que vas a seguir siéndolo con cada niño o niña que pase por tu vida.
     </br>
     <br>
-    Gracias por ser parte de mi vida durante todos estos años. Y aunque no hablemos tan seguido como antes, quiero que sepas que siempre estaré aquí para ti. 💜
+    El tiempo nos ha puesto caminos distintos, pero hay cosas que la distancia no cambia. Y esta amistad, con sus altos y bajos, sigue siendo de esas que no se olvidan. Porque lo que realmente importa no se mide en mensajes diarios, sino en saber que, pase lo que pase, siempre hay alguien que cree en ti.
     </br>
-    <p><strong><em>"La amistad no se mide por la frecuencia con la que se habla, sino por la certeza de que siempre se está ahí cuando se necesita."</em></strong></p>
-    <br>Con todo mi cariño, feliz cumpleaños. 🎂</br>
+    <br>
+    Hoy quiero desearte un año lleno de claridad, de paz, de momentos que te llenen el alma y de metas que te sigan emocionando. Que los 22 sean el inicio de una etapa increíble, llena de nuevas historias por escribir.
+    </br>
+    <br>
+    Gracias por permitirme ser parte de tu historia, aunque sea en los capítulos que la vida nos ha dado. Te quiero mucho. 💜
+    </br>
+    <p><strong><em>"La vida no se mide por los años que pasan, sino por las personas que dejan huella en ellos."</em></strong></p>
+    <br>Con todo el cariño, feliz cumpleaños. 🎂</br>
   `
 };
 
