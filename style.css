@@ -28,10 +28,6 @@ body.dark-mode .mensaje-glass {
     border-color: rgba(150, 100, 220, 0.4);
 }
 
-body.dark-mode .card-img {
-    background: rgba(50, 20, 70, 0.4);
-}
-
 body.dark-mode footer {
     color: #c8a8d8;
 }
@@ -75,10 +71,6 @@ body.dark-mode .tarjeta-recuerdo {
 
 .btn-modo:active {
     transform: scale(0.9);
-}
-
-.btn-modo:hover {
-    box-shadow: 0 4px 25px rgba(100, 50, 150, 0.4);
 }
 
 /* ============================================ */
@@ -461,11 +453,6 @@ header p {
     box-shadow: 0 5px 35px rgba(100, 50, 150, 0.5);
 }
 
-.btn-sorpresa:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 35px rgba(100, 50, 150, 0.4);
-}
-
 /* ============================================ */
 /* VENTANITA DE RECUERDO (2025 - ARRIBA DERECHA) */
 /* ============================================ */
@@ -491,10 +478,6 @@ header p {
     align-items: center;
     justify-content: center;
     color: white;
-}
-
-.btn-recuerdo-min:hover {
-    transform: scale(1.05);
 }
 
 .tarjeta-recuerdo {
