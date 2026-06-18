@@ -291,5 +291,119 @@
   <button id="btn-admin" class="btn-admin" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.3); border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer; z-index: 9999999; backdrop-filter: blur(5px);">⚙️</button>
 
   <script src="script.js"></script>
+  <!-- ============================================ -->
+<!-- MODAL DE LOGRO (CUANDO SE APAGAN TODAS LAS VELAS) -->
+<!-- ============================================ -->
+
+<div id="modalLogro" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  padding: 20px;
+  animation: fadeInLogro 0.6s ease;
+">
+  <div style="
+    background: linear-gradient(135deg, #1a0a2a, #2d1a4a);
+    border-radius: 50px;
+    padding: 40px 35px;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid #ff69b4;
+    box-shadow: 0 0 60px rgba(255, 105, 180, 0.4);
+    animation: aparecerLogro 0.8s ease;
+  ">
+    <div style="font-size: 4rem; margin-bottom: 10px; animation: latidoLogro 1.5s ease-in-out infinite;">🎉</div>
+    <h1 style="
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ff69b4;
+      text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+      margin: 10px 0;
+      letter-spacing: 2px;
+    ">FELICES 22</h1>
+    <p style="
+      font-size: 1.2rem;
+      font-family: 'Lora', serif;
+      color: #f0e0ff;
+      line-height: 1.6;
+      margin: 15px 0;
+    ">
+      DISFRUTA LA VIDA QUE ES PRESTADA,<br>
+      <span style="font-size: 1.1rem; opacity: 0.7;">ES SOLO POR UN RATO</span>
+    </p>
+    <div style="
+      margin: 20px auto;
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 105, 180, 0.3);
+      border-top-color: #ff69b4;
+      border-radius: 50%;
+      animation: spinLogro 1.2s linear infinite;
+    "></div>
+    <p style="
+      font-size: 0.8rem;
+      opacity: 0.5;
+      margin-top: 20px;
+      font-family: 'Quicksand', sans-serif;
+    ">✧ toca en cualquier lugar para cerrar ✧</p>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeInLogro {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes aparecerLogro {
+    from {
+      transform: scale(0.8) translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes latidoLogro {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  @keyframes spinLogro {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  // ============================================
+  // MODAL DE LOGRO (CUANDO SE APAGAN TODAS LAS VELAS)
+  // ============================================
+
+  function mostrarLogro() {
+    const modal = document.getElementById('modalLogro');
+    if (modal) {
+      modal.style.display = 'flex';
+      // Lanzar confeti extra
+      for (let i = 0; i < 120; i++) {
+        setTimeout(() => crearConfeti(), i * 40);
+      }
+      // Cerrar al tocar cualquier parte
+      modal.addEventListener('click', function() {
+        this.style.display = 'none';
+      });
+    }
+  }
+</script>
 </body>
 </html>
