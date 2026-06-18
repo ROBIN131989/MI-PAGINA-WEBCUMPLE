@@ -422,19 +422,10 @@
     // DETECTAR QUÉ VERSIÓN MOSTRAR
     // ============================================
     
-    function obtenerVersion() {
-      const ahora = new Date();
-      const año = ahora.getFullYear();
-      const mes = ahora.getMonth(); // 0=enero, 5=junio
-      const dia = ahora.getDate();
-      
-      // Determinar el año de la versión según la fecha
-      // Si es 18 de junio o después, usar el año actual
-      // Si es antes del 18 de junio, usar el año anterior
-      let añoVersion = año;
-      if (mes < 5 || (mes === 5 && dia < 18)) {
-        añoVersion = año - 1;
-      }
+   function obtenerVersion() {
+  // FORZAR VERSIÓN 2026 PARA PRUEBA
+  return VERSION_2026;
+}
       
       // Mapear año a versión
       const versiones = {
