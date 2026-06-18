@@ -96,7 +96,6 @@ const VERSION_2026 = {
 // ============================================
 
 function obtenerVersion() {
-  // 🔥 Forzamos 2026 para que se vea ahora
   return VERSION_2026;
 }
 
@@ -296,7 +295,7 @@ setInterval(actualizarReloj, 1000);
 actualizarReloj();
 
 // ============================================
-// CONTADOR
+// CONTADOR DE CUMPLEAÑOS
 // ============================================
 
 function actualizarContador() {
@@ -359,6 +358,188 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ============================================
+// CONTADOR DE AÑOS DE AMISTAD
+// ============================================
+
+function actualizarTiempoAmistad() {
+  const fechaInicio = new Date(2016, 8, 18, 0, 0, 0); // 18 de septiembre de 2016
+  const ahora = new Date();
+  let diff = ahora - fechaInicio;
+
+  if (diff < 0) {
+    document.getElementById('tiempo-amistad').innerHTML = '¡Aún no nos conocemos! 😅';
+    return;
+  }
+
+  const segundos = Math.floor(diff / 1000);
+  const minutos = Math.floor(segundos / 60);
+  const horas = Math.floor(minutos / 60);
+  const dias = Math.floor(horas / 24);
+
+  const años = Math.floor(dias / 365);
+  const meses = Math.floor((dias % 365) / 30);
+  const diasRestantes = dias % 30;
+  const horasRestantes = horas % 24;
+  const minutosRestantes = minutos % 60;
+
+  document.getElementById('anios-amistad').textContent = años;
+  document.getElementById('meses-amistad').textContent = meses;
+  document.getElementById('dias-amistad').textContent = diasRestantes;
+  document.getElementById('horas-amistad').textContent = horasRestantes;
+  document.getElementById('minutos-amistad').textContent = minutosRestantes;
+}
+
+setInterval(actualizarTiempoAmistad, 1000);
+actualizarTiempoAmistad();
+
+// ============================================
+// PASTEL VIRTUAL CON 22 VELAS
+// ============================================
+
+const TOTAL_VELAS = 22;
+let velasApagadas = 0;
+let velasApagadasArray = [];
+
+function crearVelas() {
+  const container = document.getElementById('velas-container');
+  if (!container) return;
+
+  // Limpiar
+  container.innerHTML = '';
+
+  for (let i = 0; i < TOTAL_VELAS; i++) {
+    const vela = document.createElement('div');
+    vela.className = 'vela';
+    vela.dataset.index = i;
+    vela.style.cssText = `
+      width: 18px;
+      height: 35px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #ddd 100%);
+      border-radius: 4px 4px 2px 2px;
+      position: relative;
+      cursor: pointer;
+      margin: 0 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    `;
+
+    // Fuego
+    const fuego = document.createElement('div');
+    fuego.className = 'fuego';
+    fuego.style.cssText = `
+      width: 10px;
+      height: 18px;
+      background: radial-gradient(circle at 50% 0%, #ffb347, #ff6b35);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fuegoAnim 0.8s ease-in-out infinite alternate;
+      box-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
+    `;
+
+    // Luz interior
+    const luz = document.createElement('div');
+    luz.style.cssText = `
+      width: 6px;
+      height: 10px;
+      background: radial-gradient(circle, #ffd700, transparent);
+      border-radius: 50%;
+      position: absolute;
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.7;
+    `;
+    fuego.appendChild(luz);
+
+    vela.appendChild(fuego);
+    container.appendChild(vela);
+
+    // Evento click
+    vela.addEventListener('click', function() {
+      if (this.dataset.apagada === 'true') return;
+      this.dataset.apagada = 'true';
+      const fuegoElement = this.querySelector('.fuego');
+      if (fuegoElement) {
+        fuegoElement.style.opacity = '0';
+        fuegoElement.style.transform = 'scale(0)';
+      }
+      this.style.opacity = '0.7';
+      this.style.filter = 'grayscale(0.3)';
+      this.style.transform = 'scale(0.95)';
+
+      velasApagadas++;
+      document.getElementById('velas-apagadas').textContent = velasApagadas;
+
+      if (velasApagadas === TOTAL_VELAS) {
+        setTimeout(() => {
+          // Mensaje especial
+          alert('🎉 FELICES 22 🎉\n\nDISFRUTA LA VIDA QUE ES PRESTADA,\nES SOLO POR UN RATO');
+          // Confeti extra
+          for (let i = 0; i < 100; i++) {
+            setTimeout(() => crearConfeti(), i * 50);
+          }
+        }, 300);
+      }
+    });
+
+    // Guardar estado
+    velasApagadasArray.push(false);
+  }
+
+  // Estilos globales de fuego
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fuegoAnim {
+      0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+      100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+    }
+    .vela:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+  `;
+  document.head.appendChild(style);
+
+  // Restaurar estado si se recarga
+  const saved = localStorage.getItem('velasApagadas');
+  if (saved) {
+    const data = JSON.parse(saved);
+    if (data.length === TOTAL_VELAS) {
+      // Restaurar
+    }
+  }
+}
+
+function reiniciarVelas() {
+  const velas = document.querySelectorAll('.vela');
+  velas.forEach((vela, index) => {
+    vela.dataset.apagada = 'false';
+    const fuego = vela.querySelector('.fuego');
+    if (fuego) {
+      fuego.style.opacity = '1';
+      fuego.style.transform = 'scale(1)';
+    }
+    vela.style.opacity = '1';
+    vela.style.filter = 'grayscale(0)';
+    vela.style.transform = 'scale(1)';
+  });
+  velasApagadas = 0;
+  document.getElementById('velas-apagadas').textContent = '0';
+}
+
+// Inicializar velas
+document.addEventListener('DOMContentLoaded', () => {
+  crearVelas();
+  const btnReiniciar = document.getElementById('btn-reiniciar-velas');
+  if (btnReiniciar) {
+    btnReiniciar.addEventListener('click', reiniciarVelas);
+  }
+});
+
+// ============================================
 // MODALES
 // ============================================
 
@@ -381,7 +562,9 @@ function abrirSorpresa() {
   if (!modal) return;
   modal.style.display = 'block';
   vibrarSiSePuede();
-  lanzarConfeti();
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => crearConfeti(), i * 40);
+  }
 }
 
 function cerrarSorpresa() {
@@ -418,6 +601,128 @@ if (btnModo) {
 }
 
 // ============================================
+// PALETA DE COLORES
+// ============================================
+
+function cambiarColor(color) {
+  // Guardar en localStorage
+  localStorage.setItem('colorPagina', color);
+  aplicarColor(color);
+}
+
+function aplicarColor(color) {
+  // Fondo
+  document.body.style.background = `linear-gradient(135deg, ${color}15 0%, ${color}25 100%)`;
+
+  // Encabezado
+  const header = document.querySelector('header');
+  if (header) {
+    header.style.background = `${color}25`;
+    header.style.borderColor = `${color}40`;
+  }
+
+  // Mensaje glass
+  const mensajeGlass = document.querySelector('.mensaje-glass');
+  if (mensajeGlass) {
+    mensajeGlass.style.borderColor = `${color}30`;
+  }
+
+  // Contador
+  const contador = document.getElementById('contador-cumple');
+  if (contador) {
+    contador.style.borderColor = `${color}20`;
+  }
+
+  // Reloj
+  const reloj = document.querySelector('.reloj-analogico');
+  if (reloj) {
+    reloj.style.borderColor = color;
+  }
+
+  // Tarjeta de amistad
+  const amistad = document.getElementById('contador-amistad');
+  if (amistad) {
+    amistad.style.borderColor = `${color}30`;
+  }
+
+  // Botones de gradiente
+  const botones = document.querySelectorAll('.btn-latido, .btn-sorpresa');
+  botones.forEach(btn => {
+    btn.style.background = `linear-gradient(135deg, ${color}, ${color}aa)`;
+  });
+
+  // Títulos
+  const titulos = document.querySelectorAll('h1, h2, h3, .mensaje-glass h2, .recuerdo-header span');
+  titulos.forEach(el => {
+    el.style.color = color;
+  });
+
+  // Títulos de Playfair
+  const h1 = document.querySelector('header h1');
+  if (h1) h1.style.color = color;
+
+  const h2 = document.querySelector('.mensaje-glass h2');
+  if (h2) h2.style.color = color;
+
+  // Ondas
+  const ondas = document.querySelectorAll('.onda');
+  ondas.forEach((onda, index) => {
+    const colores = [color, color + 'aa', color + '66'];
+    const c = colores[index % colores.length];
+    onda.style.background = `repeating-linear-gradient(45deg, 
+      ${c} 0px, ${c} 25px, 
+      ${color}88 25px, ${color}88 50px,
+      ${color}44 50px, ${color}44 75px)`;
+  });
+
+  // Contador de amistad
+  const amistadP = document.querySelector('#contador-amistad p');
+  if (amistadP) {
+    amistadP.style.color = color;
+  }
+
+  const amistadStrong = document.querySelectorAll('#contador-amistad strong');
+  amistadStrong.forEach(el => {
+    el.style.color = color;
+  });
+
+  // Paleta de colores (resaltar el seleccionado)
+  document.querySelectorAll('.color-btn').forEach(btn => {
+    const btnColor = btn.dataset.color;
+    if (btnColor === color) {
+      btn.style.border = '3px solid white';
+      btn.style.boxShadow = `0 0 20px ${color}`;
+      btn.style.transform = 'scale(1.1)';
+    } else {
+      btn.style.border = '2px solid rgba(255,255,255,0.5)';
+      btn.style.boxShadow = `0 0 8px ${btnColor}80`;
+      btn.style.transform = 'scale(1)';
+    }
+  });
+}
+
+// Configurar eventos de la paleta
+document.addEventListener('DOMContentLoaded', () => {
+  const colorBtns = document.querySelectorAll('.color-btn');
+  colorBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const color = this.dataset.color;
+      cambiarColor(color);
+      vibrarSiSePuede();
+    });
+  });
+
+  // Cargar color guardado
+  const colorGuardado = localStorage.getItem('colorPagina');
+  if (colorGuardado) {
+    aplicarColor(colorGuardado);
+  } else {
+    // Color por defecto (morado)
+    aplicarColor('#7b2d8b');
+  }
+});
+
+// ============================================
 // VIBRACIÓN
 // ============================================
 
@@ -426,14 +731,14 @@ function vibrarSiSePuede() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
+  document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo, .color-btn, .vela').forEach(el => {
     el.addEventListener('touchstart', () => vibrarSiSePuede());
     el.addEventListener('click', () => vibrarSiSePuede());
   });
 });
 
 // ============================================
-// VIDEOS EFECTO EXPANDIR
+// VIDEOS
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -446,10 +751,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
-// ============================================
-// VIDEOS AUTO-REPRODUCCIÓN
-// ============================================
 
 const observerVideos = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -493,7 +794,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// MODO MANTENIMIENTO (ADMIN CONTRASEÑA)
+// MODO MANTENIMIENTO
 // ============================================
 
 const CONTRASENA_ADMIN = "192480014-5";
