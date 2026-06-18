@@ -210,6 +210,32 @@ setInterval(() => {
 }, 800);
 
 // ============================================
+// PARTÍCULAS DE FONDO
+// ============================================
+
+const particulasContainer = document.getElementById('particulas-container');
+
+function crearParticula() {
+  if (!particulasContainer) return;
+  const particula = document.createElement('div');
+  particula.classList.add('particula');
+  particula.style.left = Math.random() * 100 + '%';
+  particula.style.width = (2 + Math.random() * 4) + 'px';
+  particula.style.height = particula.style.width;
+  particula.style.animationDuration = (15 + Math.random() * 20) + 's';
+  particula.style.animationDelay = Math.random() * 10 + 's';
+  const colores = ['rgba(123,45,139,0.15)', 'rgba(255,105,180,0.1)', 'rgba(52,152,219,0.1)'];
+  particula.style.background = colores[Math.floor(Math.random() * colores.length)];
+  particulasContainer.appendChild(particula);
+  setTimeout(() => particula.remove(), 35000);
+}
+
+for (let i = 0; i < 50; i++) {
+  setTimeout(() => crearParticula(), i * 100);
+}
+setInterval(() => crearParticula(), 500);
+
+// ============================================
 // GLOBOS 3D
 // ============================================
 
@@ -358,7 +384,7 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ============================================
-// CONTADOR DE AÑOS DE AMISTAD (EN TIEMPO REAL)
+// CONTADOR DE AÑOS DE AMISTAD
 // ============================================
 
 function actualizarTiempoAmistad() {
@@ -618,7 +644,7 @@ function aplicarColor(color) {
   const amistad = document.getElementById('contador-amistad');
   if (amistad) amistad.style.borderColor = `${color}30`;
 
-  const botones = document.querySelectorAll('.btn-latido, .btn-sorpresa');
+  const botones = document.querySelectorAll('.btn-latido, .btn-sorpresa, .btn-velas');
   botones.forEach(btn => {
     btn.style.background = `linear-gradient(135deg, ${color}, ${color}aa)`;
   });
@@ -693,7 +719,7 @@ function vibrarSiSePuede() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo, .color-btn, .vela').forEach(el => {
+  document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo, .color-btn, .vela, .btn-velas').forEach(el => {
     el.addEventListener('touchstart', () => vibrarSiSePuede());
     el.addEventListener('click', () => vibrarSiSePuede());
   });
@@ -756,7 +782,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// MODO MANTENIMIENTO (ADMIN)
+// MODO MANTENIMIENTO
 // ============================================
 
 const CONTRASENA_ADMIN = "192480014-5";
