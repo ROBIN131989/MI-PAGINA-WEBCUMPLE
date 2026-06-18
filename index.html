@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes" />
   <title>🎂 ¡Feliz Cumpleaños, Amiga! ✨</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Google Fonts: Playfair Display (elegante) + Lora (legible) + Quicksand (para contraste) -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;600;700&family=Dancing+Script:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Contenedor de corazones flotantes (fondo) -->
-  <div id="corazones-container"></div>
+  <!-- ============================================ -->
+  <!-- CONTENEDORES DE FONDO (FIJOS) -->
+  <!-- ============================================ -->
 
-  <!-- Contenedor de globos (capa superior) -->
+  <!-- Corazones flotantes (fondo fijo) -->
+  <div id="corazones-container"></div>
+  
+  <!-- Globos y confeti (capa superior fija) -->
   <div id="globos-container"></div>
+
+  <!-- ============================================ -->
+  <!-- BOTONES DE CONTROL -->
+  <!-- ============================================ -->
 
   <!-- Botón modo oscuro -->
   <button id="btnModoOscuro" class="btn-modo">🌙</button>
@@ -23,24 +30,70 @@
   <div id="aviso-admin" class="aviso-admin">🔧 MODO MANTENIMIENTO ACTIVADO</div>
 
   <!-- ============================================ -->
-  <!-- VENTANITA DE RECUERDO 2025 (ARRIBA DERECHA)  -->
+  <!-- VENTANITA DE RECUERDO 2025 (ARRIBA DERECHA) -->
   <!-- ============================================ -->
+
   <div id="ventanita-recuerdo">
+    <!-- Botón minimizado -->
     <button id="btn-recuerdo-min" class="btn-recuerdo-min">💖</button>
+
+    <!-- Tarjeta expandida -->
     <div id="tarjeta-recuerdo" class="tarjeta-recuerdo">
       <div class="recuerdo-header">
-        <span class="recuerdo-titulo">💖 RECUERDO 2025</span>
+        <span>💖 RECUERDO 2025</span>
         <button id="btn-cerrar-recuerdo" class="btn-cerrar-recuerdo">✕</button>
       </div>
-      <div class="recuerdo-contenido" id="recuerdo-contenido">
-        <!-- El contenido se inyecta desde JS -->
+      <div class="recuerdo-contenido">
+        <h3>🎂 ¡Feliz Cumpleaños, Amiga! 🎂</h3>
+        <p class="recuerdo-subtitulo">💖 Celebrando 8 años de amistad 💖</p>
+        <div class="recuerdo-mensaje">
+          <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
+          <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
+          La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
+           no podía dejar pasar esta fecha sin escribirte algo. 
+           Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
+           y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
+           hecho presentes interfiriendo :(.
+          </br>
+          <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
+           Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
+           pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
+            unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
+            también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
+          </br>
+          <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
+          hemos vivido cosas que nos han transformado, 
+          y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
+          Pero eso no borra lo que fuimos ni el aprecio que te tengo.
+          </br>
+          <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
+          compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
+           ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
+           nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
+           hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
+           vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
+           lo que eres y de lo que estás construyendo.
+          </br>
+          <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
+          presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
+           sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
+           decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
+           esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
+            nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
+             es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
+          </br>
+          <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
+          <br>Te mando un abrazo fuerte, de esos que no necesitan palabras.</br>
+        </div>
+        <p class="recuerdo-footer">💖 8 años de amistad 💖</p>
       </div>
     </div>
   </div>
 
   <!-- ============================================ -->
-  <!-- HEADER Y CONTENIDO PRINCIPAL                 -->
+  <!-- CONTENIDO PRINCIPAL (VERSIÓN 2026) -->
   <!-- ============================================ -->
+
   <header>
     <h1 id="titulo-escritura"></h1>
     <p id="subtitulo"></p>
@@ -63,13 +116,12 @@
       <div class="mensaje-texto" id="contenido-mensaje"></div>
     </section>
 
-    <!-- La galería y videos se mantienen pero vacíos (sin contenido) -->
-    <div class="galeria" id="galeria-2026">
-      <!-- Aquí agregarás tus imágenes de 2026 -->
-    </div>
-
-    <div class="videos-vertical" id="videos-2026">
-      <!-- Aquí agregarás tus videos de 2026 -->
+    <!-- Espacio para imágenes y videos (vacío, tú los agregas) -->
+    <div class="espacio-vacio">
+      <p style="text-align:center; opacity:0.5; padding:20px; font-style:italic;">
+        📸 Espacio para tus imágenes y videos de 2026<br>
+        <span style="font-size:0.8rem;">(Tú los agregarás después)</span>
+      </p>
     </div>
 
     <div style="text-align:center; margin: 20px 0;">
@@ -89,7 +141,6 @@
     <p>© Todos los derechos reservados</p>
   </footer>
 
-  <!-- ONDAS DECORATIVAS -->
   <div class="ondas">
     <div class="onda"></div>
     <div class="onda"></div>
@@ -97,8 +148,9 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- MODALES (ZOOM IMÁGENES, SORPRESA)            -->
+  <!-- MODALES -->
   <!-- ============================================ -->
+
   <div id="modalImagen" class="modal" onclick="cerrarModal()">
     <img id="modalImg" class="modal-contenido">
   </div>
@@ -114,8 +166,9 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA DE MANTENIMIENTO                    -->
+  <!-- PANTALLA DE MANTENIMIENTO -->
   <!-- ============================================ -->
+
   <div id="pantalla-mantenimiento-premium">
     <div class="grid-holografico"></div>
     <div class="tarjeta-holograma">
@@ -124,30 +177,26 @@
       <p style="margin: 15px 0; opacity: 0.9;">Estamos trabajando para ofrecerte una experiencia increíble</p>
       <div class="barra-futurista"><div class="barra-futurista-llenado"></div></div>
       <div class="terminal-comandos">
-        <div>⏳ iniciando protocolo de reparación...</div>
-        <div style="color: #00ff00;">✔ verificando archivos del sistema... OK</div>
-        <div>⚙️ optimizando sorpresa especial...</div>
-        <div>🔄 reparando componentes<span class="cursor-parpadeante">_</span></div>
+        <div style="color: #00ffff;">> iniciando protocolo de reparación...</div>
+        <div style="color: #00ff00;">> verificando archivos del sistema... OK</div>
+        <div style="color: #00ffff;">> optimizando sorpresa especial...</div>
+        <div style="color: #00ffff;">> reparando componentes<span style="animation: parpadear 1s step-end infinite;">_</span></div>
       </div>
-      <div class="radar-container">
-        <div class="radar-circulo"><div class="radar-linea"></div></div>
-      </div>
-      <p class="texto-mantenimiento">Disculpa las molestias, en breve volveremos</p>
-      <p class="texto-mantenimiento">✨ Gracias por tu paciencia ✨</p>
+      <div class="radar-container"><div class="radar-circulo"><div class="radar-linea"></div></div></div>
+      <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Disculpa las molestias, en breve volveremos</p>
+      <p style="font-size: 0.8rem; opacity: 0.5;">✨ Gracias por tu paciencia ✨</p>
     </div>
   </div>
 
-  <!-- Popup de contraseña -->
   <div id="popup-password" class="popup-password">
     <span class="cerrar-popup" onclick="cerrarPopupPassword()">&times;</span>
-    <h3>🔒 ACCESO ADMINISTRADOR</h3>
-    <p>Ingresa la contraseña para gestionar el modo mantenimiento</p>
+    <h3 style="color:#00ffff;">🔒 ACCESO ADMINISTRADOR</h3>
+    <p style="font-size: 14px;">Ingresa la contraseña para gestionar el modo mantenimiento</p>
     <input type="password" id="password-input" placeholder="Contraseña">
     <div id="mensaje-error-container"></div>
     <button onclick="verificarPassword()">Aceptar</button>
   </div>
 
-  <!-- Botón de administrador -->
   <button id="btn-admin" class="btn-admin">🔧 ADMIN</button>
 
   <script src="script.js"></script>
