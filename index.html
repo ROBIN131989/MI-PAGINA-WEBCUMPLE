@@ -112,37 +112,45 @@
       <div class="mensaje-texto" id="contenido-mensaje"></div>
     </section>
 
-    <!-- Espacio para imágenes y videos (vacío, tú los agregas) -->
-    <div class="espacio-vacio">
-      <p style="text-align:center; opacity:0.5; padding:20px; font-style:italic;">
-        📸 Espacio para tus imágenes y videos de 2026<br>
-        <span style="font-size:0.8rem;">(Tú los agregarás después)</span>
-      </p>
-    </div>
-
-    <div style="text-align:center; margin: 20px 0;">
-      <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
-    </div>
-
-    <div style="text-align:center; margin: 30px 0;">
-      <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
-    </div>
-  </main>
-
-  <footer>
-    <p id="footer-mensaje"></p>
-    <br>
-    <p>Con mucho cariño, tu amigo.</p>
-    <p><strong><em>Marc A. O.</em></strong></p>
-    <p>© Todos los derechos reservados</p>
-  </footer>
-
-  <div class="ondas">
-    <div class="onda"></div>
-    <div class="onda"></div>
-    <div class="onda"></div>
+<!-- GALERÍA DE IMÁGENES DE 2026 -->
+<div class="galeria">
+  <div class="card-img" onclick="abrirModal('img/MICHI.jpg')">
+    <img src="img/MICHI.jpg" alt="Michis" />
   </div>
+  <div class="card-img" onclick="abrirModal('img/MICHIPASTEL.jpg')">
+    <img src="img/MICHIPASTEL.jpg" alt="Michi con pastel" />
+  </div>
+  <div class="card-img" onclick="abrirModal('img/PERRITOS.jpg')">
+    <img src="img/PERRITOS.jpg" alt="Perritos" />
+  </div>
+</div>
 
+<!-- ESPACIO PARA VIDEOS (si quieres agregar después) -->
+<div class="videos-vertical">
+  <!-- Aquí van tus videos -->
+</div>
+
+<div style="text-align:center; margin: 20px 0;">
+  <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
+</div>
+
+<div style="text-align:center; margin: 30px 0;">
+  <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
+</div>
+
+<footer>
+  <p id="footer-mensaje"></p>
+  <br>
+  <p>Con mucho cariño, tu amigo.</p>
+  <p><strong><em>Marc A. O.</em></strong></p>
+  <p>© Todos los derechos reservados</p>
+</footer>
+
+<div class="ondas">
+  <div class="onda"></div>
+  <div class="onda"></div>
+  <div class="onda"></div>
+</div>
   <!-- ============================================ -->
   <!-- MODALES -->
   <!-- ============================================ -->
