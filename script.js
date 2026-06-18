@@ -361,6 +361,10 @@ actualizarContador();
 // CONTADOR DE AÑOS DE AMISTAD
 // ============================================
 
+// ============================================
+// CONTADOR DE AÑOS DE AMISTAD (EN TIEMPO REAL)
+// ============================================
+
 function actualizarTiempoAmistad() {
   const fechaInicio = new Date(2016, 8, 18, 0, 0, 0); // 18 de septiembre de 2016
   const ahora = new Date();
@@ -371,27 +375,31 @@ function actualizarTiempoAmistad() {
     return;
   }
 
-  const segundos = Math.floor(diff / 1000);
-  const minutos = Math.floor(segundos / 60);
-  const horas = Math.floor(minutos / 60);
-  const dias = Math.floor(horas / 24);
+  // Calcular diferencias
+  const segundosTotales = Math.floor(diff / 1000);
+  const minutosTotales = Math.floor(segundosTotales / 60);
+  const horasTotales = Math.floor(minutosTotales / 60);
+  const diasTotales = Math.floor(horasTotales / 24);
 
-  const años = Math.floor(dias / 365);
-  const meses = Math.floor((dias % 365) / 30);
-  const diasRestantes = dias % 30;
-  const horasRestantes = horas % 24;
-  const minutosRestantes = minutos % 60;
+  const años = Math.floor(diasTotales / 365);
+  const meses = Math.floor((diasTotales % 365) / 30);
+  const dias = diasTotales % 30;
+  const horas = horasTotales % 24;
+  const minutos = minutosTotales % 60;
+  const segundos = segundosTotales % 60;
 
+  // Actualizar cada elemento individualmente
   document.getElementById('anios-amistad').textContent = años;
   document.getElementById('meses-amistad').textContent = meses;
-  document.getElementById('dias-amistad').textContent = diasRestantes;
-  document.getElementById('horas-amistad').textContent = horasRestantes;
-  document.getElementById('minutos-amistad').textContent = minutosRestantes;
+  document.getElementById('dias-amistad').textContent = dias;
+  document.getElementById('horas-amistad').textContent = horas;
+  document.getElementById('minutos-amistad').textContent = minutos;
+  document.getElementById('segundos-amistad').textContent = segundos;
 }
 
+// Ejecutar cada segundo
 setInterval(actualizarTiempoAmistad, 1000);
 actualizarTiempoAmistad();
-
 // ============================================
 // PASTEL VIRTUAL CON 22 VELAS
 // ============================================
