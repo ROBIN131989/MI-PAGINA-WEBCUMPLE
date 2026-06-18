@@ -8,6 +8,12 @@ const VERSION_2025 = {
   tituloEscritura: "¡Feliz cumpleaños, amiga!",
   subtitulo: "Celebrando 8 años de amistad 💖",
   h2: "🎈 ¿21 años ya? WOOW 🎈",
+  color: "#a8325b",
+  headerBg: "rgba(255, 204, 221, 0.4)",
+  h1Color: "#a8325b",
+  fraseRecuerdo: "Lo valioso no se reemplaza",
+  detalleRecuerdo: "8 años de amistad",
+  footerMensaje: "Averiguamos de qué estamos hechos, cuando seamos llamados para ayudar a nuestros amigos en necesidad, y si alguna vez olvidas lo que de verdad significas para mí, todos los días te lo recordaré.",
   mensajePrincipal: `
     <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
     <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
@@ -52,23 +58,40 @@ const VERSION_2025 = {
 const VERSION_2026 = {
   año: 2026,
   edad: 22,
-  tituloEscritura: "✨ ¡Feliz Cumpleaños, Amiga! ✨",
+  tituloEscritura: "✨ ¡Feliz cumpleaños, amiga! ✨",
   subtitulo: "💖 Celebrando 9 años de amistad 💖",
   h2: "🎈 ¿22 años ya? ¡No puede ser! 🎈",
+  color: "#7b2d8b",
+  headerBg: "rgba(180, 150, 220, 0.3)",
+  h1Color: "#4a1a6b",
+  fraseRecuerdo: "La amistad verdadera no depende del tiempo ni de la distancia",
+  detalleRecuerdo: "9 años de amistad",
+  footerMensaje: "Un año más y aquí seguimos. Gracias por ser parte de mi vida. Te quiero mucho.",
   mensajePrincipal: `
-    <p>2026.</p>
-    <br>AQUI SE COLOCARA TEXTOs.</br>
-    <br>✨ DISEÑO.</br>
-    <p><strong><em>"Cada año es una oportunidad para celebrar la vida y el amor que compartimos."</em></strong></p>
+    <p>¡Hola, Andy! 🌟</p>
+    <br>
+    Hoy es un día especial, y aunque este mensaje es solo un ejemplo para que veas cómo se verá, quiero que sepas que este espacio está pensado para ti.
+    </br>
+    <br>
+    Cuando estés lista, podrás escribir aquí tus propias palabras, tus recuerdos, tus deseos para este nuevo año que comienza.
+    </br>
+    <br>
+    Mientras tanto, imagina que esto es una carta en blanco, esperando ser llenada con todo lo que tu corazón quiera decir.
+    </br>
+    <br>
+    Por ahora, solo quiero recordarte lo importante que eres y lo mucho que valoro nuestra amistad. 💜
+    </br>
+    <p><strong><em>"La vida es como una tarta: hay que disfrutarla con quienes la compartes."</em></strong></p>
+    <br>Con cariño, tu amigo. 🎂</br>
   `
 };
 
 // ============================================
-// DETECTAR VERSIÓN (FORZADA A 2026 PARA AHORA)
+// DETECTAR QUÉ VERSIÓN MOSTRAR (FORZAR 2026)
 // ============================================
 
 function obtenerVersion() {
-  // 🔥 FORZADO: Mostrar versión 2026 AHORA
+  // 🔥 Forzamos la versión 2026 para que se vea ahora
   return VERSION_2026;
 }
 
@@ -80,63 +103,63 @@ const VERSION_ACTUAL = obtenerVersion();
 
 function aplicarVersion() {
   const v = VERSION_ACTUAL;
-  
-  document.getElementById('subtitulo').textContent = v.subtitulo;
-  document.getElementById('titulo-mensaje').textContent = v.h2;
-  document.getElementById('contenido-mensaje').innerHTML = v.mensajePrincipal;
-  document.getElementById('footer-mensaje').textContent = v.footerMensaje || 'Gracias por ser parte de mi vida. Te quiero mucho.';
-  
+
+  // Subtítulo
+  const subtituloEl = document.getElementById('subtitulo');
+  if (subtituloEl) subtituloEl.textContent = v.subtitulo;
+
+  // Título del mensaje
+  const h2El = document.getElementById('titulo-mensaje');
+  if (h2El) h2El.textContent = v.h2;
+
+  // Contenido del mensaje
+  const mensajeEl = document.getElementById('contenido-mensaje');
+  if (mensajeEl) mensajeEl.innerHTML = v.mensajePrincipal;
+
+  // Footer
+  const footerEl = document.getElementById('footer-mensaje');
+  if (footerEl) footerEl.textContent = v.footerMensaje;
+
+  // Colores del header
   const header = document.querySelector('header');
   if (header) {
-    header.style.background = 'rgba(200, 170, 230, 0.25)';
-    header.style.borderColor = 'rgba(180, 150, 220, 0.3)';
+    header.style.background = v.headerBg;
+    header.style.borderColor = 'rgba(150, 100, 200, 0.5)';
   }
   const h1 = document.querySelector('header h1');
-  if (h1) h1.style.color = '#4a1a6b';
+  if (h1) h1.style.color = v.h1Color;
+
+  // Aplicar color del tema a elementos clave
+  document.querySelector(':root').style.setProperty('--color-principal', v.color);
 }
 
 // ============================================
 // VENTANITA DE RECUERDO (2025)
 // ============================================
 
-function cargarRecuerdo2025() {
-  const contenido = document.getElementById('recuerdo-contenido');
-  if (!contenido) return;
-  
-  contenido.innerHTML = `
-    <h3>🎂 ¡Feliz Cumpleaños, Amiga! 🎂</h3>
-    <p><strong>💖 Celebrando 8 años de amistad 💖</strong></p>
-    <br>
-    <p>${VERSION_2025.mensajePrincipal.replace(/<br\s*\/?>/gi, '<br>')}</p>
-    <p class="frase-destacada">"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</p>
-    <p style="margin-top: 10px;">💖 8 años de amistad 💖</p>
-  `;
-}
-
 function configurarVentanita() {
   const btnMin = document.getElementById('btn-recuerdo-min');
   const tarjeta = document.getElementById('tarjeta-recuerdo');
   const btnCerrar = document.getElementById('btn-cerrar-recuerdo');
-  
+
   if (!btnMin || !tarjeta || !btnCerrar) return;
-  
+
   let expandido = false;
-  
-  cargarRecuerdo2025();
-  
+
   btnMin.addEventListener('click', function() {
     expandido = true;
     btnMin.style.display = 'none';
     tarjeta.style.display = 'block';
-    tarjeta.style.animation = 'slideDown 0.4s ease';
+    tarjeta.style.animation = 'none';
+    setTimeout(() => tarjeta.style.animation = 'aparecerRecuerdo 0.4s ease', 10);
   });
-  
+
   btnCerrar.addEventListener('click', function() {
     expandido = false;
     tarjeta.style.display = 'none';
     btnMin.style.display = 'flex';
   });
-  
+
   document.addEventListener('click', function(e) {
     const container = document.getElementById('ventanita-recuerdo');
     if (expandido && container && !container.contains(e.target)) {
@@ -156,10 +179,11 @@ const tituloOriginal = VERSION_ACTUAL.tituloEscritura;
 
 function escribirTitulo() {
   const tituloElemento = document.getElementById('titulo-escritura');
+  if (!tituloElemento) return;
   if (i < tituloOriginal.length) {
     tituloElemento.innerHTML += tituloOriginal.charAt(i);
     i++;
-    setTimeout(escribirTitulo, 60);
+    setTimeout(escribirTitulo, 80);
   }
 }
 
@@ -171,11 +195,12 @@ const corazonesContainer = document.getElementById('corazones-container');
 const corazones = ['❤️', '💖', '💗', '💓', '💕', '💝', '🌸', '🌺'];
 
 function crearCorazon() {
+  if (!corazonesContainer) return;
   const corazon = document.createElement('div');
   corazon.classList.add('corazon');
   corazon.innerHTML = corazones[Math.floor(Math.random() * corazones.length)];
   corazon.style.left = Math.random() * 100 + '%';
-  corazon.style.fontSize = (14 + Math.random() * 26) + 'px';
+  corazon.style.fontSize = (15 + Math.random() * 25) + 'px';
   corazon.style.animationDuration = (8 + Math.random() * 8) + 's';
   corazon.style.animationDelay = Math.random() * 5 + 's';
   corazonesContainer.appendChild(corazon);
@@ -183,17 +208,17 @@ function crearCorazon() {
 }
 
 setInterval(() => {
-  if (corazonesContainer.children.length < 40) crearCorazon();
-}, 700);
+  if (corazonesContainer && corazonesContainer.children.length < 40) crearCorazon();
+}, 800);
 
 // ============================================
 // GLOBOS 3D
 // ============================================
 
-const container = document.getElementById('globos-container');
+const globosContainer = document.getElementById('globos-container');
 
 function crearGlobo() {
-  if (!container) return;
+  if (!globosContainer) return;
   const globo = document.createElement('div');
   globo.classList.add('globo');
   const colores = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8'];
@@ -204,13 +229,13 @@ function crearGlobo() {
   globo.style.animationDelay = Math.random() * 4 + 's';
   const escala = 0.7 + Math.random() * 0.6;
   globo.style.transform = `scale(${escala})`;
-  container.appendChild(globo);
+  globosContainer.appendChild(globo);
   setTimeout(() => globo.remove(), (duracion + 4) * 1000);
 }
 
 function lanzarGlobos() {
   for (let j = 0; j < 25; j++) {
-    setTimeout(() => crearGlobo(), j * 180);
+    setTimeout(() => crearGlobo(), j * 200);
   }
 }
 
@@ -219,23 +244,23 @@ function lanzarGlobos() {
 // ============================================
 
 function crearConfeti() {
-  if (!container) return;
+  if (!globosContainer) return;
   const confeti = document.createElement('div');
   confeti.classList.add('confeti');
   confeti.style.left = Math.random() * window.innerWidth + 'px';
   confeti.style.top = '-10px';
-  const coloresConfeti = ['#8b4ba3', '#9b59b6', '#c9a0e0', '#d5c0e8', '#7b3f9e', '#ffd700', '#ff69b4'];
+  const coloresConfeti = ['#ff69b4', '#ffb6c1', '#ff1493', '#ffc0cb', '#db7093', '#ff6347', '#ffd700'];
   confeti.style.backgroundColor = coloresConfeti[Math.floor(Math.random() * coloresConfeti.length)];
   const duracion = 4 + Math.random() * 4;
   confeti.style.animationDuration = duracion + 's';
   confeti.style.animationDelay = Math.random() * 6 + 's';
-  container.appendChild(confeti);
+  globosContainer.appendChild(confeti);
   setTimeout(() => confeti.remove(), (duracion + 6) * 1000);
 }
 
 function lanzarConfeti() {
   for (let j = 0; j < 50; j++) {
-    setTimeout(() => crearConfeti(), j * 50);
+    setTimeout(() => crearConfeti(), j * 60);
   }
 }
 
@@ -272,88 +297,116 @@ setInterval(actualizarReloj, 1000);
 actualizarReloj();
 
 // ============================================
-// CONTADOR DE CUMPLEAÑOS (MEJORADO)
+// CONTADOR DE CUMPLEAÑOS (CON MENSAJE NATURAL)
 // ============================================
 
 function actualizarContador() {
   const contador = document.getElementById('contador-cumple');
   if (!contador) return;
-  
+
   const ahora = new Date();
+  const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+  const diaSemana = diasSemana[ahora.getDay()];
   const dia = ahora.getDate();
-  const mes = ahora.getMonth();
+  const mes = meses[ahora.getMonth()];
   const año = ahora.getFullYear();
-  
-  // Fecha del próximo cumpleaños (18 de junio)
-  let proximoCumple = new Date(año, 5, 18, 0, 0, 0); // 5 = Junio
+
+  // Próximo cumpleaños (18 de junio)
+  let proximoCumple = new Date(año, 5, 18, 0, 0, 0);
   if (ahora >= proximoCumple) {
     proximoCumple = new Date(año + 1, 5, 18, 0, 0, 0);
   }
-  
-  // Verificar si HOY es el cumpleaños
-  const esHoyCumple = (mes === 5 && dia === 18);
-  
+
+  // Verificar si HOY es 18 de junio
+  const esHoyCumple = ahora.getMonth() === 5 && ahora.getDate() === 18;
+
   if (esHoyCumple) {
-    contador.innerHTML = `🎂 ¡HOY ES TU CUMPLEAÑOS, ANDY! 🎉🎈✨<br><span style="font-size:0.8rem; opacity:0.8;">¡Que tengas un día increíble!</span>`;
-    contador.style.background = 'rgba(180, 150, 220, 0.3)';
+    // Mensaje especial para el día del cumpleaños
+    contador.innerHTML = `🎂 ¡HOY ES TU CUMPLEAÑOS, ANDY! 🎉🎈✨
+      <br><span style="font-size: 0.9rem; opacity: 0.8;">¡Felicidades! Que tengas un día maravilloso.</span>`;
+    contador.style.background = 'rgba(180, 150, 220, 0.4)';
+    contador.style.border = '2px solid #7b2d8b';
     contador.style.fontWeight = 'bold';
-    contador.style.fontSize = '1.15rem';
-    contador.style.borderColor = 'rgba(180, 150, 220, 0.5)';
+    contador.style.fontSize = '1.2rem';
+    contador.style.padding = '16px';
     return;
   }
-  
-  // Calcular diferencia
+
+  // Si no es cumpleaños, mostrar cuenta regresiva
   const diff = proximoCumple - ahora;
   const segundosTotales = Math.floor(diff / 1000);
   const diasRestantes = Math.floor(segundosTotales / (3600 * 24));
   const horasRestantes = Math.floor((segundosTotales % (3600 * 24)) / 3600);
   const minutosRestantes = Math.floor((segundosTotales % 3600) / 60);
   const segundosRestantes = segundosTotales % 60;
-  
-  const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-  const diaSemana = diasSemana[ahora.getDay()];
-  const nombreMes = meses[ahora.getMonth()];
-  
-  contador.innerHTML = `🎂 Hola Andy, hoy es <strong>${diaSemana} ${dia} de ${nombreMes} de ${año}</strong>, faltan <strong>${diasRestantes} días</strong>, ${horasRestantes} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos para tu próximo cumpleaños 🎈✨`;
-  contador.style.background = 'rgba(255, 255, 255, 0.4)';
-  contador.style.fontWeight = '400';
+
+  // Mensaje natural con el conteo
+  let mensajeContador = `🎂 Hola Andy, hoy es <strong>${diaSemana} ${dia} de ${mes} de ${año}</strong>`;
+
+  if (diasRestantes === 0) {
+    mensajeContador += `, ¡mañana es tu cumpleaños! 🎈 Faltan <strong>${horasRestantes} horas</strong>, ${minutosRestantes} minutos y ${segundosRestantes} segundos.`;
+  } else if (diasRestantes === 1) {
+    mensajeContador += `, falta <strong>1 día</strong>, ${horasRestantes} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos para tu próximo cumpleaños 🎂`;
+  } else {
+    mensajeContador += `, faltan <strong>${diasRestantes} días</strong>, ${horasRestantes} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos para tu próximo cumpleaños 🎈✨`;
+  }
+
+  contador.innerHTML = mensajeContador;
+  contador.style.background = 'rgba(255, 255, 255, 0.5)';
+  contador.style.border = 'none';
+  contador.style.fontWeight = 'normal';
   contador.style.fontSize = '1rem';
-  contador.style.borderColor = 'rgba(150, 100, 220, 0.2)';
+  contador.style.padding = '12px';
 }
 
+// Actualizar contador cada segundo
 setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ============================================
-// MODALES Y EVENTOS
+// MODAL ZOOM IMÁGENES
 // ============================================
 
 function abrirModal(imgSrc) {
   const modal = document.getElementById('modalImagen');
   const modalImg = document.getElementById('modalImg');
+  if (!modal || !modalImg) return;
   modal.style.display = 'block';
   modalImg.src = imgSrc;
   vibrarSiSePuede();
 }
 
 function cerrarModal() {
-  document.getElementById('modalImagen').style.display = 'none';
+  const modal = document.getElementById('modalImagen');
+  if (modal) modal.style.display = 'none';
 }
+
+// ============================================
+// MODAL SORPRESA
+// ============================================
 
 function abrirSorpresa() {
   const modal = document.getElementById('modalSorpresa');
+  if (!modal) return;
   modal.style.display = 'block';
   vibrarSiSePuede();
   lanzarConfeti();
 }
 
 function cerrarSorpresa() {
-  document.getElementById('modalSorpresa').style.display = 'none';
+  const modal = document.getElementById('modalSorpresa');
+  if (modal) modal.style.display = 'none';
 }
 
-document.getElementById('btnSorpresa').addEventListener('click', abrirSorpresa);
+// Asignar evento al botón sorpresa
+document.addEventListener('DOMContentLoaded', () => {
+  const btnSorpresa = document.getElementById('btnSorpresa');
+  if (btnSorpresa) btnSorpresa.addEventListener('click', abrirSorpresa);
+});
 
+// Cerrar modales al hacer clic fuera
 window.onclick = function(event) {
   const modalSorpresa = document.getElementById('modalSorpresa');
   const modalImagen = document.getElementById('modalImagen');
@@ -368,37 +421,49 @@ window.onclick = function(event) {
 const btnModo = document.getElementById('btnModoOscuro');
 let modoOscuro = false;
 
-btnModo.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  modoOscuro = !modoOscuro;
-  btnModo.innerHTML = modoOscuro ? '☀️' : '🌙';
-  vibrarSiSePuede();
-});
+if (btnModo) {
+  btnModo.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    modoOscuro = !modoOscuro;
+    btnModo.innerHTML = modoOscuro ? '☀️' : '🌙';
+    vibrarSiSePuede();
+  });
+}
 
 // ============================================
-// VIBRACIÓN
+// VIBRACIÓN (Feedback táctil)
 // ============================================
 
 function vibrarSiSePuede() {
   if (navigator.vibrate) navigator.vibrate(50);
 }
 
-document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
-  el.addEventListener('touchstart', () => vibrarSiSePuede());
-  el.addEventListener('click', () => vibrarSiSePuede());
+// Agregar vibración a elementos táctiles
+document.addEventListener('DOMContentLoaded', () => {
+  const elementos = document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo');
+  elementos.forEach(el => {
+    el.addEventListener('touchstart', () => vibrarSiSePuede());
+    el.addEventListener('click', () => vibrarSiSePuede());
+  });
 });
 
 // ============================================
-// VIDEOS (expansión)
+// VIDEOS: EFECTO EXPANDIR AL TOCAR
 // ============================================
 
-document.querySelectorAll('.video-premium').forEach(video => {
-  video.addEventListener('touchstart', () => { video.style.transform = 'scale(1.02)'; });
-  video.addEventListener('touchend', () => { video.style.transform = ''; });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.video-premium').forEach(video => {
+    video.addEventListener('touchstart', () => {
+      video.style.transform = 'scale(1.02)';
+    });
+    video.addEventListener('touchend', () => {
+      video.style.transform = '';
+    });
+  });
 });
 
 // ============================================
-// AUTO-REPRODUCCIÓN DE VIDEOS
+// VIDEOS: AUTO-REPRODUCCIÓN AL APARECER
 // ============================================
 
 const observerVideos = new IntersectionObserver((entries) => {
@@ -411,32 +476,48 @@ const observerVideos = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.video-premium').forEach(video => {
-  observerVideos.observe(video);
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.video-premium').forEach(video => {
+    observerVideos.observe(video);
+  });
 });
 
 // ============================================
-// INICIALIZACIÓN
+// INICIALIZACIÓN AL CARGAR LA PÁGINA
 // ============================================
 
 window.addEventListener('load', () => {
+  // Aplicar la versión (2026)
   aplicarVersion();
+
+  // Configurar ventanita de recuerdo
   configurarVentanita();
+
+  // Escribir el título con efecto máquina
   escribirTitulo();
+
+  // Lanzar globos y confeti
   lanzarGlobos();
   lanzarConfeti();
-  
+
+  // Si es versión 2026, lanzar más confeti
+  if (VERSION_ACTUAL.año === 2026) {
+    setTimeout(() => lanzarConfeti(), 2000);
+    setTimeout(() => lanzarGlobos(), 1000);
+  }
+
+  // Limpiar globos después de 8 segundos
   setTimeout(() => {
-    if (container) {
-      container.style.display = 'none';
-      container.innerHTML = '';
-      container.style.display = '';
+    if (globosContainer) {
+      globosContainer.style.display = 'none';
+      globosContainer.innerHTML = '';
+      globosContainer.style.display = '';
     }
   }, 8000);
 });
 
 // ============================================
-// MODO MANTENIMIENTO
+// MODO MANTENIMIENTO (ADMIN)
 // ============================================
 
 const CONTRASENA_ADMIN = "192480014-5";
@@ -454,12 +535,15 @@ const mensajeErrorContainer = document.getElementById('mensaje-error-container')
 const avisoAdmin = document.getElementById('aviso-admin');
 
 function detenerTodosLosVideos() {
-  document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+  document.querySelectorAll('video').forEach(video => {
+    video.pause();
+    video.currentTime = 0;
+  });
 }
 
 function activarModoMantenimiento() {
   modoMantenimientoActivo = true;
-  pantallaMantenimiento.style.display = 'flex';
+  if (pantallaMantenimiento) pantallaMantenimiento.style.display = 'flex';
   detenerTodosLosVideos();
   localStorage.setItem('modoMantenimientoGlobal', 'activo');
   if (avisoAdmin) avisoAdmin.style.display = 'block';
@@ -467,12 +551,13 @@ function activarModoMantenimiento() {
 
 function desactivarModoMantenimiento() {
   modoMantenimientoActivo = false;
-  pantallaMantenimiento.style.display = 'none';
+  if (pantallaMantenimiento) pantallaMantenimiento.style.display = 'none';
   localStorage.setItem('modoMantenimientoGlobal', 'inactivo');
   if (avisoAdmin) avisoAdmin.style.display = 'none';
 }
 
 function mostrarMensaje(mensaje, tipo) {
+  if (!mensajeErrorContainer) return;
   const className = tipo === 'error' ? 'mensaje-error-admin' : 'mensaje-exito-admin';
   mensajeErrorContainer.innerHTML = `<div class="${className}">${mensaje}</div>`;
   setTimeout(() => mensajeErrorContainer.innerHTML = '', 4000);
@@ -484,9 +569,9 @@ function verificarPassword() {
     mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
     return;
   }
-  
+
   const password = passwordInput.value;
-  
+
   if (password === CONTRASENA_ADMIN) {
     intentosFallidos = 0;
     if (modoMantenimientoActivo) {
@@ -500,6 +585,7 @@ function verificarPassword() {
   } else {
     intentosFallidos++;
     const intentosRestantes = 3 - intentosFallidos;
+
     let mensaje = '';
     switch(intentosFallidos) {
       case 1: mensaje = '❌ Nope. Solo para admins. ¿Otra vez? 😏'; break;
@@ -507,10 +593,13 @@ function verificarPassword() {
       case 3: mensaje = '❌ ÚLTIMA OPORTUNIDAD... ¡Y fallaste! 🔒 Acceso bloqueado por 10 segundos'; break;
       default: mensaje = '❌ Contraseña incorrecta';
     }
+
     if (intentosRestantes > 0 && intentosFallidos < 3) {
       mensaje += `<br>Intentos restantes: ${intentosRestantes}`;
     }
+
     mostrarMensaje(mensaje, 'error');
+
     if (intentosFallidos >= 3) {
       bloqueado = true;
       tiempoBloqueo = Date.now() + 10000;
@@ -521,6 +610,7 @@ function verificarPassword() {
       }, 10000);
       cerrarPopupPassword();
     }
+
     passwordInput.value = '';
     passwordInput.focus();
   }
@@ -532,26 +622,28 @@ function mostrarPopupPassword() {
     mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
     return;
   }
-  popupPassword.style.display = 'flex';
-  passwordInput.value = '';
-  passwordInput.focus();
-  mensajeErrorContainer.innerHTML = '';
+  if (popupPassword) {
+    popupPassword.style.display = 'flex';
+    passwordInput.value = '';
+    passwordInput.focus();
+    mensajeErrorContainer.innerHTML = '';
+  }
 }
 
 function cerrarPopupPassword() {
-  popupPassword.style.display = 'none';
+  if (popupPassword) popupPassword.style.display = 'none';
 }
 
 function verificarEstadoMantenimiento() {
   const estadoGuardado = localStorage.getItem('modoMantenimientoGlobal');
   if (estadoGuardado === 'activo') {
     modoMantenimientoActivo = true;
-    pantallaMantenimiento.style.display = 'flex';
+    if (pantallaMantenimiento) pantallaMantenimiento.style.display = 'flex';
     if (avisoAdmin) avisoAdmin.style.display = 'block';
     detenerTodosLosVideos();
   } else {
     modoMantenimientoActivo = false;
-    pantallaMantenimiento.style.display = 'none';
+    if (pantallaMantenimiento) pantallaMantenimiento.style.display = 'none';
     if (avisoAdmin) avisoAdmin.style.display = 'none';
   }
 }
@@ -561,7 +653,7 @@ if (btnAdmin) {
 }
 
 document.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && popupPassword.style.display === 'flex') {
+  if (e.key === 'Enter' && popupPassword && popupPassword.style.display === 'flex') {
     verificarPassword();
   }
 });
@@ -574,106 +666,4 @@ window.onclick = function(event) {
 
 verificarEstadoMantenimiento();
 
-// ============================================
-// ESTILOS ADICIONALES PARA GLOBOS Y CORAZONES
-// ============================================
-
-// Inyectar estilos de globos y corazones si no existen en el CSS
-const estilosGlobos = document.createElement('style');
-estilosGlobos.textContent = `
-  .corazon {
-    position: absolute;
-    font-size: 20px;
-    opacity: 0.5;
-    animation: flotarCorazon 12s linear infinite;
-    user-select: none;
-    pointer-events: none;
-  }
-  @keyframes flotarCorazon {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
-    100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
-  }
-  
-  #globos-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1000;
-  }
-  .globo {
-    position: absolute;
-    bottom: -150px;
-    width: 60px;
-    height: 80px;
-    border-radius: 50% 50% 50% 50%;
-    animation: flotarGlobo 8s ease-in-out infinite;
-    cursor: pointer;
-    z-index: 1001;
-    transition: transform 0.3s ease;
-  }
-  .globo::before {
-    content: "";
-    position: absolute;
-    top: 15%;
-    left: 20%;
-    width: 25%;
-    height: 20%;
-    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
-    border-radius: 50%;
-    z-index: 2;
-  }
-  .globo::after {
-    content: "";
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(180deg, #8B4513, #D2691E);
-    transform: translateX(-50%);
-    border-radius: 1px;
-    animation: ondularCuerda 2s ease-in-out infinite;
-  }
-  @keyframes flotarGlobo {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    10% { opacity: 1; }
-    50% { transform: translateY(-60vh) translateX(20px); }
-    90% { opacity: 1; }
-    100% { transform: translateY(-120vh) translateX(-20px); opacity: 0; }
-  }
-  @keyframes ondularCuerda {
-    0%, 100% { transform: translateX(-50%) rotate(0deg); }
-    25% { transform: translateX(-50%) rotate(3deg); }
-    75% { transform: translateX(-50%) rotate(-3deg); }
-  }
-  .globo.color1 { background: radial-gradient(circle at 30% 30%, #FF6B8A, #C2185B); }
-  .globo.color2 { background: radial-gradient(circle at 30% 30%, #FFB6C1, #E91E63); }
-  .globo.color3 { background: radial-gradient(circle at 30% 30%, #FFD1DC, #FF69B4); }
-  .globo.color4 { background: radial-gradient(circle at 30% 30%, #FF99CC, #FF1493); }
-  .globo.color5 { background: radial-gradient(circle at 30% 30%, #FFC0CB, #DB7093); }
-  .globo.color6 { background: radial-gradient(circle at 30% 30%, #FFA6C9, #FF4081); }
-  .globo.color7 { background: radial-gradient(circle at 30% 30%, #F8BBD0, #EC407A); }
-  .globo.color8 { background: radial-gradient(circle at 30% 30%, #FCE4EC, #D81B60); }
-  
-  .confeti {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    opacity: 0.9;
-    border-radius: 2px;
-    animation-name: caer;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
-  }
-  @keyframes caer {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-  }
-`;
-document.head.appendChild(estilosGlobos);
+console.log('🎂 ¡Página de cumpleaños cargada con éxito! Versión:', VERSION_ACTUAL.año);
