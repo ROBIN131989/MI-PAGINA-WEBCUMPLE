@@ -358,24 +358,20 @@ setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ============================================
-// CONTADOR DE AÑOS DE AMISTAD
-// ============================================
-
-// ============================================
 // CONTADOR DE AÑOS DE AMISTAD (EN TIEMPO REAL)
 // ============================================
 
 function actualizarTiempoAmistad() {
-  const fechaInicio = new Date(2016, 8, 18, 0, 0, 0); // 18 de septiembre de 2016
+  const fechaInicio = new Date(2016, 8, 18, 0, 0, 0);
   const ahora = new Date();
   let diff = ahora - fechaInicio;
 
   if (diff < 0) {
-    document.getElementById('tiempo-amistad').innerHTML = '¡Aún no nos conocemos! 😅';
+    const elemento = document.getElementById('tiempo-amistad');
+    if (elemento) elemento.innerHTML = '¡Aún no nos conocemos! 😅';
     return;
   }
 
-  // Calcular diferencias
   const segundosTotales = Math.floor(diff / 1000);
   const minutosTotales = Math.floor(segundosTotales / 60);
   const horasTotales = Math.floor(minutosTotales / 60);
@@ -388,31 +384,35 @@ function actualizarTiempoAmistad() {
   const minutos = minutosTotales % 60;
   const segundos = segundosTotales % 60;
 
-  // Actualizar cada elemento individualmente
-  document.getElementById('anios-amistad').textContent = años;
-  document.getElementById('meses-amistad').textContent = meses;
-  document.getElementById('dias-amistad').textContent = dias;
-  document.getElementById('horas-amistad').textContent = horas;
-  document.getElementById('minutos-amistad').textContent = minutos;
-  document.getElementById('segundos-amistad').textContent = segundos;
+  const aniosEl = document.getElementById('anios-amistad');
+  const mesesEl = document.getElementById('meses-amistad');
+  const diasEl = document.getElementById('dias-amistad');
+  const horasEl = document.getElementById('horas-amistad');
+  const minutosEl = document.getElementById('minutos-amistad');
+  const segundosEl = document.getElementById('segundos-amistad');
+
+  if (aniosEl) aniosEl.textContent = años;
+  if (mesesEl) mesesEl.textContent = meses;
+  if (diasEl) diasEl.textContent = dias;
+  if (horasEl) horasEl.textContent = horas;
+  if (minutosEl) minutosEl.textContent = minutos;
+  if (segundosEl) segundosEl.textContent = segundos;
 }
 
-// Ejecutar cada segundo
 setInterval(actualizarTiempoAmistad, 1000);
 actualizarTiempoAmistad();
+
 // ============================================
 // PASTEL VIRTUAL CON 22 VELAS
 // ============================================
 
 const TOTAL_VELAS = 22;
 let velasApagadas = 0;
-let velasApagadasArray = [];
 
 function crearVelas() {
   const container = document.getElementById('velas-container');
   if (!container) return;
 
-  // Limpiar
   container.innerHTML = '';
 
   for (let i = 0; i < TOTAL_VELAS; i++) {
@@ -434,7 +434,6 @@ function crearVelas() {
       align-items: center;
     `;
 
-    // Fuego
     const fuego = document.createElement('div');
     fuego.className = 'fuego';
     fuego.style.cssText = `
@@ -450,7 +449,6 @@ function crearVelas() {
       box-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
     `;
 
-    // Luz interior
     const luz = document.createElement('div');
     luz.style.cssText = `
       width: 6px;
@@ -464,11 +462,9 @@ function crearVelas() {
       opacity: 0.7;
     `;
     fuego.appendChild(luz);
-
     vela.appendChild(fuego);
     container.appendChild(vela);
 
-    // Evento click
     vela.addEventListener('click', function() {
       if (this.dataset.apagada === 'true') return;
       this.dataset.apagada = 'true';
@@ -484,25 +480,17 @@ function crearVelas() {
       velasApagadas++;
       document.getElementById('velas-apagadas').textContent = velasApagadas;
 
-     if (velasApagadas === TOTAL_VELAS) {
-  // Mostrar el modal de logro en grande
-  mostrarLogro();
-}
-          // Mensaje especial
+      if (velasApagadas === TOTAL_VELAS) {
+        setTimeout(() => {
           alert('🎉 FELICES 22 🎉\n\nDISFRUTA LA VIDA QUE ES PRESTADA,\nES SOLO POR UN RATO');
-          // Confeti extra
           for (let i = 0; i < 100; i++) {
             setTimeout(() => crearConfeti(), i * 50);
           }
         }, 300);
       }
     });
-
-    // Guardar estado
-    velasApagadasArray.push(false);
   }
 
-  // Estilos globales de fuego
   const style = document.createElement('style');
   style.textContent = `
     @keyframes fuegoAnim {
@@ -512,20 +500,11 @@ function crearVelas() {
     .vela:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
   `;
   document.head.appendChild(style);
-
-  // Restaurar estado si se recarga
-  const saved = localStorage.getItem('velasApagadas');
-  if (saved) {
-    const data = JSON.parse(saved);
-    if (data.length === TOTAL_VELAS) {
-      // Restaurar
-    }
-  }
 }
 
 function reiniciarVelas() {
   const velas = document.querySelectorAll('.vela');
-  velas.forEach((vela, index) => {
+  velas.forEach((vela) => {
     vela.dataset.apagada = 'false';
     const fuego = vela.querySelector('.fuego');
     if (fuego) {
@@ -540,7 +519,6 @@ function reiniciarVelas() {
   document.getElementById('velas-apagadas').textContent = '0';
 }
 
-// Inicializar velas
 document.addEventListener('DOMContentLoaded', () => {
   crearVelas();
   const btnReiniciar = document.getElementById('btn-reiniciar-velas');
@@ -615,66 +593,47 @@ if (btnModo) {
 // ============================================
 
 function cambiarColor(color) {
-  // Guardar en localStorage
   localStorage.setItem('colorPagina', color);
   aplicarColor(color);
 }
 
 function aplicarColor(color) {
-  // Fondo
   document.body.style.background = `linear-gradient(135deg, ${color}15 0%, ${color}25 100%)`;
 
-  // Encabezado
   const header = document.querySelector('header');
   if (header) {
     header.style.background = `${color}25`;
     header.style.borderColor = `${color}40`;
   }
 
-  // Mensaje glass
   const mensajeGlass = document.querySelector('.mensaje-glass');
-  if (mensajeGlass) {
-    mensajeGlass.style.borderColor = `${color}30`;
-  }
+  if (mensajeGlass) mensajeGlass.style.borderColor = `${color}30`;
 
-  // Contador
   const contador = document.getElementById('contador-cumple');
-  if (contador) {
-    contador.style.borderColor = `${color}20`;
-  }
+  if (contador) contador.style.borderColor = `${color}20`;
 
-  // Reloj
   const reloj = document.querySelector('.reloj-analogico');
-  if (reloj) {
-    reloj.style.borderColor = color;
-  }
+  if (reloj) reloj.style.borderColor = color;
 
-  // Tarjeta de amistad
   const amistad = document.getElementById('contador-amistad');
-  if (amistad) {
-    amistad.style.borderColor = `${color}30`;
-  }
+  if (amistad) amistad.style.borderColor = `${color}30`;
 
-  // Botones de gradiente
   const botones = document.querySelectorAll('.btn-latido, .btn-sorpresa');
   botones.forEach(btn => {
     btn.style.background = `linear-gradient(135deg, ${color}, ${color}aa)`;
   });
 
-  // Títulos
   const titulos = document.querySelectorAll('h1, h2, h3, .mensaje-glass h2, .recuerdo-header span');
   titulos.forEach(el => {
     el.style.color = color;
   });
 
-  // Títulos de Playfair
   const h1 = document.querySelector('header h1');
   if (h1) h1.style.color = color;
 
   const h2 = document.querySelector('.mensaje-glass h2');
   if (h2) h2.style.color = color;
 
-  // Ondas
   const ondas = document.querySelectorAll('.onda');
   ondas.forEach((onda, index) => {
     const colores = [color, color + 'aa', color + '66'];
@@ -685,18 +644,14 @@ function aplicarColor(color) {
       ${color}44 50px, ${color}44 75px)`;
   });
 
-  // Contador de amistad
   const amistadP = document.querySelector('#contador-amistad p');
-  if (amistadP) {
-    amistadP.style.color = color;
-  }
+  if (amistadP) amistadP.style.color = color;
 
   const amistadStrong = document.querySelectorAll('#contador-amistad strong');
   amistadStrong.forEach(el => {
     el.style.color = color;
   });
 
-  // Paleta de colores (resaltar el seleccionado)
   document.querySelectorAll('.color-btn').forEach(btn => {
     const btnColor = btn.dataset.color;
     if (btnColor === color) {
@@ -711,7 +666,6 @@ function aplicarColor(color) {
   });
 }
 
-// Configurar eventos de la paleta
 document.addEventListener('DOMContentLoaded', () => {
   const colorBtns = document.querySelectorAll('.color-btn');
   colorBtns.forEach(btn => {
@@ -722,12 +676,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cargar color guardado
   const colorGuardado = localStorage.getItem('colorPagina');
   if (colorGuardado) {
     aplicarColor(colorGuardado);
   } else {
-    // Color por defecto (morado)
     aplicarColor('#7b2d8b');
   }
 });
@@ -804,7 +756,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// MODO MANTENIMIENTO
+// MODO MANTENIMIENTO (ADMIN)
 // ============================================
 
 const CONTRASENA_ADMIN = "192480014-5";
