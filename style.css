@@ -6,13 +6,28 @@
 
 body {
     font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5eeff 0%, #ede0ff 100%);
+    background: linear-gradient(135deg, #f5eeff 0%, #ede0ff 50%, #f8f0ff 100%);
+    background-size: 200% 200%;
+    animation: gradienteAnimado 10s ease infinite;
     color: #2d1045;
     line-height: 1.7;
     padding: 16px;
     min-height: 100vh;
-    transition: background 0.6s ease, color 0.6s ease;
+    transition: background 0.8s ease, color 0.6s ease;
     overflow-x: hidden;
+}
+
+@keyframes gradienteAnimado {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0a0618 0%, #120a20 50%, #1a0a2a 100%);
+    background-size: 200% 200%;
+    animation: gradienteAnimado 10s ease infinite;
+    color: #e8d8f0;
 }
 
 /* ============================================ */
@@ -34,7 +49,7 @@ body {
     position: absolute;
     width: 4px;
     height: 4px;
-    background: rgba(123, 45, 139, 0.3);
+    background: rgba(123, 45, 139, 0.2);
     border-radius: 50%;
     animation: flotarParticula 20s linear infinite;
 }
@@ -53,13 +68,8 @@ body {
 }
 
 /* ============================================ */
-/* MODO OSCURO */
+/* MODO OSCURO - COMPATIBILIDAD */
 /* ============================================ */
-
-body.dark-mode {
-    background: linear-gradient(135deg, #0a0618 0%, #120a20 100%);
-    color: #e8d8f0;
-}
 
 body.dark-mode .mensaje-glass {
     background: rgba(30, 15, 50, 0.7);
@@ -71,19 +81,14 @@ body.dark-mode footer {
     color: #c8a8d8;
 }
 
-body.dark-mode .modal-sorpresa-contenido {
-    background: linear-gradient(135deg, #1a0a2a, #0f0520);
-    color: white;
-}
-
 body.dark-mode #contador-cumple {
     background: rgba(30, 15, 50, 0.7);
     border-color: rgba(150, 100, 220, 0.2);
 }
 
 body.dark-mode .tarjeta-recuerdo {
-    background: rgba(15, 5, 30, 0.9);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(15, 5, 30, 0.92) !important;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode #contador-amistad {
@@ -131,6 +136,31 @@ body.dark-mode .btn-velas:hover {
     box-shadow: 0 0 30px rgba(150, 100, 220, 0.3) !important;
 }
 
+body.dark-mode .modal-sorpresa-contenido {
+    background: linear-gradient(135deg, #1a0a2a, #0f0520) !important;
+    color: white !important;
+}
+
+body.dark-mode .modal-sorpresa-contenido h2 {
+    color: #d8a8e8 !important;
+}
+
+body.dark-mode .modal-sorpresa-contenido p {
+    color: #d8c8e8 !important;
+}
+
+body.dark-mode .modal-sorpresa-contenido .frase-sorpresa {
+    color: #b898c8 !important;
+}
+
+body.dark-mode .modal-sorpresa-contenido .cierre-sorpresa {
+    color: #d8a8e8 !important;
+}
+
+body.dark-mode .cerrar-sorpresa {
+    color: #d8a8e8 !important;
+}
+
 /* ============================================ */
 /* BOTÓN MODO OSCURO */
 /* ============================================ */
@@ -161,6 +191,37 @@ body.dark-mode .btn-velas:hover {
 
 .btn-modo:active {
     transform: scale(0.9);
+}
+
+/* ============================================ */
+/* PALETA DE COLORES */
+/* ============================================ */
+
+#paleta-colores {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 500;
+    display: flex;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 10px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.color-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.color-btn:hover {
+    transform: scale(1.15);
 }
 
 /* ============================================ */
@@ -354,7 +415,7 @@ header p {
 }
 
 /* ============================================ */
-/* MENSAJE CON GLASSMORPHISM MEJORADO */
+/* MENSAJE GLASS */
 /* ============================================ */
 
 .mensaje-glass {
@@ -396,7 +457,7 @@ header p {
 }
 
 /* ============================================ */
-/* CONTADOR DE CUMPLEAÑOS */
+/* CONTADOR CUMPLEAÑOS */
 /* ============================================ */
 
 #contador-cumple {
@@ -464,7 +525,6 @@ header p {
     height: 40px;
     background-color: #4a1a6b;
     z-index: 3;
-    border-radius: 4px;
 }
 
 .manecilla.minuto {
@@ -472,7 +532,6 @@ header p {
     height: 55px;
     background-color: #6c2b8b;
     z-index: 4;
-    border-radius: 4px;
 }
 
 .manecilla.segundo {
@@ -480,7 +539,6 @@ header p {
     height: 65px;
     background-color: #9b4bae;
     z-index: 5;
-    border-radius: 4px;
 }
 
 .centro {
@@ -496,7 +554,7 @@ header p {
 }
 
 /* ============================================ */
-/* BOTÓN LATIDO (SUBIR) */
+/* BOTÓN LATIDO */
 /* ============================================ */
 
 .btn-latido {
@@ -527,7 +585,6 @@ header p {
 
 .btn-latido:active {
     transform: scale(0.92);
-    box-shadow: 0 0 50px rgba(100, 50, 150, 0.5);
 }
 
 @keyframes latido {
@@ -560,7 +617,6 @@ header p {
 
 .btn-sorpresa:active {
     transform: scale(0.95);
-    box-shadow: 0 5px 40px rgba(100, 50, 150, 0.4);
 }
 
 /* ============================================ */
@@ -587,7 +643,7 @@ header p {
 }
 
 /* ============================================ */
-/* VENTANITA DE RECUERDO (2025 - FONDO OSCURO) */
+/* VENTANITA RECUERDO 2025 */
 /* ============================================ */
 
 #ventanita-recuerdo {
@@ -716,7 +772,7 @@ header p {
 }
 
 /* ============================================ */
-/* TARJETA DE AMISTAD (MEJORADA) */
+/* TARJETA AMISTAD */
 /* ============================================ */
 
 .tarjeta-amistad {
@@ -808,44 +864,8 @@ header p {
 }
 
 /* ============================================ */
-/* VIDEOS */
+/* MODAL SORPRESA (CORREGIDO) */
 /* ============================================ */
-
-.videos-vertical {
-    max-width: 100%;
-    margin: 30px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-/* ============================================ */
-/* MODALES */
-/* ============================================ */
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 3000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
-    cursor: pointer;
-}
-
-.modal-contenido {
-    margin: auto;
-    display: block;
-    max-width: 90%;
-    max-height: 90%;
-    margin-top: 10%;
-    border-radius: 16px;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
-}
 
 .modal-sorpresa {
     display: none;
@@ -857,20 +877,26 @@ header p {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .modal-sorpresa-contenido {
     background: linear-gradient(135deg, #fff0f6 0%, #ffe0ed 100%) !important;
-    margin: 20% auto;
     padding: 35px 30px;
-    width: 85%;
     max-width: 420px;
+    width: 100%;
     border-radius: 30px;
     text-align: center;
     animation: aparecerSorpresa 0.4s ease;
     border: 2px solid #ff69b4 !important;
     box-shadow: 0 0 60px rgba(255, 105, 180, 0.3) !important;
     color: #2d1045 !important;
+    font-family: 'Quicksand', sans-serif;
+    margin: auto;
+    max-height: 85vh;
+    overflow-y: auto;
 }
 
 @keyframes aparecerSorpresa {
@@ -895,6 +921,61 @@ header p {
 
 .cerrar-sorpresa:hover {
     transform: scale(1.2);
+}
+
+.modal-sorpresa-contenido h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #a8325b !important;
+    margin-bottom: 15px;
+}
+
+.modal-sorpresa-contenido p {
+    font-size: 1rem;
+    line-height: 1.9;
+    margin: 15px 0;
+    color: #3a1a4a !important;
+}
+
+.modal-sorpresa-contenido .frase-sorpresa {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    font-style: italic;
+    color: #5a2a6a !important;
+}
+
+.modal-sorpresa-contenido .cierre-sorpresa {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #a8325b !important;
+}
+
+/* ============================================ */
+/* MODAL IMAGENES */
+/* ============================================ */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+}
+
+.modal-contenido {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    margin-top: 10%;
+    border-radius: 16px;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
 }
 
 /* ============================================ */
@@ -998,6 +1079,10 @@ footer {
     
     #paleta-colores { bottom: 10px; left: 10px; padding: 8px 12px; gap: 6px; }
     #paleta-colores .color-btn { width: 22px; height: 22px; }
+    
+    .modal-sorpresa-contenido { padding: 25px 20px; margin: 10px; max-height: 80vh; }
+    .modal-sorpresa-contenido h2 { font-size: 1.3rem; }
+    .modal-sorpresa-contenido p { font-size: 0.9rem; }
 }
 
 /* ============================================ */
