@@ -864,7 +864,7 @@ header p {
 }
 
 /* ============================================ */
-/* MODAL SORPRESA (CORREGIDO) */
+/* MODAL SORPRESA (CORREGIDO - X A LA IZQUIERDA) */
 /* ============================================ */
 
 .modal-sorpresa {
@@ -884,11 +884,11 @@ header p {
 
 .modal-sorpresa-contenido {
     background: linear-gradient(135deg, #fff0f6 0%, #ffe0ed 100%) !important;
-    padding: 35px 30px;
+    padding: 30px 25px;
     max-width: 420px;
     width: 100%;
     border-radius: 30px;
-    text-align: center;
+    text-align: left;
     animation: aparecerSorpresa 0.4s ease;
     border: 2px solid #ff69b4 !important;
     box-shadow: 0 0 60px rgba(255, 105, 180, 0.3) !important;
@@ -911,46 +911,18 @@ header p {
 }
 
 .cerrar-sorpresa {
-    float: right;
     font-size: 28px;
     cursor: pointer;
     color: #a8325b !important;
     font-weight: bold;
     transition: transform 0.2s ease;
+    line-height: 1;
+    flex-shrink: 0;
 }
 
 .cerrar-sorpresa:hover {
     transform: scale(1.2);
 }
-
-.modal-sorpresa-contenido h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: #a8325b !important;
-    margin-bottom: 15px;
-}
-
-.modal-sorpresa-contenido p {
-    font-size: 1rem;
-    line-height: 1.9;
-    margin: 15px 0;
-    color: #3a1a4a !important;
-}
-
-.modal-sorpresa-contenido .frase-sorpresa {
-    font-size: 0.95rem;
-    opacity: 0.8;
-    font-style: italic;
-    color: #5a2a6a !important;
-}
-
-.modal-sorpresa-contenido .cierre-sorpresa {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-top: 20px;
-    color: #a8325b !important;
-}
-
 /* ============================================ */
 /* MODAL IMAGENES */
 /* ============================================ */
