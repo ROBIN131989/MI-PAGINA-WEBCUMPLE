@@ -15,6 +15,7 @@
 
   <div id="corazones-container"></div>
   <div id="globos-container"></div>
+  <div id="particulas-container"></div>
 
   <!-- ============================================ -->
   <!-- BOTÓN MODO OSCURO -->
@@ -26,7 +27,8 @@
   <!-- PALETA DE COLORES (ESQUINA INFERIOR IZQUIERDA) -->
   <!-- ============================================ -->
 
-<div id="paleta-colores" style="position: fixed; bottom: 20px; left: 20px; z-index: 500; display: flex; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 10px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);">    <button class="color-btn" data-color="#7b2d8b" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #7b2d8b; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(123,45,139,0.5);" title="Morado"></button>
+  <div id="paleta-colores" style="position: fixed; bottom: 20px; left: 20px; z-index: 500; display: flex; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 10px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);">
+    <button class="color-btn" data-color="#7b2d8b" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #7b2d8b; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(123,45,139,0.5);" title="Morado"></button>
     <button class="color-btn" data-color="#ff69b4" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #ff69b4; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(255,105,180,0.5);" title="Rosa"></button>
     <button class="color-btn" data-color="#3498db" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #3498db; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(52,152,219,0.5);" title="Azul"></button>
     <button class="color-btn" data-color="#2ecc71" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #2ecc71; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(46,204,113,0.5);" title="Verde"></button>
@@ -118,33 +120,22 @@
     </section>
 
     <!-- ============================================ -->
-<!-- CONTADOR DE AÑOS DE AMISTAD (TARJETA ELEGANTE) -->
-<!-- ============================================ -->
+    <!-- CONTADOR DE AÑOS DE AMISTAD -->
+    <!-- ============================================ -->
 
-<div id="contador-amistad" style="
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(16px);
-  border-radius: 32px;
-  padding: 24px 28px;
-  margin: 24px auto;
-  max-width: 680px;
-  border: 1px solid rgba(150,100,220,0.3);
-  box-shadow: 0 8px 40px rgba(100,50,150,0.12);
-  text-align: center;
-  animation: fadeInUp 0.8s ease-out 0.2s both;
-  transition: all 0.3s ease;
-">
-  <p style="font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #7b3f9e; letter-spacing: 2px; margin-bottom: 8px; opacity: 0.7;">— AMISTAD —</p>
-  <p id="tiempo-amistad" style="font-family: 'Lora', serif; font-size: 1.3rem; color: #4a1a6b; line-height: 1.6;">
-    Han pasado <strong id="anios-amistad">0</strong> años,
-    <strong id="meses-amistad">0</strong> meses,
-    <strong id="dias-amistad">0</strong> días,
-    <strong id="horas-amistad">0</strong> horas,
-    <strong id="minutos-amistad">0</strong> minutos y
-    <strong id="segundos-amistad">0</strong> segundos
-  </p>
-  <p style="font-family: 'Dancing Script', cursive; font-size: 1rem; color: #7b3f9e; margin-top: 6px; opacity: 0.8;">💖 18 de septiembre de 2016 — hoy 💖</p>
-</div>
+    <div id="contador-amistad" class="tarjeta-amistad">
+      <p class="label-amistad">— AMISTAD —</p>
+      <p id="tiempo-amistad" class="tiempo-amistad">
+        Han pasado <strong id="anios-amistad">0</strong> años,
+        <strong id="meses-amistad">0</strong> meses,
+        <strong id="dias-amistad">0</strong> días,
+        <strong id="horas-amistad">0</strong> horas,
+        <strong id="minutos-amistad">0</strong> minutos y
+        <strong id="segundos-amistad">0</strong> segundos
+      </p>
+      <p class="fecha-amistad">💖 18 de septiembre de 2016 — hoy 💖</p>
+    </div>
+
     <!-- ============================================ -->
     <!-- PASTEL VIRTUAL CON 22 VELAS -->
     <!-- ============================================ -->
@@ -152,53 +143,34 @@
     <div style="text-align: center; margin: 30px 0 20px;">
       <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #4a1a6b; margin-bottom: 10px;">🎂</h3>
       <div id="pastel-container" style="position: relative; display: inline-block; padding: 20px;">
-        <!-- Pastel -->
         <div style="position: relative; width: 260px; height: 120px; margin: 0 auto;">
-          <!-- Base del pastel -->
           <div style="position: absolute; bottom: 0; width: 100%; height: 70px; background: linear-gradient(180deg, #f5b7b1, #e5988a); border-radius: 0 0 40px 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);"></div>
-          <!-- Capa superior -->
           <div style="position: absolute; bottom: 50px; width: 90%; left: 5%; height: 30px; background: linear-gradient(180deg, #f8c9c4, #f0b3ad); border-radius: 20px 20px 0 0; box-shadow: 0 -4px 15px rgba(0,0,0,0.08);"></div>
-          <!-- Decoración (crema) -->
           <div style="position: absolute; bottom: 45px; width: 92%; left: 4%; height: 12px; background: radial-gradient(circle at 20% 50%, #fff5f0, #ffd9d0); border-radius: 10px; filter: blur(1px);"></div>
-          <!-- Velas -->
           <div id="velas-container" style="position: absolute; bottom: 55px; width: 100%; height: 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; align-items: flex-end;"></div>
         </div>
       </div>
 
-      <!-- Contador de velas -->
       <div style="margin: 15px 0; font-family: 'Quicksand', sans-serif; font-size: 1.1rem; color: #4a1a6b;">
         🕯️ <span id="velas-apagadas">0</span> / 22 velas apagadas
       </div>
 
-      <!-- Botón de reinicio -->
-      <button id="btn-reiniciar-velas" style="
-        background: linear-gradient(135deg, #8b4ba3, #5c2d7a);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        padding: 10px 25px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(100,50,150,0.3);
-        margin-top: 5px;
-      ">🔄 Volver a encender</button>
+      <button id="btn-reiniciar-velas" class="btn-velas">🔄 Volver a encender</button>
     </div>
 
     <!-- ============================================ -->
-    <!-- GALERÍA DE IMÁGENES DE 2026 -->
+    <!-- GALERÍA DE IMÁGENES -->
     <!-- ============================================ -->
 
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 30px 0;">
-      <div class="card-img" onclick="abrirModal('img/MICHI.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-        <img src="img/MICHI.jpg" alt="Michis" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+    <div class="galeria-moderna">
+      <div class="card-img" onclick="abrirModal('img/MICHI.jpg')">
+        <img src="img/MICHI.jpg" alt="Michis" />
       </div>
-      <div class="card-img" onclick="abrirModal('img/MICHIPASTEL.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-        <img src="img/MICHIPASTEL.jpg" alt="Michi con pastel" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+      <div class="card-img" onclick="abrirModal('img/MICHIPASTEL.jpg')">
+        <img src="img/MICHIPASTEL.jpg" alt="Michi con pastel" />
       </div>
-      <div class="card-img" onclick="abrirModal('img/PERRITOS.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-        <img src="img/PERRITOS.jpg" alt="Perritos" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+      <div class="card-img" onclick="abrirModal('img/PERRITOS.jpg')">
+        <img src="img/PERRITOS.jpg" alt="Perritos" />
       </div>
     </div>
 
@@ -288,122 +260,8 @@
     <button onclick="verificarPassword()">Aceptar</button>
   </div>
 
-  <button id="btn-admin" class="btn-admin" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.3); border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer; z-index: 9999999; backdrop-filter: blur(5px);">⚙️</button>
+  <button id="btn-admin" class="btn-admin">⚙️</button>
 
   <script src="script.js"></script>
-  <!-- ============================================ -->
-<!-- MODAL DE LOGRO (CUANDO SE APAGAN TODAS LAS VELAS) -->
-<!-- ============================================ -->
-
-<div id="modalLogro" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  z-index: 99999;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  font-family: 'Playfair Display', serif;
-  padding: 20px;
-  animation: fadeInLogro 0.6s ease;
-">
-  <div style="
-    background: linear-gradient(135deg, #1a0a2a, #2d1a4a);
-    border-radius: 50px;
-    padding: 40px 35px;
-    max-width: 500px;
-    width: 90%;
-    border: 2px solid #ff69b4;
-    box-shadow: 0 0 60px rgba(255, 105, 180, 0.4);
-    animation: aparecerLogro 0.8s ease;
-  ">
-    <div style="font-size: 4rem; margin-bottom: 10px; animation: latidoLogro 1.5s ease-in-out infinite;">🎉</div>
-    <h1 style="
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #ff69b4;
-      text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-      margin: 10px 0;
-      letter-spacing: 2px;
-    ">FELICES 22</h1>
-    <p style="
-      font-size: 1.2rem;
-      font-family: 'Lora', serif;
-      color: #f0e0ff;
-      line-height: 1.6;
-      margin: 15px 0;
-    ">
-      DISFRUTA LA VIDA QUE ES PRESTADA,<br>
-      <span style="font-size: 1.1rem; opacity: 0.7;">ES SOLO POR UN RATO</span>
-    </p>
-    <div style="
-      margin: 20px auto;
-      width: 60px;
-      height: 60px;
-      border: 4px solid rgba(255, 105, 180, 0.3);
-      border-top-color: #ff69b4;
-      border-radius: 50%;
-      animation: spinLogro 1.2s linear infinite;
-    "></div>
-    <p style="
-      font-size: 0.8rem;
-      opacity: 0.5;
-      margin-top: 20px;
-      font-family: 'Quicksand', sans-serif;
-    ">✧ toca en cualquier lugar para cerrar ✧</p>
-  </div>
-</div>
-
-<style>
-  @keyframes fadeInLogro {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes aparecerLogro {
-    from {
-      transform: scale(0.8) translateY(30px);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1) translateY(0);
-      opacity: 1;
-    }
-  }
-  @keyframes latidoLogro {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-  }
-  @keyframes spinLogro {
-    to { transform: rotate(360deg); }
-  }
-</style>
-
-<script>
-  // ============================================
-  // MODAL DE LOGRO (CUANDO SE APAGAN TODAS LAS VELAS)
-  // ============================================
-
-  function mostrarLogro() {
-    const modal = document.getElementById('modalLogro');
-    if (modal) {
-      modal.style.display = 'flex';
-      // Lanzar confeti extra
-      for (let i = 0; i < 120; i++) {
-        setTimeout(() => crearConfeti(), i * 40);
-      }
-      // Cerrar al tocar cualquier parte
-      modal.addEventListener('click', function() {
-        this.style.display = 'none';
-      });
-    }
-  }
-</script>
 </body>
 </html>
