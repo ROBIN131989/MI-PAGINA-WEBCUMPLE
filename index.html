@@ -20,14 +20,10 @@
   <div id="globos-container"></div>
 
   <!-- ============================================ -->
-  <!-- BOTONES DE CONTROL -->
+  <!-- BOTÓN MODO OSCURO -->
   <!-- ============================================ -->
 
-  <!-- Botón modo oscuro -->
   <button id="btnModoOscuro" class="btn-modo">🌙</button>
-
-  <!-- Aviso admin -->
-  <div id="aviso-admin" class="aviso-admin">🔧 MODO MANTENIMIENTO ACTIVADO</div>
 
   <!-- ============================================ -->
   <!-- VENTANITA DE RECUERDO 2025 (ARRIBA DERECHA) -->
@@ -166,170 +162,7 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- MODO MANTENIMIENTO GLOBAL (FUNCIONAL PARA TODOS) -->
-  <!-- ============================================ -->
-
-  <style>
-    /* Pantalla de mantenimiento */
-    #modo-mantenimiento-global {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 10, 30, 0.92);
-      backdrop-filter: blur(20px);
-      z-index: 999999;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-      font-family: 'Quicksand', sans-serif;
-      padding: 20px;
-    }
-
-    #modo-mantenimiento-global .contenido-mantenimiento {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 40px;
-      padding: 50px 40px;
-      max-width: 500px;
-      width: 90%;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      animation: aparecerMantenimiento 0.6s ease;
-    }
-
-    @keyframes aparecerMantenimiento {
-      from {
-        opacity: 0;
-        transform: scale(0.9) translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    #modo-mantenimiento-global .icono-mantenimiento {
-      font-size: 60px;
-      animation: girarIcono 4s ease-in-out infinite;
-      display: inline-block;
-    }
-
-    @keyframes girarIcono {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(10deg); }
-      75% { transform: rotate(-10deg); }
-    }
-
-    #modo-mantenimiento-global h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin: 20px 0 10px;
-      background: linear-gradient(135deg, #ff69b4, #ff1493);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    #modo-mantenimiento-global p {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      line-height: 1.7;
-      color: #ddd;
-    }
-
-    #modo-mantenimiento-global .spinner {
-      width: 50px;
-      height: 50px;
-      margin: 30px auto;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #ff69b4;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    #modo-mantenimiento-global .barra-progreso {
-      width: 80%;
-      height: 4px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      margin: 20px auto;
-      overflow: hidden;
-    }
-
-    #modo-mantenimiento-global .barra-progreso-llenado {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #ff69b4, #ff1493);
-      border-radius: 10px;
-      animation: cargarBarra 2s ease-in-out infinite;
-    }
-
-    @keyframes cargarBarra {
-      0% { width: 0%; margin-left: 0%; }
-      50% { width: 70%; margin-left: 0%; }
-      100% { width: 0%; margin-left: 100%; }
-    }
-
-    /* Botón de control (solo admin) */
-    .btn-control-mantenimiento-global {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
-      border: 2px solid #ff69b4;
-      border-radius: 50px;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1000000;
-      transition: all 0.3s ease;
-      font-family: 'Quicksand', sans-serif;
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-control-mantenimiento-global:hover {
-      background: #ff69b4;
-      color: #000;
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
-    }
-
-    @media (max-width: 600px) {
-      #modo-mantenimiento-global .contenido-mantenimiento { padding: 30px 20px; }
-      #modo-mantenimiento-global h1 { font-size: 1.6rem; }
-      #modo-mantenimiento-global p { font-size: 0.95rem; }
-      .btn-control-mantenimiento-global { padding: 8px 14px; font-size: 11px; bottom: 15px; right: 15px; }
-    }
-  </style>
-
-  <!-- Pantalla de mantenimiento (global) -->
-  <div id="modo-mantenimiento-global">
-    <div class="contenido-mantenimiento">
-      <div class="icono-mantenimiento">🚧</div>
-      <h1>Página en construcción</h1>
-      <p>Estamos preparando una sorpresa muy especial para ti...</p>
-      <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 5px;">✨ Vuelve pronto ✨</p>
-      <div class="spinner"></div>
-      <div class="barra-progreso">
-        <div class="barra-progreso-llenado"></div>
-      </div>
-      <p style="font-size: 0.8rem; opacity: 0.4; margin-top: 10px;">Actualizando contenido...</p>
-    </div>
-  </div>
-
-  <!-- Botón de control (solo admin) -->
-  <button id="btn-control-mantenimiento-global" class="btn-control-mantenimiento-global">🔧 MANTENIMIENTO</button>
-
-  <!-- ============================================ -->
-  <!-- PANTALLA DE MANTENIMIENTO (ADMIN CONTRASEÑA) -->
+  <!-- PANTALLA DE MANTENIMIENTO (CONTRASEÑA) -->
   <!-- ============================================ -->
 
   <div id="pantalla-mantenimiento-premium">
