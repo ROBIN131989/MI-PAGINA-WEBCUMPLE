@@ -197,26 +197,64 @@
     <img id="modalImg" class="modal-contenido">
   </div>
 
-  <!-- ============================================ -->
-  <!-- MODAL DE SORPRESA (CORREGIDO) -->
-  <!-- ============================================ -->
+ <!-- ============================================ -->
+<!-- MODAL DE SORPRESA (X A LA IZQUIERDA) -->
+<!-- ============================================ -->
 
-  <div id="modalSorpresa" class="modal-sorpresa">
-    <div class="modal-sorpresa-contenido">
-      <span class="cerrar-sorpresa" onclick="cerrarSorpresa()">&times;</span>
-      <h2>💫 Y pensar que todo empezó así...</h2>
-      <p>
-        Entre risas, canciones y un montón de ocurrencias que solo nosotros entendemos.<br><br>
-        Han pasado los años, pero hay algo que no cambia: la certeza de que tenerte en mi vida fue de las mejores cosas que me pasaron.<br><br>
-        Aunque los caminos se hayan separado un poco, el cariño y los recuerdos siguen intactos. Y mientras exista un "¿te acuerdas cuando...?", esta amistad seguirá viva. 💖
-      </p>
-      <p class="frase-sorpresa">
-        "No todos los días se encuentra a alguien con quien compartir tantos años de vida... y tantos recuerdos."
-      </p>
-      <p class="cierre-sorpresa">Te quiero mucho, Andy. 🎂🎈</p>
+<div id="modalSorpresa" class="modal-sorpresa">
+  <div class="modal-sorpresa-contenido">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+      <span class="cerrar-sorpresa" onclick="cerrarSorpresa()" style="
+        font-size: 28px;
+        cursor: pointer;
+        color: #a8325b !important;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+        line-height: 1;
+        flex-shrink: 0;
+      " onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">&times;</span>
+      
+      <h2 style="
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        color: #a8325b !important;
+        margin: 0;
+        flex: 1;
+        text-align: center;
+      ">💫 Y pensar que todo empezó así...</h2>
     </div>
+    
+    <p style="
+      font-size: 1rem;
+      line-height: 1.9;
+      margin: 15px 0;
+      color: #3a1a4a !important;
+      text-align: left;
+    ">
+      Entre risas, canciones y un montón de ocurrencias que solo nosotros entendemos.<br><br>
+      Han pasado los años, pero hay algo que no cambia: la certeza de que tenerte en mi vida fue de las mejores cosas que me pasaron.<br><br>
+      Aunque los caminos se hayan separado un poco, el cariño y los recuerdos siguen intactos. Y mientras exista un "¿te acuerdas cuando...?", esta amistad seguirá viva. 💖
+    </p>
+    
+    <p style="
+      font-size: 0.95rem;
+      opacity: 0.8;
+      font-style: italic;
+      color: #5a2a6a !important;
+      text-align: center;
+    ">
+      "No todos los días se encuentra a alguien con quien compartir tantos años de vida... y tantos recuerdos."
+    </p>
+    
+    <p style="
+      font-size: 1rem;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #a8325b !important;
+      text-align: center;
+    ">Te quiero mucho, Andy. 🎂🎈</p>
   </div>
-
+</div>
   <!-- ============================================ -->
   <!-- MODO MANTENIMIENTO -->
   <!-- ============================================ -->
