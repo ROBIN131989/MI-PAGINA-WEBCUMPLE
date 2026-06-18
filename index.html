@@ -13,10 +13,7 @@
   <!-- CONTENEDORES DE FONDO (FIJOS) -->
   <!-- ============================================ -->
 
-  <!-- Corazones flotantes (fondo fijo) -->
   <div id="corazones-container"></div>
-  
-  <!-- Globos y confeti (capa superior fija) -->
   <div id="globos-container"></div>
 
   <!-- ============================================ -->
@@ -26,14 +23,23 @@
   <button id="btnModoOscuro" class="btn-modo">🌙</button>
 
   <!-- ============================================ -->
+  <!-- PALETA DE COLORES (ESQUINA INFERIOR IZQUIERDA) -->
+  <!-- ============================================ -->
+
+  <div id="paleta-colores" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; gap: 8px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 10px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);">
+    <button class="color-btn" data-color="#7b2d8b" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #7b2d8b; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(123,45,139,0.5);" title="Morado"></button>
+    <button class="color-btn" data-color="#ff69b4" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #ff69b4; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(255,105,180,0.5);" title="Rosa"></button>
+    <button class="color-btn" data-color="#3498db" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #3498db; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(52,152,219,0.5);" title="Azul"></button>
+    <button class="color-btn" data-color="#2ecc71" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #2ecc71; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(46,204,113,0.5);" title="Verde"></button>
+    <button class="color-btn" data-color="#e67e22" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.5); background: #e67e22; cursor: pointer; transition: transform 0.2s ease; box-shadow: 0 0 8px rgba(230,126,34,0.5);" title="Naranja"></button>
+  </div>
+
+  <!-- ============================================ -->
   <!-- VENTANITA DE RECUERDO 2025 (ARRIBA DERECHA) -->
   <!-- ============================================ -->
 
   <div id="ventanita-recuerdo">
-    <!-- Botón minimizado -->
     <button id="btn-recuerdo-min" class="btn-recuerdo-min">💖</button>
-
-    <!-- Tarjeta expandida -->
     <div id="tarjeta-recuerdo" class="tarjeta-recuerdo">
       <div class="recuerdo-header">
         <span>💖 RECUERDO 2025</span>
@@ -112,44 +118,123 @@
       <div class="mensaje-texto" id="contenido-mensaje"></div>
     </section>
 
-<!-- GALERÍA DE IMÁGENES DE 2026 -->
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 30px 0;">
-  <div class="card-img" onclick="abrirModal('img/MICHI.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-    <img src="img/MICHI.jpg" alt="Michis" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+    <!-- ============================================ -->
+    <!-- CONTADOR DE AÑOS DE AMISTAD (TARJETA ELEGANTE) -->
+    <!-- ============================================ -->
+
+    <div id="contador-amistad" style="
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      padding: 24px 28px;
+      margin: 24px auto;
+      max-width: 680px;
+      border: 1px solid rgba(150,100,220,0.3);
+      box-shadow: 0 8px 40px rgba(100,50,150,0.12);
+      text-align: center;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      transition: all 0.3s ease;
+    ">
+      <p style="font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #7b3f9e; letter-spacing: 2px; margin-bottom: 8px; opacity: 0.7;">— AMISTAD —</p>
+      <p id="tiempo-amistad" style="font-family: 'Lora', serif; font-size: 1.3rem; color: #4a1a6b; line-height: 1.6;">
+        Han pasado <strong id="anios-amistad">0</strong> años,
+        <strong id="meses-amistad">0</strong> meses,
+        <strong id="dias-amistad">0</strong> días,
+        <strong id="horas-amistad">0</strong> horas y
+        <strong id="minutos-amistad">0</strong> minutos
+      </p>
+      <p style="font-family: 'Dancing Script', cursive; font-size: 1rem; color: #7b3f9e; margin-top: 6px; opacity: 0.8;">💖 18 de septiembre de 2016 — hoy 💖</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PASTEL VIRTUAL CON 22 VELAS -->
+    <!-- ============================================ -->
+
+    <div style="text-align: center; margin: 30px 0 20px;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #4a1a6b; margin-bottom: 10px;">🎂</h3>
+      <div id="pastel-container" style="position: relative; display: inline-block; padding: 20px;">
+        <!-- Pastel -->
+        <div style="position: relative; width: 260px; height: 120px; margin: 0 auto;">
+          <!-- Base del pastel -->
+          <div style="position: absolute; bottom: 0; width: 100%; height: 70px; background: linear-gradient(180deg, #f5b7b1, #e5988a); border-radius: 0 0 40px 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.15);"></div>
+          <!-- Capa superior -->
+          <div style="position: absolute; bottom: 50px; width: 90%; left: 5%; height: 30px; background: linear-gradient(180deg, #f8c9c4, #f0b3ad); border-radius: 20px 20px 0 0; box-shadow: 0 -4px 15px rgba(0,0,0,0.08);"></div>
+          <!-- Decoración (crema) -->
+          <div style="position: absolute; bottom: 45px; width: 92%; left: 4%; height: 12px; background: radial-gradient(circle at 20% 50%, #fff5f0, #ffd9d0); border-radius: 10px; filter: blur(1px);"></div>
+          <!-- Velas -->
+          <div id="velas-container" style="position: absolute; bottom: 55px; width: 100%; height: 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; align-items: flex-end;"></div>
+        </div>
+      </div>
+
+      <!-- Contador de velas -->
+      <div style="margin: 15px 0; font-family: 'Quicksand', sans-serif; font-size: 1.1rem; color: #4a1a6b;">
+        🕯️ <span id="velas-apagadas">0</span> / 22 velas apagadas
+      </div>
+
+      <!-- Botón de reinicio -->
+      <button id="btn-reiniciar-velas" style="
+        background: linear-gradient(135deg, #8b4ba3, #5c2d7a);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 10px 25px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(100,50,150,0.3);
+        margin-top: 5px;
+      ">🔄 Volver a encender</button>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- GALERÍA DE IMÁGENES DE 2026 -->
+    <!-- ============================================ -->
+
+    <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 30px 0;">
+      <div class="card-img" onclick="abrirModal('img/MICHI.jpg')" style="flex: 0 1 260px; max-width: 300px;">
+        <img src="img/MICHI.jpg" alt="Michis" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+      </div>
+      <div class="card-img" onclick="abrirModal('img/MICHIPASTEL.jpg')" style="flex: 0 1 260px; max-width: 300px;">
+        <img src="img/MICHIPASTEL.jpg" alt="Michi con pastel" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+      </div>
+      <div class="card-img" onclick="abrirModal('img/PERRITOS.jpg')" style="flex: 0 1 260px; max-width: 300px;">
+        <img src="img/PERRITOS.jpg" alt="Perritos" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
+      </div>
+    </div>
+
+    <!-- ESPACIO PARA VIDEOS -->
+    <div class="videos-vertical">
+      <!-- Aquí van tus videos -->
+    </div>
+
+    <!-- ============================================ -->
+    <!-- BOTÓN SORPRESA Y SUBIR -->
+    <!-- ============================================ -->
+
+    <div style="text-align:center; margin: 20px 0;">
+      <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
+    </div>
+
+    <div style="text-align:center; margin: 30px 0;">
+      <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
+    </div>
+  </main>
+
+  <footer>
+    <p id="footer-mensaje"></p>
+    <br>
+    <p>Con mucho cariño, tu amigo.</p>
+    <p><strong><em>Marc A. O.</em></strong></p>
+    <p>© Todos los derechos reservados</p>
+  </footer>
+
+  <div class="ondas">
+    <div class="onda"></div>
+    <div class="onda"></div>
+    <div class="onda"></div>
   </div>
-  <div class="card-img" onclick="abrirModal('img/MICHIPASTEL.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-    <img src="img/MICHIPASTEL.jpg" alt="Michi con pastel" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
-  </div>
-  <div class="card-img" onclick="abrirModal('img/PERRITOS.jpg')" style="flex: 0 1 260px; max-width: 300px;">
-    <img src="img/PERRITOS.jpg" alt="Perritos" style="width: 100%; height: 220px; object-fit: contain; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); background: #f5eeff;" />
-  </div>
-</div>
-<!-- ESPACIO PARA VIDEOS (si quieres agregar después) -->
-<div class="videos-vertical">
-  <!-- Aquí van tus videos -->
-</div>
 
-<div style="text-align:center; margin: 20px 0;">
-  <button id="btnSorpresa" class="btn-sorpresa">🎁 Toca para una sorpresa 🎁</button>
-</div>
-
-<div style="text-align:center; margin: 30px 0;">
-  <button id="btnSubir" class="btn-latido" onclick="scrollAndReload()">↑</button>
-</div>
-
-<footer>
-  <p id="footer-mensaje"></p>
-  <br>
-  <p>Con mucho cariño, tu amigo.</p>
-  <p><strong><em>Marc A. O.</em></strong></p>
-  <p>© Todos los derechos reservados</p>
-</footer>
-
-<div class="ondas">
-  <div class="onda"></div>
-  <div class="onda"></div>
-  <div class="onda"></div>
-</div>
   <!-- ============================================ -->
   <!-- MODALES -->
   <!-- ============================================ -->
@@ -158,22 +243,22 @@
     <img id="modalImg" class="modal-contenido">
   </div>
 
-<div id="modalSorpresa" class="modal-sorpresa">
-  <div class="modal-sorpresa-contenido">
-    <span class="cerrar-sorpresa" onclick="cerrarSorpresa()">&times;</span>
-    <h2>💫 Y pensar que todo empezó así...</h2>
-    <p style="font-size: 1rem; line-height: 1.8; margin: 15px 0;">
-      Entre risas, canciones y un montón de ocurrencias que solo nosotros entendemos.<br><br>
-      Han pasado los años, pero hay algo que no cambia: la certeza de que tenerte en mi vida fue de las mejores cosas que me pasaron.<br><br>
-      Aunque los caminos se hayan separado , el cariño y los recuerdos siguen intactos. Y mientras exista un "¿te acuerdas cuando...?", esta amistad seguirá viva. 💖
-    </p>
-    <p style="font-size: 0.95rem; opacity: 0.8; font-style: italic;">"No todos los días se encuentra a alguien con quien compartir tantos años de vida... y tantos recuerdos."</p>
-    <p style="font-size: 1rem; font-weight: bold; margin-top: 20px;">Te quiero mucho, Andy. 🎂🎈</p>
+  <div id="modalSorpresa" class="modal-sorpresa">
+    <div class="modal-sorpresa-contenido">
+      <span class="cerrar-sorpresa" onclick="cerrarSorpresa()">&times;</span>
+      <h2>💫 Y pensar que todo empezó así...</h2>
+      <p style="font-size: 1rem; line-height: 1.8; margin: 15px 0;">
+        Entre risas, canciones y un montón de ocurrencias que solo nosotros entendemos.<br><br>
+        Han pasado los años, pero hay algo que no cambia: la certeza de que tenerte en mi vida fue de las mejores cosas que me pasaron.<br><br>
+        Aunque los caminos se hayan separado un poco, el cariño y los recuerdos siguen intactos. Y mientras exista un "¿te acuerdas cuando...?", esta amistad seguirá viva. 💖
+      </p>
+      <p style="font-size: 0.95rem; opacity: 0.8; font-style: italic;">"No todos los días se encuentra a alguien con quien compartir tantos años de vida... y tantos recuerdos."</p>
+      <p style="font-size: 1rem; font-weight: bold; margin-top: 20px;">Te quiero mucho, Andy. 🎂🎈</p>
+    </div>
   </div>
-</div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA DE MANTENIMIENTO (CONTRASEÑA) -->
+  <!-- PANTALLA DE MANTENIMIENTO -->
   <!-- ============================================ -->
 
   <div id="pantalla-mantenimiento-premium">
@@ -204,6 +289,8 @@
     <button onclick="verificarPassword()">Aceptar</button>
   </div>
 
-<button id="btn-admin" class="btn-admin" style="position: fixed; bottom: 10px; left: 10px; background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.3); border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer; z-index: 9999999; backdrop-filter: blur(5px);">⚙️</button>  <script src="script.js"></script>
+  <button id="btn-admin" class="btn-admin" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.3); border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer; z-index: 9999999; backdrop-filter: blur(5px);">⚙️</button>
+
+  <script src="script.js"></script>
 </body>
 </html>
