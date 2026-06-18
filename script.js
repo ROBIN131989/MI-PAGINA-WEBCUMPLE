@@ -83,11 +83,14 @@ const VERSION_2026 = {
     <br>
     Hoy quiero desearte un año lleno de claridad, de paz, de momentos que te llenen el alma y de metas que te sigan emocionando. Que los 22 sean el inicio de una etapa increíble, llena de nuevas historias por escribir.
     </br>
-    <br>
+    
     Gracias por permitirme ser parte de tu historia, aunque sea en los capítulos que la vida nos ha dado. Te quiero mucho. 💜
     </br>
     <p><strong><em>"La vida no se mide por los años que pasan, sino por las personas que dejan huella en ellos."</em></strong></p>
     <br>Con todo el cariño, feliz cumpleaños. 🎂</br>
+    <br>
+Agradezco a los editores de texto, que me ayudarona a coregir y mejorar esto, la redaccion no es lo mio ja :). </br>
+
   `
 };
 
