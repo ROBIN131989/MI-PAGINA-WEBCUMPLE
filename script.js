@@ -1,5 +1,5 @@
 // ============================================
-// VERSIONES DE CUMPLEAÑOS
+// VERSIONES
 // ============================================
 
 const VERSION_2025 = {
@@ -11,8 +11,6 @@ const VERSION_2025 = {
   color: "#a8325b",
   headerBg: "rgba(255, 204, 221, 0.4)",
   h1Color: "#a8325b",
-  fraseRecuerdo: "Lo valioso no se reemplaza",
-  detalleRecuerdo: "8 años de amistad",
   footerMensaje: "Averiguamos de qué estamos hechos, cuando seamos llamados para ayudar a nuestros amigos en necesidad, y si alguna vez olvidas lo que de verdad significas para mí, todos los días te lo recordaré.",
   mensajePrincipal: `
     <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
@@ -64,8 +62,6 @@ const VERSION_2026 = {
   color: "#7b2d8b",
   headerBg: "rgba(180, 150, 220, 0.3)",
   h1Color: "#4a1a6b",
-  fraseRecuerdo: "La amistad verdadera no depende del tiempo ni de la distancia",
-  detalleRecuerdo: "9 años de amistad",
   footerMensaje: "Un año más y aquí seguimos. Gracias por ser parte de mi vida. Te quiero mucho.",
   mensajePrincipal: `
     <p>¡Hola, Andy! 🌟</p>
@@ -87,40 +83,35 @@ const VERSION_2026 = {
 };
 
 // ============================================
-// DETECTAR QUÉ VERSIÓN MOSTRAR (FORZAR 2026)
+// DETECTAR VERSIÓN (FORZAR 2026)
 // ============================================
 
 function obtenerVersion() {
-  // 🔥 Forzamos la versión 2026 para que se vea ahora
+  // 🔥 Forzamos 2026 para que se vea ahora
   return VERSION_2026;
 }
 
 const VERSION_ACTUAL = obtenerVersion();
 
 // ============================================
-// APLICAR VERSIÓN A LA PÁGINA
+// APLICAR VERSIÓN
 // ============================================
 
 function aplicarVersion() {
   const v = VERSION_ACTUAL;
 
-  // Subtítulo
   const subtituloEl = document.getElementById('subtitulo');
   if (subtituloEl) subtituloEl.textContent = v.subtitulo;
 
-  // Título del mensaje
   const h2El = document.getElementById('titulo-mensaje');
   if (h2El) h2El.textContent = v.h2;
 
-  // Contenido del mensaje
   const mensajeEl = document.getElementById('contenido-mensaje');
   if (mensajeEl) mensajeEl.innerHTML = v.mensajePrincipal;
 
-  // Footer
   const footerEl = document.getElementById('footer-mensaje');
   if (footerEl) footerEl.textContent = v.footerMensaje;
 
-  // Colores del header
   const header = document.querySelector('header');
   if (header) {
     header.style.background = v.headerBg;
@@ -129,12 +120,11 @@ function aplicarVersion() {
   const h1 = document.querySelector('header h1');
   if (h1) h1.style.color = v.h1Color;
 
-  // Aplicar color del tema a elementos clave
   document.querySelector(':root').style.setProperty('--color-principal', v.color);
 }
 
 // ============================================
-// VENTANITA DE RECUERDO (2025)
+// VENTANITA DE RECUERDO
 // ============================================
 
 function configurarVentanita() {
@@ -171,7 +161,7 @@ function configurarVentanita() {
 }
 
 // ============================================
-// EFECTO MÁQUINA DE ESCRIBIR
+// MÁQUINA DE ESCRIBIR
 // ============================================
 
 let i = 0;
@@ -274,7 +264,7 @@ function scrollAndReload() {
 }
 
 // ============================================
-// RELOJ ANALÓGICO
+// RELOJ
 // ============================================
 
 function actualizarReloj() {
@@ -297,7 +287,7 @@ setInterval(actualizarReloj, 1000);
 actualizarReloj();
 
 // ============================================
-// CONTADOR DE CUMPLEAÑOS (CON MENSAJE NATURAL)
+// CONTADOR
 // ============================================
 
 function actualizarContador() {
@@ -313,17 +303,14 @@ function actualizarContador() {
   const mes = meses[ahora.getMonth()];
   const año = ahora.getFullYear();
 
-  // Próximo cumpleaños (18 de junio)
   let proximoCumple = new Date(año, 5, 18, 0, 0, 0);
   if (ahora >= proximoCumple) {
     proximoCumple = new Date(año + 1, 5, 18, 0, 0, 0);
   }
 
-  // Verificar si HOY es 18 de junio
   const esHoyCumple = ahora.getMonth() === 5 && ahora.getDate() === 18;
 
   if (esHoyCumple) {
-    // Mensaje especial para el día del cumpleaños
     contador.innerHTML = `🎂 ¡HOY ES TU CUMPLEAÑOS, ANDY! 🎉🎈✨
       <br><span style="font-size: 0.9rem; opacity: 0.8;">¡Felicidades! Que tengas un día maravilloso.</span>`;
     contador.style.background = 'rgba(180, 150, 220, 0.4)';
@@ -334,7 +321,6 @@ function actualizarContador() {
     return;
   }
 
-  // Si no es cumpleaños, mostrar cuenta regresiva
   const diff = proximoCumple - ahora;
   const segundosTotales = Math.floor(diff / 1000);
   const diasRestantes = Math.floor(segundosTotales / (3600 * 24));
@@ -342,7 +328,6 @@ function actualizarContador() {
   const minutosRestantes = Math.floor((segundosTotales % 3600) / 60);
   const segundosRestantes = segundosTotales % 60;
 
-  // Mensaje natural con el conteo
   let mensajeContador = `🎂 Hola Andy, hoy es <strong>${diaSemana} ${dia} de ${mes} de ${año}</strong>`;
 
   if (diasRestantes === 0) {
@@ -361,12 +346,11 @@ function actualizarContador() {
   contador.style.padding = '12px';
 }
 
-// Actualizar contador cada segundo
 setInterval(actualizarContador, 1000);
 actualizarContador();
 
 // ============================================
-// MODAL ZOOM IMÁGENES
+// MODALES
 // ============================================
 
 function abrirModal(imgSrc) {
@@ -383,10 +367,6 @@ function cerrarModal() {
   if (modal) modal.style.display = 'none';
 }
 
-// ============================================
-// MODAL SORPRESA
-// ============================================
-
 function abrirSorpresa() {
   const modal = document.getElementById('modalSorpresa');
   if (!modal) return;
@@ -400,13 +380,11 @@ function cerrarSorpresa() {
   if (modal) modal.style.display = 'none';
 }
 
-// Asignar evento al botón sorpresa
 document.addEventListener('DOMContentLoaded', () => {
   const btnSorpresa = document.getElementById('btnSorpresa');
   if (btnSorpresa) btnSorpresa.addEventListener('click', abrirSorpresa);
 });
 
-// Cerrar modales al hacer clic fuera
 window.onclick = function(event) {
   const modalSorpresa = document.getElementById('modalSorpresa');
   const modalImagen = document.getElementById('modalImagen');
@@ -431,24 +409,22 @@ if (btnModo) {
 }
 
 // ============================================
-// VIBRACIÓN (Feedback táctil)
+// VIBRACIÓN
 // ============================================
 
 function vibrarSiSePuede() {
   if (navigator.vibrate) navigator.vibrate(50);
 }
 
-// Agregar vibración a elementos táctiles
 document.addEventListener('DOMContentLoaded', () => {
-  const elementos = document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo');
-  elementos.forEach(el => {
+  document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
     el.addEventListener('touchstart', () => vibrarSiSePuede());
     el.addEventListener('click', () => vibrarSiSePuede());
   });
 });
 
 // ============================================
-// VIDEOS: EFECTO EXPANDIR AL TOCAR
+// VIDEOS EFECTO EXPANDIR
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -463,7 +439,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// VIDEOS: AUTO-REPRODUCCIÓN AL APARECER
+// VIDEOS AUTO-REPRODUCCIÓN
 // ============================================
 
 const observerVideos = new IntersectionObserver((entries) => {
@@ -483,30 +459,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ============================================
-// INICIALIZACIÓN AL CARGAR LA PÁGINA
+// INICIALIZACIÓN
 // ============================================
 
 window.addEventListener('load', () => {
-  // Aplicar la versión (2026)
   aplicarVersion();
-
-  // Configurar ventanita de recuerdo
   configurarVentanita();
-
-  // Escribir el título con efecto máquina
   escribirTitulo();
-
-  // Lanzar globos y confeti
   lanzarGlobos();
   lanzarConfeti();
 
-  // Si es versión 2026, lanzar más confeti
   if (VERSION_ACTUAL.año === 2026) {
     setTimeout(() => lanzarConfeti(), 2000);
     setTimeout(() => lanzarGlobos(), 1000);
   }
 
-  // Limpiar globos después de 8 segundos
   setTimeout(() => {
     if (globosContainer) {
       globosContainer.style.display = 'none';
@@ -517,7 +484,7 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// MODO MANTENIMIENTO (ADMIN)
+// MODO MANTENIMIENTO
 // ============================================
 
 const CONTRASENA_ADMIN = "192480014-5";
