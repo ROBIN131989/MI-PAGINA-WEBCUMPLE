@@ -484,7 +484,7 @@ function crearVelas() {
       velasApagadas++;
       document.getElementById('velas-apagadas').textContent = velasApagadas;
 
-      if (velasApagadas === TOTAL_VELAS) {
+     if (velasApagadas === TOTAL_VELAS) {
   // Mostrar el modal de logro en grande
   mostrarLogro();
 }
