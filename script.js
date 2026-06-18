@@ -485,7 +485,9 @@ function crearVelas() {
       document.getElementById('velas-apagadas').textContent = velasApagadas;
 
       if (velasApagadas === TOTAL_VELAS) {
-        setTimeout(() => {
+  // Mostrar el modal de logro en grande
+  mostrarLogro();
+}
           // Mensaje especial
           alert('🎉 FELICES 22 🎉\n\nDISFRUTA LA VIDA QUE ES PRESTADA,\nES SOLO POR UN RATO');
           // Confeti extra
