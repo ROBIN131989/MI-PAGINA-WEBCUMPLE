@@ -20,12 +20,12 @@
 
   <!-- Aviso para el admin cuando el modo mantenimiento está activo -->
   <div id="aviso-admin" style="position: fixed; top: 80px; left: 20px; background: #ff69b4; color: white; padding: 8px 16px; border-radius: 30px; font-size: 12px; font-weight: bold; z-index: 10000; display: none; box-shadow: 0 0 10px rgba(0,0,0,0.3);">
-    🔧 MODO MANTENIMIENTO ACTIVADO - Los demás ven la pantalla de reparación
+    🔧 MODO MANTENIMIENTO ACTIVADO
   </div>
 
   <header>
     <h1 id="titulo-escritura"></h1>
-    <p id="subtitulo">Celebrando 8 años de amistad 💖</p>
+    <p id="subtitulo"></p>
   </header>
 
   <div id="contador-cumple"></div>
@@ -50,64 +50,8 @@
     </div>
 
     <section class="mensaje-glass">
-      <h2>🎈 ¿21 años ya? WOOW 🎈</h2>
-      <div class="mensaje-texto">
-        <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
-        <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
-        La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
-         no podía dejar pasar esta fecha sin escribirte algo. 
-         Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
-         y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
-         hecho presentes interfiriendo :(.
-        </br>
-        <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
-         Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
-         pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
-          unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
-          también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
-        </br>
-        <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
-        hemos vivido cosas que nos han transformado, 
-        y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
-        Pero eso no borra lo que fuimos ni el aprecio que te tengo.
-        </br>
-        <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
-        compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
-         ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
-         nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
-         hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
-         vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
-         lo que eres y de lo que estás construyendo.
-        </br>
-        <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
-        presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
-         sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
-         decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
-         esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
-          nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
-           es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
-        </br>
-
-        <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
-
-        <br> Quise agregar estos breves renglones ya que hablan sobre el paso del tiempo, 
-        como nos quita momentos que nos gustara volver a repetir:</br>
-
-        <br> Nos aferramos a recuerdos que ya no tienen a dónde volver. 
-        Las risas de antes suenan ahora como ecos lejanos, 
-        y las personas que fueron nuestro mundo se han convertido en sombras en mi memoria. 
-        El tiempo no ha curado nada, solo ha aprendido a guardar el dolor en silencio. Qué irónica es la vida: justo cuando empezamos a entender lo valioso, ya es demasiado tarde para tenerlo cerca.
-        </br>
-
-        <br> Caminamos entre días que parecen iguales, 
-        pero cada uno nos aleja más de aquello que alguna vez fuimos. Lo que era rutina, 
-        ahora es memoria. Lo que era risa, ahora es silencio. Queda un vacío extraño, 
-        como si el tiempo se hubiera llevado algo que nunca nos devolvió… y que nadie más podrá darnos.
-        </br>
-
-        <br>Te mando un abrazo fuerte, de esos que no necesitan palabras, de aquellos que no son de los comunes,
-        te mando ese abrazo que se siente en el alma.</br>
-      </div>
+      <h2 id="titulo-mensaje"></h2>
+      <div class="mensaje-texto" id="contenido-mensaje"></div>
     </section>
 
     <div class="videos-vertical">
@@ -146,10 +90,7 @@
   </div>
 
   <footer>
-    <p>Averiguamos de qué estamos hechos,</p>
-    <p>cuando seamos llamados para ayudar a nuestros amigos en necesidad,</p>
-    <p>y si alguna vez olvidas lo que de verdad significas para mí,</p>
-    <p>todos los días te lo recordaré.</p>
+    <p id="footer-mensaje"></p>
     <br>
     <p>Con mucho cariño, tu amigo.</p>
     <p><strong><em>Marc A. O.</em></strong></p>
@@ -164,7 +105,58 @@
   </div>
 
   <!-- ============================================ -->
-  <!-- PANTALLA DE MANTENIMIENTO PREMIUM (CORREGIDA) -->
+  <!-- VENTANITA DE RECUERDO DEL AÑO ANTERIOR      -->
+  <!-- ============================================ -->
+
+  <div id="ventanita-recuerdo" style="position: fixed; bottom: 100px; right: 20px; z-index: 9999; display: none;">
+    <!-- Botón minimizado (solo 💖) -->
+    <button id="btn-recuerdo-min" style="
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff69b4, #ff1493);
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(255,105,180,0.5);
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      display: none;
+    ">
+      💖
+    </button>
+
+    <!-- Tarjeta expandida -->
+    <div id="tarjeta-recuerdo" style="
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 20px;
+      max-width: 280px;
+      width: 90%;
+      border: 1px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      display: none;
+      animation: aparecerRecuerdo 0.4s ease;
+      color: white;
+      font-family: 'Quicksand', sans-serif;
+    ">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <span style="font-size: 1.1rem; font-weight: bold;">💖 RECUERDO <span id="anio-recuerdo"></span></span>
+        <button id="btn-cerrar-recuerdo" style="background: none; border: none; color: white; font-size: 18px; cursor: pointer;">✕</button>
+      </div>
+      <div style="font-size: 0.9rem; opacity: 0.9;">
+        <p><strong id="frase-recuerdo"></strong></p>
+        <p style="font-size: 0.8rem; margin-top: 8px;" id="detalle-recuerdo"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- PANTALLA DE MANTENIMIENTO                    -->
   <!-- ============================================ -->
 
   <style>
@@ -195,7 +187,6 @@
         100% { background-position: 0% 50%; }
     }
 
-    /* Grid holográfico */
     .grid-holografico {
         position: absolute;
         width: 100%;
@@ -213,7 +204,6 @@
         100% { transform: translateX(40px) translateY(40px); }
     }
 
-    /* Tarjeta holograma */
     .tarjeta-holograma {
         background: rgba(0, 20, 40, 0.6);
         backdrop-filter: blur(15px);
@@ -230,14 +220,8 @@
     }
 
     @keyframes aparecerTarjeta {
-        from {
-            opacity: 0;
-            transform: scale(0.9) translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
+        from { opacity: 0; transform: scale(0.9) translateY(30px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .tarjeta-holograma::before {
@@ -260,194 +244,40 @@
         100% { background-position: 100% 50%; }
     }
 
-    .icono-reparacion {
-        font-size: 70px;
-        animation: girarIcono 4s ease-in-out infinite;
-        display: inline-block;
-        filter: drop-shadow(0 0 10px #00ffff);
-    }
+    .icono-reparacion { font-size: 70px; animation: girarIcono 4s ease-in-out infinite; display: inline-block; filter: drop-shadow(0 0 10px #00ffff); }
+    @keyframes girarIcono { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } }
 
-    @keyframes girarIcono {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(15deg); }
-        75% { transform: rotate(-15deg); }
-    }
+    .titulo-neon { font-size: 1.8rem; font-weight: 700; margin: 20px 0 10px; letter-spacing: 3px; text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; }
 
-    .titulo-neon {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin: 20px 0 10px;
-        letter-spacing: 3px;
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-    }
+    .barra-futurista { width: 90%; height: 8px; background: rgba(0, 255, 255, 0.2); border-radius: 10px; margin: 25px auto; overflow: hidden; }
+    .barra-futurista-llenado { width: 0%; height: 100%; background: linear-gradient(90deg, #00ffff, #0088ff); border-radius: 10px; animation: cargaInfinita 3s ease-in-out infinite; }
+    @keyframes cargaInfinita { 0% { width: 0%; margin-left: 0%; } 50% { width: 100%; margin-left: 0%; } 100% { width: 0%; margin-left: 100%; } }
 
-    .barra-futurista {
-        width: 90%;
-        height: 8px;
-        background: rgba(0, 255, 255, 0.2);
-        border-radius: 10px;
-        margin: 25px auto;
-        overflow: hidden;
-    }
+    .terminal-comandos { background: rgba(0, 0, 0, 0.7); border-radius: 15px; padding: 15px; margin: 20px 0; text-align: left; font-family: 'Space Mono', monospace; font-size: 11px; border-left: 3px solid #00ffff; }
 
-    .barra-futurista-llenado {
-        width: 0%;
-        height: 100%;
-        background: linear-gradient(90deg, #00ffff, #0088ff);
-        border-radius: 10px;
-        animation: cargaInfinita 3s ease-in-out infinite;
-    }
-
-    @keyframes cargaInfinita {
-        0% { width: 0%; margin-left: 0%; }
-        50% { width: 100%; margin-left: 0%; }
-        100% { width: 0%; margin-left: 100%; }
-    }
-
-    .terminal-comandos {
-        background: rgba(0, 0, 0, 0.7);
-        border-radius: 15px;
-        padding: 15px;
-        margin: 20px 0;
-        text-align: left;
-        font-family: 'Space Mono', monospace;
-        font-size: 11px;
-        border-left: 3px solid #00ffff;
-    }
-
-    .radar-container {
-        width: 100px;
-        height: 100px;
-        margin: 20px auto;
-        position: relative;
-    }
-
-    .radar-circulo {
-        width: 100%;
-        height: 100%;
-        border: 2px solid #00ffff;
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .radar-linea {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 50%;
-        height: 2px;
-        background: #00ffff;
-        transform-origin: 0% 50%;
-        animation: radarGiro 3s linear infinite;
-    }
-
-    @keyframes radarGiro {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
+    .radar-container { width: 100px; height: 100px; margin: 20px auto; position: relative; }
+    .radar-circulo { width: 100%; height: 100%; border: 2px solid #00ffff; border-radius: 50%; position: relative; overflow: hidden; }
+    .radar-linea { position: absolute; top: 50%; left: 50%; width: 50%; height: 2px; background: #00ffff; transform-origin: 0% 50%; animation: radarGiro 3s linear infinite; }
+    @keyframes radarGiro { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     /* Botón de administrador */
-    .btn-admin {
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        color: #00ffff;
-        border: 1px solid #00ffff;
-        border-radius: 50px;
-        padding: 10px 18px;
-        font-size: 12px;
-        font-weight: bold;
-        cursor: pointer;
-        z-index: 9999999;
-        transition: all 0.3s ease;
-        font-family: 'Space Mono', monospace;
-    }
-
-    .btn-admin:hover {
-        background: #00ffff;
-        color: #000;
-        box-shadow: 0 0 20px #00ffff;
-    }
+    .btn-admin { position: fixed; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.8); color: #00ffff; border: 1px solid #00ffff; border-radius: 50px; padding: 10px 18px; font-size: 12px; font-weight: bold; cursor: pointer; z-index: 9999999; transition: all 0.3s ease; font-family: 'Space Mono', monospace; }
+    .btn-admin:hover { background: #00ffff; color: #000; box-shadow: 0 0 20px #00ffff; }
 
     /* Popup de contraseña */
-    .popup-password {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(10, 10, 30, 0.98);
-        backdrop-filter: blur(20px);
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        z-index: 10000000;
-        box-shadow: 0 0 50px rgba(0, 255, 255, 0.3);
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        min-width: 280px;
-        border: 1px solid #00ffff;
-    }
+    .popup-password { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(10, 10, 30, 0.98); backdrop-filter: blur(20px); padding: 30px; border-radius: 20px; text-align: center; z-index: 10000000; box-shadow: 0 0 50px rgba(0, 255, 255, 0.3); display: none; flex-direction: column; gap: 15px; min-width: 280px; border: 1px solid #00ffff; }
+    .popup-password input { padding: 12px; font-size: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00ffff; border-radius: 25px; text-align: center; color: white; font-family: 'Space Mono', monospace; }
+    .popup-password button { background: linear-gradient(135deg, #00ffff, #0088ff); color: #000; border: none; padding: 10px; border-radius: 25px; cursor: pointer; font-size: 16px; font-weight: bold; }
+    .cerrar-popup { position: absolute; top: 10px; right: 15px; font-size: 20px; cursor: pointer; color: #00ffff; }
 
-    .popup-password input {
-        padding: 12px;
-        font-size: 16px;
-        background: rgba(0, 0, 0, 0.7);
-        border: 1px solid #00ffff;
-        border-radius: 25px;
-        text-align: center;
-        color: white;
-        font-family: 'Space Mono', monospace;
-    }
+    .mensaje-error-admin { background: rgba(255, 0, 0, 0.2); border-left: 3px solid #ff4444; padding: 10px; margin-top: 10px; border-radius: 10px; animation: sacudir 0.3s ease-in-out 0s 2; font-size: 13px; color: #ff8888; }
+    .mensaje-exito-admin { background: rgba(0, 255, 0, 0.2); border-left: 3px solid #00ff00; padding: 10px; margin-top: 10px; border-radius: 10px; font-size: 13px; color: #88ff88; }
+    @keyframes sacudir { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 
-    .popup-password button {
-        background: linear-gradient(135deg, #00ffff, #0088ff);
-        color: #000;
-        border: none;
-        padding: 10px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    .cerrar-popup {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 20px;
-        cursor: pointer;
-        color: #00ffff;
-    }
-
-    /* Mensaje de error con humor */
-    .mensaje-error-admin {
-        background: rgba(255, 0, 0, 0.2);
-        border-left: 3px solid #ff4444;
-        padding: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-        animation: sacudir 0.3s ease-in-out 0s 2;
-        font-size: 13px;
-        color: #ff8888;
-    }
-
-    .mensaje-exito-admin {
-        background: rgba(0, 255, 0, 0.2);
-        border-left: 3px solid #00ff00;
-        padding: 10px;
-        margin-top: 10px;
-        border-radius: 10px;
-        font-size: 13px;
-        color: #88ff88;
-    }
-
-    @keyframes sacudir {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
+    /* Animación de la ventanita */
+    @keyframes aparecerRecuerdo {
+        from { opacity: 0; transform: translateY(20px) scale(0.95); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     @media (max-width: 600px) {
@@ -459,32 +289,21 @@
     }
   </style>
 
-  <!-- Pantalla de mantenimiento (INICIALMENTE OCULTA, se muestra SOLO si el modo está activado) -->
+  <!-- Pantalla de mantenimiento -->
   <div id="pantalla-mantenimiento-premium">
     <div class="grid-holografico"></div>
-    
     <div class="tarjeta-holograma">
       <div class="icono-reparacion">🔧⚙️🔧</div>
       <h1 class="titulo-neon">SISTEMA EN MANTENIMIENTO</h1>
       <p style="margin: 15px 0; opacity: 0.9;">Estamos trabajando para ofrecerte una experiencia increíble</p>
-      
-      <div class="barra-futurista">
-        <div class="barra-futurista-llenado"></div>
-      </div>
-      
+      <div class="barra-futurista"><div class="barra-futurista-llenado"></div></div>
       <div class="terminal-comandos">
         <div style="color: #00ffff;">> iniciando protocolo de reparación...</div>
         <div style="color: #00ff00;">> verificando archivos del sistema... OK</div>
         <div style="color: #00ffff;">> optimizando sorpresa especial...</div>
         <div style="color: #00ffff;">> reparando componentes<span style="animation: parpadear 1s step-end infinite;">_</span></div>
       </div>
-      
-      <div class="radar-container">
-        <div class="radar-circulo">
-          <div class="radar-linea"></div>
-        </div>
-      </div>
-      
+      <div class="radar-container"><div class="radar-circulo"><div class="radar-linea"></div></div></div>
       <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Disculpa las molestias, en breve volveremos</p>
       <p style="font-size: 0.8rem; opacity: 0.5;">✨ Gracias por tu paciencia ✨</p>
     </div>
@@ -500,22 +319,511 @@
     <button onclick="verificarPassword()">Aceptar</button>
   </div>
 
-  <!-- Botón de administrador (visible para todos) -->
+  <!-- Botón de administrador -->
   <button id="btn-admin" class="btn-admin">🔧 ADMIN</button>
 
   <script>
     // ============================================
-    // CONTRASEÑA CORRECTA
+    // SISTEMA DE VERSIONES ANUALES
+    // ============================================
+    
+    const VERSION_2025 = {
+      año: 2025,
+      edad: 21,
+      tituloEscritura: "¡Feliz cumpleaños, amiga!",
+      subtitulo: "Celebrando 8 años de amistad 💖",
+      h2: "🎈 ¿21 años ya? WOOW 🎈",
+      color: "#a8325b",
+      headerBg: "rgba(255, 204, 221, 0.4)",
+      h1Color: "#a8325b",
+      fraseRecuerdo: "Lo valioso no se reemplaza",
+      detalleRecuerdo: "8 años de amistad",
+      footerMensaje: "Averiguamos de qué estamos hechos, cuando seamos llamados para ayudar a nuestros amigos en necesidad, y si alguna vez olvidas lo que de verdad significas para mí, todos los días te lo recordaré.",
+      mensajePrincipal: `
+        <p>Eres alguien muy especial para mí… y uff, cómo han pasado los años...</p>
+        <br>Hoy cumples 21; de verdad que si tú no puedes creerlo, pues yo tampoco. 
+        La verdad es que sí es sorprendente, y aunque hace tiempo que no hablamos tanto como antes,
+         no podía dejar pasar esta fecha sin escribirte algo. 
+         Porque la verdad es que no todos los días cumple años una persona con la que compartiste tanto 
+         y que sigue teniendo un lugar especial en tu vida, aunque el tiempo y la distancia se hayan
+         hecho presentes interfiriendo :(.
+        </br>
+        <br> Han pasado ya 8 años desde que nos conocimos. Ocho.
+         Se dice fácil, pero dentro de esos años hay tantas memorias, tantas pláticas, tanto de secu-nenes, 
+         pero más han sido en pandemia, incluso cuando te puse a leer cosas para mi tarea de catecismo, jaja,
+          unos pasajes bíblicos. Han estado risas, momentos buenos y también silencios que, aunque incómodos a veces, 
+          también formaron parte de nuestra historia, sobre todo en estas últimas fechas, meses.
+        </br>
+        <br>Hemos cambiado, y eso es natural. Cada quien ha tomado su camino, 
+        hemos vivido cosas que nos han transformado, 
+        y quizás por eso hoy somos personas distintas a las que empezaron esta amistad. 
+        Pero eso no borra lo que fuimos ni el aprecio que te tengo.
+        </br>
+        <br> Hoy quiero desearte un cumpleaños lleno de cosas reales: tranquilidad, alegría, 
+        compañía sincera y claridad para lo que venga. Que los 21 te traigan nuevas versiones de
+         ti misma, esperando que todas estas sean positivas; sin embargo, a veces las malas también 
+         nos dejan algo por delante, ya sea una experiencia que nos ayuda a darnos cuenta de que lo 
+         hemos hecho mal y que hay posibilidad de hacerlo otra vez y mejor, o simplemente que ya no 
+         vuelva a ocurrir. También desearte nuevas metas y momentos que te hagan sentir orgullosa de
+         lo que eres y de lo que estás construyendo.
+        </br>
+        <br> Gracias por haber sido parte de mi vida todos estos años, por dejarme conocerte y por estar 
+        presente en etapas importantes para mí. Y aunque la vida nos tenga un poco alejados, quiero que
+         sepas que todavía valoro muchísimo nuestra historia. Tal vez no sientas lo mismo, pero quiero 
+         decirte que, aunque estamos en el proceso de la adultez, en el fondo de mi corazón aún mantendré 
+         esa bella amistad que hemos construido a través de largos y difíciles años. Sí he conocido personas
+          nuevas, pero hay cosas en la vida que simplemente es difícil reemplazar o simplemente no se pueden;
+           es como el agua, la puedes cambiar por un refresco, pero no es lo mismo.
+        </br>
+        <p><strong><em>"Lo valioso no se reemplaza, simplemente se guarda en un rincón especial del corazón."</em></strong></p>
+        <br>Te mando un abrazo fuerte, de esos que no necesitan palabras.</br>
+      `
+    };
+
+    const VERSION_2026 = {
+      año: 2026,
+      edad: 22,
+      tituloEscritura: "¡Feliz cumpleaños, amiga! 🎊",
+      subtitulo: "Celebrando 9 años de amistad 💖",
+      h2: "🎈 ¿22 años ya? ¡No puede ser! 🎈",
+      color: "#7b2d8b",
+      headerBg: "rgba(180, 150, 220, 0.35)",
+      h1Color: "#7b2d8b",
+      fraseRecuerdo: "La amistad verdadera no depende del tiempo ni de la distancia",
+      detalleRecuerdo: "9 años de amistad",
+      footerMensaje: "Un año más y aquí seguimos. Gracias por ser parte de mi vida. Te quiero mucho.",
+      mensajePrincipal: `
+        <p>Un año más y aquí seguimos… ¡22 años, Andy! 🎂</p>
+        <br>
+        Cada año que pasa me doy cuenta de lo mucho que has crecido,
+        lo mucho que hemos vivido y de todo lo que aún está por venir.
+        Hoy es un día para celebrarte, para recordarte lo especial que eres
+        y lo mucho que significas para mí después de todos estos años.
+        </br>
+        <br>
+        9 años de amistad. Nueve. Ya son casi una década, ¿lo puedes creer?
+        Desde aquellos tiempos de la secundaria hasta hoy, adultos navegando la vida,
+        cada momento ha valido la pena. Y aunque los caminos a veces se separan,
+        el corazón siempre sabe dónde están las personas que importan.
+        </br>
+        <br>
+        Que este año de vida te traiga todo lo que mereces: paz, amor, éxito,
+        y muchas razones para sonreír. Que los 22 sean tu mejor año hasta ahora.
+        </br>
+        <p><strong><em>"La amistad verdadera no depende del tiempo ni de la distancia, simplemente existe."</em></strong></p>
+        <br>Con todo el cariño del mundo, feliz cumpleaños. 🎉</br>
+      `
+    };
+
+    // Agrega aquí más versiones para años futuros
+    // const VERSION_2027 = { ... };
+
+    // ============================================
+    // DETECTAR QUÉ VERSIÓN MOSTRAR
+    // ============================================
+    
+    function obtenerVersion() {
+      const ahora = new Date();
+      const año = ahora.getFullYear();
+      const mes = ahora.getMonth(); // 0=enero, 5=junio
+      const dia = ahora.getDate();
+      
+      // Determinar el año de la versión según la fecha
+      // Si es 18 de junio o después, usar el año actual
+      // Si es antes del 18 de junio, usar el año anterior
+      let añoVersion = año;
+      if (mes < 5 || (mes === 5 && dia < 18)) {
+        añoVersion = año - 1;
+      }
+      
+      // Mapear año a versión
+      const versiones = {
+        2025: VERSION_2025,
+        2026: VERSION_2026,
+        // Agrega aquí: 2027: VERSION_2027, etc.
+      };
+      
+      return versiones[añoVersion] || VERSION_2025;
+    }
+
+    const VERSION_ACTUAL = obtenerVersion();
+
+    // ============================================
+    // APLICAR VERSIÓN A LA PÁGINA
+    // ============================================
+    
+    function aplicarVersion() {
+      const v = VERSION_ACTUAL;
+      
+      // Subtítulo
+      const subtituloEl = document.getElementById('subtitulo');
+      if (subtituloEl) subtituloEl.textContent = v.subtitulo;
+      
+      // Título del mensaje
+      const h2El = document.getElementById('titulo-mensaje');
+      if (h2El) h2El.textContent = v.h2;
+      
+      // Contenido del mensaje
+      const mensajeEl = document.getElementById('contenido-mensaje');
+      if (mensajeEl) mensajeEl.innerHTML = v.mensajePrincipal;
+      
+      // Footer
+      const footerEl = document.getElementById('footer-mensaje');
+      if (footerEl) footerEl.textContent = v.footerMensaje;
+      
+      // Colores del header
+      const header = document.querySelector('header');
+      if (header) {
+        header.style.background = v.headerBg;
+        header.style.borderColor = 'rgba(200, 150, 255, 0.5)';
+      }
+      const h1 = document.querySelector('header h1');
+      if (h1) h1.style.color = v.h1Color;
+      
+      // Aplicar color del tema a elementos clave
+      document.querySelector(':root').style.setProperty('--color-principal', v.color);
+      
+      // Mostrar ventanita de recuerdo si hay año anterior
+      const añoAnterior = v.año - 1;
+      const versiones = { 2025: VERSION_2025, 2026: VERSION_2026 };
+      if (versiones[añoAnterior]) {
+        mostrarVentanitaRecuerdo(añoAnterior, versiones[añoAnterior]);
+      }
+    }
+
+    // ============================================
+    // VENTANITA DE RECUERDO
+    // ============================================
+    
+    function mostrarVentanitaRecuerdo(año, version) {
+      const container = document.getElementById('ventanita-recuerdo');
+      const btnMin = document.getElementById('btn-recuerdo-min');
+      const tarjeta = document.getElementById('tarjeta-recuerdo');
+      const anioEl = document.getElementById('anio-recuerdo');
+      const fraseEl = document.getElementById('frase-recuerdo');
+      const detalleEl = document.getElementById('detalle-recuerdo');
+      const btnCerrar = document.getElementById('btn-cerrar-recuerdo');
+      
+      if (!container || !btnMin || !tarjeta) return;
+      
+      // Llenar datos
+      anioEl.textContent = año;
+      fraseEl.textContent = `"${version.fraseRecuerdo}"`;
+      detalleEl.textContent = version.detalleRecuerdo;
+      
+      // Mostrar contenedor
+      container.style.display = 'block';
+      
+      // Estado: minimizado por defecto
+      let expandido = false;
+      btnMin.style.display = 'flex';
+      tarjeta.style.display = 'none';
+      
+      // Evento para expandir
+      btnMin.onclick = function() {
+        expandido = true;
+        btnMin.style.display = 'none';
+        tarjeta.style.display = 'block';
+        tarjeta.style.animation = 'none';
+        setTimeout(() => tarjeta.style.animation = 'aparecerRecuerdo 0.4s ease', 10);
+      };
+      
+      // Evento para cerrar (minimizar)
+      btnCerrar.onclick = function() {
+        expandido = false;
+        tarjeta.style.display = 'none';
+        btnMin.style.display = 'flex';
+      };
+      
+      // También se puede cerrar tocando fuera
+      document.addEventListener('click', function(e) {
+        if (expandido && !container.contains(e.target)) {
+          tarjeta.style.display = 'none';
+          btnMin.style.display = 'flex';
+          expandido = false;
+        }
+      });
+    }
+
+    // ============================================
+    // EFECTO MÁQUINA DE ESCRIBIR
+    // ============================================
+    let i = 0;
+    const tituloOriginal = VERSION_ACTUAL.tituloEscritura;
+
+    function escribirTitulo() {
+      const tituloElemento = document.getElementById('titulo-escritura');
+      if (i < tituloOriginal.length) {
+        tituloElemento.innerHTML += tituloOriginal.charAt(i);
+        i++;
+        setTimeout(escribirTitulo, 80);
+      }
+    }
+
+    // ============================================
+    // CORAZONES FLOTANTES
+    // ============================================
+    const corazonesContainer = document.getElementById('corazones-container');
+    const corazones = ['❤️', '💖', '💗', '💓', '💕', '💝', '🌸', '🌺'];
+
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.innerHTML = corazones[Math.floor(Math.random() * corazones.length)];
+      corazon.style.left = Math.random() * 100 + '%';
+      corazon.style.fontSize = (15 + Math.random() * 25) + 'px';
+      corazon.style.animationDuration = (8 + Math.random() * 8) + 's';
+      corazon.style.animationDelay = Math.random() * 5 + 's';
+      corazonesContainer.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 14000);
+    }
+
+    setInterval(() => {
+      if (corazonesContainer.children.length < 40) crearCorazon();
+    }, 800);
+
+    // ============================================
+    // GLOBOS 3D
+    // ============================================
+    const container = document.getElementById('globos-container');
+
+    function crearGlobo() {
+      if (!container) return;
+      const globo = document.createElement('div');
+      globo.classList.add('globo');
+      const colores = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8'];
+      globo.classList.add(colores[Math.floor(Math.random() * colores.length)]);
+      globo.style.left = Math.random() * (window.innerWidth - 80) + 'px';
+      const duracion = 6 + Math.random() * 5;
+      globo.style.animationDuration = duracion + 's';
+      globo.style.animationDelay = Math.random() * 4 + 's';
+      const escala = 0.7 + Math.random() * 0.6;
+      globo.style.transform = `scale(${escala})`;
+      container.appendChild(globo);
+      setTimeout(() => globo.remove(), (duracion + 4) * 1000);
+    }
+
+    function lanzarGlobos() {
+      for (let j = 0; j < 25; j++) {
+        setTimeout(() => crearGlobo(), j * 200);
+      }
+    }
+
+    // ============================================
+    // CONFETI
+    // ============================================
+    function crearConfeti() {
+      if (!container) return;
+      const confeti = document.createElement('div');
+      confeti.classList.add('confeti');
+      confeti.style.left = Math.random() * window.innerWidth + 'px';
+      confeti.style.top = '-10px';
+      const coloresConfeti = ['#ff69b4', '#ffb6c1', '#ff1493', '#ffc0cb', '#db7093', '#ff6347', '#ffd700'];
+      confeti.style.backgroundColor = coloresConfeti[Math.floor(Math.random() * coloresConfeti.length)];
+      const duracion = 4 + Math.random() * 4;
+      confeti.style.animationDuration = duracion + 's';
+      confeti.style.animationDelay = Math.random() * 6 + 's';
+      container.appendChild(confeti);
+      setTimeout(() => confeti.remove(), (duracion + 6) * 1000);
+    }
+
+    function lanzarConfeti() {
+      for (let j = 0; j < 50; j++) {
+        setTimeout(() => crearConfeti(), j * 60);
+      }
+    }
+
+    // ============================================
+    // BOTÓN SUBIR
+    // ============================================
+    function scrollAndReload() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => location.reload(), 500);
+    }
+
+    // ============================================
+    // RELOJ ANALÓGICO
+    // ============================================
+    function actualizarReloj() {
+      const ahora = new Date();
+      const horas = ahora.getHours() % 12;
+      const minutos = ahora.getMinutes();
+      const segundos = ahora.getSeconds();
+      const horaDeg = (horas * 30) + (minutos * 0.5);
+      const minutoDeg = minutos * 6;
+      const segundoDeg = segundos * 6;
+      const horaElem = document.querySelector('.manecilla.hora');
+      const minutoElem = document.querySelector('.manecilla.minuto');
+      const segundoElem = document.querySelector('.manecilla.segundo');
+      if (horaElem) horaElem.style.transform = `translateX(-50%) rotate(${horaDeg}deg)`;
+      if (minutoElem) minutoElem.style.transform = `translateX(-50%) rotate(${minutoDeg}deg)`;
+      if (segundoElem) segundoElem.style.transform = `translateX(-50%) rotate(${segundoDeg}deg)`;
+    }
+
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj();
+
+    // ============================================
+    // CONTADOR DE CUMPLEAÑOS
+    // ============================================
+    function actualizarContador() {
+      const contador = document.getElementById('contador-cumple');
+      if (!contador) return;
+      const ahora = new Date();
+      const diasSemana = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+      const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      const diaSemana = diasSemana[ahora.getDay()];
+      const dia = ahora.getDate();
+      const mes = meses[ahora.getMonth()];
+      const año = ahora.getFullYear();
+
+      let proximoCumple = new Date(año, 5, 18, 0, 0, 0);
+      if (ahora >= proximoCumple) proximoCumple = new Date(año + 1, 5, 18, 0, 0, 0);
+
+      const esHoyCumple = ahora.getMonth() === 5 && ahora.getDate() === 18;
+
+      if (esHoyCumple) {
+        contador.innerHTML = `🎂 ¡HOY ES TU CUMPLEAÑOS, ANDY! ¡Felicidades! 🎉🎈✨`;
+        contador.style.background = 'rgba(255, 105, 180, 0.3)';
+        contador.style.fontWeight = 'bold';
+        contador.style.fontSize = '1.1rem';
+        return;
+      }
+
+      const diff = proximoCumple - ahora;
+      const segundosTotales = Math.floor(diff / 1000);
+      const diasRestantes = Math.floor(segundosTotales / (3600 * 24));
+      const horasRestantes = Math.floor((segundosTotales % (3600 * 24)) / 3600);
+      const minutosRestantes = Math.floor((segundosTotales % 3600) / 60);
+      const segundosRestantes = segundosTotales % 60;
+
+      contador.innerHTML = `🎂 Hola Andy, hoy es <strong>${diaSemana} ${dia} de ${mes} de ${año}</strong>, faltan <strong>${diasRestantes} días</strong>, ${horasRestantes} horas, ${minutosRestantes} minutos y ${segundosRestantes} segundos para tu próximo cumpleaños 🎈✨`;
+    }
+
+    setInterval(actualizarContador, 1000);
+    actualizarContador();
+
+    // ============================================
+    // MODAL ZOOM
+    // ============================================
+    function abrirModal(imgSrc) {
+      const modal = document.getElementById('modalImagen');
+      const modalImg = document.getElementById('modalImg');
+      modal.style.display = 'block';
+      modalImg.src = imgSrc;
+      vibrarSiSePuede();
+    }
+
+    function cerrarModal() {
+      document.getElementById('modalImagen').style.display = 'none';
+    }
+
+    // ============================================
+    // MODAL SORPRESA
+    // ============================================
+    function abrirSorpresa() {
+      const modal = document.getElementById('modalSorpresa');
+      modal.style.display = 'block';
+      vibrarSiSePuede();
+      lanzarConfeti();
+    }
+
+    function cerrarSorpresa() {
+      document.getElementById('modalSorpresa').style.display = 'none';
+    }
+
+    document.getElementById('btnSorpresa').addEventListener('click', abrirSorpresa);
+
+    window.onclick = function(event) {
+      const modalSorpresa = document.getElementById('modalSorpresa');
+      const modalImagen = document.getElementById('modalImagen');
+      if (event.target === modalSorpresa) cerrarSorpresa();
+      if (event.target === modalImagen) cerrarModal();
+    };
+
+    // ============================================
+    // MODO OSCURO
+    // ============================================
+    const btnModo = document.getElementById('btnModoOscuro');
+    let modoOscuro = false;
+
+    btnModo.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      modoOscuro = !modoOscuro;
+      btnModo.innerHTML = modoOscuro ? '☀️' : '🌙';
+      vibrarSiSePuede();
+    });
+
+    // ============================================
+    // VIBRACIÓN
+    // ============================================
+    function vibrarSiSePuede() {
+      if (navigator.vibrate) navigator.vibrate(50);
+    }
+
+    document.querySelectorAll('.card-img, .btn-latido, .video-premium, .btn-sorpresa, .btn-modo').forEach(el => {
+      el.addEventListener('touchstart', () => vibrarSiSePuede());
+      el.addEventListener('click', () => vibrarSiSePuede());
+    });
+
+    // ============================================
+    // VIDEOS EFECTO EXPANDIR
+    // ============================================
+    document.querySelectorAll('.video-premium').forEach(video => {
+      video.addEventListener('touchstart', () => { video.style.transform = 'scale(1.02)'; });
+      video.addEventListener('touchend', () => { video.style.transform = ''; });
+    });
+
+    // ============================================
+    // AUTO-REPRODUCCIÓN DE VIDEOS
+    // ============================================
+    const observerVideos = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.play().catch(() => {});
+        } else {
+          entry.target.pause();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.video-premium').forEach(video => {
+      observerVideos.observe(video);
+    });
+
+    // ============================================
+    // INICIALIZACIÓN
+    // ============================================
+    window.addEventListener('load', () => {
+      aplicarVersion();
+      escribirTitulo();
+      lanzarGlobos();
+      lanzarConfeti();
+
+      if (VERSION_ACTUAL.año === 2026) {
+        setTimeout(() => lanzarConfeti(), 2000);
+        setTimeout(() => lanzarGlobos(), 1000);
+      }
+
+      setTimeout(() => {
+        if (container) {
+          container.style.display = 'none';
+          container.innerHTML = '';
+          container.style.display = '';
+        }
+      }, 8000);
+    });
+
+    // ============================================
+    // MODO MANTENIMIENTO
     // ============================================
     const CONTRASENA_ADMIN = "192480014-5";
     
-    // Variables
     let modoMantenimientoActivo = false;
     let intentosFallidos = 0;
     let bloqueado = false;
     let tiempoBloqueo = 0;
     
-    // Elementos
     const pantallaMantenimiento = document.getElementById('pantalla-mantenimiento-premium');
     const btnAdmin = document.getElementById('btn-admin');
     const popupPassword = document.getElementById('popup-password');
@@ -523,182 +831,140 @@
     const mensajeErrorContainer = document.getElementById('mensaje-error-container');
     const avisoAdmin = document.getElementById('aviso-admin');
     
-    // ============================================
-    // FUNCIONES DEL MODO MANTENIMIENTO
-    // ============================================
-    
     function detenerTodosLosVideos() {
-        const videos = document.querySelectorAll('video');
-        videos.forEach(video => {
-            video.pause();
-            video.currentTime = 0;
-        });
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        video.pause();
+        video.currentTime = 0;
+      });
     }
     
     function activarModoMantenimiento() {
-        modoMantenimientoActivo = true;
-        pantallaMantenimiento.style.display = 'flex';
-        detenerTodosLosVideos();
-        localStorage.setItem('modoMantenimientoGlobal', 'activo');
-        if (avisoAdmin) avisoAdmin.style.display = 'block';
+      modoMantenimientoActivo = true;
+      pantallaMantenimiento.style.display = 'flex';
+      detenerTodosLosVideos();
+      localStorage.setItem('modoMantenimientoGlobal', 'activo');
+      if (avisoAdmin) avisoAdmin.style.display = 'block';
     }
     
     function desactivarModoMantenimiento() {
-        modoMantenimientoActivo = false;
-        pantallaMantenimiento.style.display = 'none';
-        localStorage.setItem('modoMantenimientoGlobal', 'inactivo');
-        if (avisoAdmin) avisoAdmin.style.display = 'none';
+      modoMantenimientoActivo = false;
+      pantallaMantenimiento.style.display = 'none';
+      localStorage.setItem('modoMantenimientoGlobal', 'inactivo');
+      if (avisoAdmin) avisoAdmin.style.display = 'none';
     }
-    
-    // ============================================
-    // MOSTRAR MENSAJES
-    // ============================================
     
     function mostrarMensaje(mensaje, tipo) {
-        const className = tipo === 'error' ? 'mensaje-error-admin' : 'mensaje-exito-admin';
-        mensajeErrorContainer.innerHTML = `<div class="${className}">${mensaje}</div>`;
-        setTimeout(() => {
-            mensajeErrorContainer.innerHTML = '';
-        }, 4000);
+      const className = tipo === 'error' ? 'mensaje-error-admin' : 'mensaje-exito-admin';
+      mensajeErrorContainer.innerHTML = `<div class="${className}">${mensaje}</div>`;
+      setTimeout(() => {
+        mensajeErrorContainer.innerHTML = '';
+      }, 4000);
     }
-    
-    // ============================================
-    // VERIFICAR CONTRASEÑA
-    // ============================================
     
     function verificarPassword() {
-        // Verificar si está bloqueado
-        if (bloqueado) {
-            const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
-            mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos antes de volver a intentar.`, 'error');
-            return;
-        }
+      if (bloqueado) {
+        const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
+        mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
+        return;
+      }
+      
+      const password = passwordInput.value;
+      
+      if (password === CONTRASENA_ADMIN) {
+        intentosFallidos = 0;
         
-        const password = passwordInput.value;
-        
-        if (password === CONTRASENA_ADMIN) {
-            // ÉXITO - Contraseña correcta
-            intentosFallidos = 0;
-            
-            if (modoMantenimientoActivo) {
-                desactivarModoMantenimiento();
-                mostrarMensaje('✅ ¡Bienvenido, Administrador! Modo mantenimiento DESACTIVADO. Todos pueden ver la página ahora.', 'exito');
-            } else {
-                activarModoMantenimiento();
-                mostrarMensaje('✅ ¡Bienvenido, Administrador! Modo mantenimiento ACTIVADO. Los demás verán la pantalla de mantenimiento.', 'exito');
-            }
-            
-            cerrarPopupPassword();
-            
+        if (modoMantenimientoActivo) {
+          desactivarModoMantenimiento();
+          mostrarMensaje('✅ Modo mantenimiento DESACTIVADO', 'exito');
         } else {
-            // ERROR - Contraseña incorrecta
-            intentosFallidos++;
-            const intentosRestantes = 3 - intentosFallidos;
-            
-            let mensaje = '';
-            switch(intentosFallidos) {
-                case 1:
-                    mensaje = '❌ Nope. Solo para admins. ¿Otra vez? 😏';
-                    break;
-                case 2:
-                    mensaje = '❌ Jajaja... No, no, no. Sigue soñando. 😈';
-                    break;
-                case 3:
-                    mensaje = '❌ ÚLTIMA OPORTUNIDAD... ¡Y fallaste! 🔒 Acceso bloqueado por 10 segundos';
-                    break;
-                default:
-                    mensaje = '❌ Contraseña incorrecta';
-            }
-            
-            if (intentosRestantes > 0 && intentosFallidos < 3) {
-                mensaje += `<br>Intentos restantes: ${intentosRestantes}`;
-            }
-            
-            mostrarMensaje(mensaje, 'error');
-            
-            // Bloquear después de 3 intentos fallidos
-            if (intentosFallidos >= 3) {
-                bloqueado = true;
-                tiempoBloqueo = Date.now() + 10000;
-                setTimeout(() => {
-                    bloqueado = false;
-                    intentosFallidos = 0;
-                    mostrarMensaje('✅ Bloqueo terminado. Puedes volver a intentarlo.', 'exito');
-                }, 10000);
-                cerrarPopupPassword();
-            }
-            
-            passwordInput.value = '';
-            passwordInput.focus();
+          activarModoMantenimiento();
+          mostrarMensaje('✅ Modo mantenimiento ACTIVADO', 'exito');
         }
-    }
-    
-    // ============================================
-    // FUNCIONES DEL POPUP
-    // ============================================
-    
-    function mostrarPopupPassword() {
-        if (bloqueado) {
-            const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
-            mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
-            return;
+        cerrarPopupPassword();
+      } else {
+        intentosFallidos++;
+        const intentosRestantes = 3 - intentosFallidos;
+        
+        let mensaje = '';
+        switch(intentosFallidos) {
+          case 1: mensaje = '❌ Nope. Solo para admins. ¿Otra vez? 😏'; break;
+          case 2: mensaje = '❌ Jajaja... No, no, no. Sigue soñando. 😈'; break;
+          case 3: mensaje = '❌ ÚLTIMA OPORTUNIDAD... ¡Y fallaste! 🔒 Acceso bloqueado por 10 segundos'; break;
+          default: mensaje = '❌ Contraseña incorrecta';
         }
-        popupPassword.style.display = 'flex';
+        
+        if (intentosRestantes > 0 && intentosFallidos < 3) {
+          mensaje += `<br>Intentos restantes: ${intentosRestantes}`;
+        }
+        
+        mostrarMensaje(mensaje, 'error');
+        
+        if (intentosFallidos >= 3) {
+          bloqueado = true;
+          tiempoBloqueo = Date.now() + 10000;
+          setTimeout(() => {
+            bloqueado = false;
+            intentosFallidos = 0;
+            mostrarMensaje('✅ Bloqueo terminado', 'exito');
+          }, 10000);
+          cerrarPopupPassword();
+        }
+        
         passwordInput.value = '';
         passwordInput.focus();
-        mensajeErrorContainer.innerHTML = '';
+      }
+    }
+    
+    function mostrarPopupPassword() {
+      if (bloqueado) {
+        const segundosRestantes = Math.ceil((tiempoBloqueo - Date.now()) / 1000);
+        mostrarMensaje(`🔒 BLOQUEADO. Espera ${segundosRestantes} segundos.`, 'error');
+        return;
+      }
+      popupPassword.style.display = 'flex';
+      passwordInput.value = '';
+      passwordInput.focus();
+      mensajeErrorContainer.innerHTML = '';
     }
     
     function cerrarPopupPassword() {
-        popupPassword.style.display = 'none';
+      popupPassword.style.display = 'none';
     }
-    
-    // ============================================
-    // VERIFICAR ESTADO AL CARGAR (GLOBAL)
-    // ============================================
     
     function verificarEstadoMantenimiento() {
-        const estadoGuardado = localStorage.getItem('modoMantenimientoGlobal');
-        
-        if (estadoGuardado === 'activo') {
-            modoMantenimientoActivo = true;
-            pantallaMantenimiento.style.display = 'flex';
-            if (avisoAdmin) avisoAdmin.style.display = 'block';
-            detenerTodosLosVideos();
-        } else {
-            modoMantenimientoActivo = false;
-            pantallaMantenimiento.style.display = 'none';
-            if (avisoAdmin) avisoAdmin.style.display = 'none';
-        }
+      const estadoGuardado = localStorage.getItem('modoMantenimientoGlobal');
+      
+      if (estadoGuardado === 'activo') {
+        modoMantenimientoActivo = true;
+        pantallaMantenimiento.style.display = 'flex';
+        if (avisoAdmin) avisoAdmin.style.display = 'block';
+        detenerTodosLosVideos();
+      } else {
+        modoMantenimientoActivo = false;
+        pantallaMantenimiento.style.display = 'none';
+        if (avisoAdmin) avisoAdmin.style.display = 'none';
+      }
     }
     
-    // ============================================
-    // EVENTOS
-    // ============================================
-    
     if (btnAdmin) {
-        btnAdmin.addEventListener('click', mostrarPopupPassword);
+      btnAdmin.addEventListener('click', mostrarPopupPassword);
     }
     
     document.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && popupPassword.style.display === 'flex') {
-            verificarPassword();
-        }
+      if (e.key === 'Enter' && popupPassword.style.display === 'flex') {
+        verificarPassword();
+      }
     });
     
     window.onclick = function(event) {
-        if (event.target === popupPassword) {
-            cerrarPopupPassword();
-        }
+      if (event.target === popupPassword) {
+        cerrarPopupPassword();
+      }
     }
-    
-    // ============================================
-    // INICIALIZACIÓN
-    // ============================================
     
     verificarEstadoMantenimiento();
   </script>
 
-  <script src="script.js"></script>
 </body>
 </html>
