@@ -56,10 +56,9 @@ const VERSION_2026 = {
   subtitulo: "💖 Celebrando 9 años de amistad 💖",
   h2: "🎈 ¿22 años ya? ¡No puede ser! 🎈",
   mensajePrincipal: `
-    <p>Este es un espacio para tu nuevo mensaje de 2026.</p>
-    <br>Cuando quieras, puedes escribir aquí lo que sientes, dedicarle palabras especiales, recordar momentos bonitos o simplemente decir "te quiero".</br>
-    <br>La página está lista para que la personalices con tu propio mensaje, tus propias imágenes y tus propios videos.</br>
-    <br>✨ El diseño es completamente nuevo, con colores violetas y una tipografía elegante para que se note que es una nueva etapa.</br>
+    <p>2026.</p>
+    <br>AQUI SE COLOCARA TEXTOs.</br>
+    <br>✨ DISEÑO.</br>
     <p><strong><em>"Cada año es una oportunidad para celebrar la vida y el amor que compartimos."</em></strong></p>
   `
 };
