@@ -46,6 +46,19 @@ body.dark-mode .tarjeta-recuerdo {
     background: rgba(20, 10, 40, 0.8);
 }
 
+body.dark-mode #contador-amistad {
+    background: rgba(30, 15, 50, 0.4) !important;
+    border-color: rgba(150, 100, 220, 0.2) !important;
+}
+
+body.dark-mode #contador-amistad p {
+    color: #d8c8e8 !important;
+}
+
+body.dark-mode #contador-amistad strong {
+    color: #c8a8e8 !important;
+}
+
 /* ============================================ */
 /* BOTÓN MODO OSCURO */
 /* ============================================ */
@@ -74,7 +87,7 @@ body.dark-mode .tarjeta-recuerdo {
 }
 
 /* ============================================ */
-/* CORAZONES FLOTANTES (FONDO FIJO) */
+/* CORAZONES FLOTANTES */
 /* ============================================ */
 
 #corazones-container {
@@ -218,7 +231,7 @@ body.dark-mode .tarjeta-recuerdo {
 }
 
 /* ============================================ */
-/* HEADER (VERSIÓN 2026) */
+/* HEADER */
 /* ============================================ */
 
 header {
@@ -306,7 +319,7 @@ header p {
 }
 
 /* ============================================ */
-/* CONTADOR */
+/* CONTADOR DE CUMPLEAÑOS */
 /* ============================================ */
 
 #contador-cumple {
@@ -454,7 +467,7 @@ header p {
 }
 
 /* ============================================ */
-/* VENTANITA DE RECUERDO (2025 - ARRIBA DERECHA) */
+/* VENTANITA DE RECUERDO */
 /* ============================================ */
 
 #ventanita-recuerdo {
@@ -573,15 +586,34 @@ header p {
 }
 
 /* ============================================ */
-/* ESPACIO VACÍO PARA IMÁGENES/VIDEOS */
+/* GALERÍA */
 /* ============================================ */
 
-.espacio-vacio {
-    margin: 30px 0;
-    padding: 20px;
-    border: 2px dashed rgba(100, 50, 150, 0.2);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1);
+.card-img {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    border-radius: 24px;
+    padding: 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-img:active {
+    transform: scale(0.97);
+}
+
+/* ============================================ */
+/* VIDEOS */
+/* ============================================ */
+
+.videos-vertical {
+    max-width: 100%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
 }
 
 /* ============================================ */
@@ -740,6 +772,12 @@ footer {
     .onda { height: 30px; }
     .onda:nth-child(2) { height: 25px; }
     .onda:nth-child(3) { height: 20px; }
+    
+    #contador-amistad { padding: 18px !important; }
+    #contador-amistad p { font-size: 1rem !important; }
+    
+    #paleta-colores { bottom: 10px; left: 10px; padding: 8px 12px; gap: 6px; }
+    #paleta-colores .color-btn { width: 22px; height: 22px; }
 }
 
 /* ============================================ */
@@ -845,7 +883,7 @@ footer {
 .radar-linea { position: absolute; top: 50%; left: 50%; width: 50%; height: 2px; background: #00ffff; transform-origin: 0% 50%; animation: radarGiro 3s linear infinite; }
 @keyframes radarGiro { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-.btn-admin { position: fixed; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.8); color: #00ffff; border: 1px solid #00ffff; border-radius: 50px; padding: 10px 18px; font-size: 12px; font-weight: bold; cursor: pointer; z-index: 9999999; transition: all 0.3s ease; font-family: 'Space Mono', monospace; }
+.btn-admin { position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.2); color: rgba(255,255,255,0.3); border: none; border-radius: 50%; width: 25px; height: 25px; font-size: 12px; cursor: pointer; z-index: 9999999; backdrop-filter: blur(5px); }
 
 .popup-password { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(10, 10, 30, 0.98); backdrop-filter: blur(20px); padding: 30px; border-radius: 20px; text-align: center; z-index: 10000000; box-shadow: 0 0 50px rgba(0, 255, 255, 0.3); display: none; flex-direction: column; gap: 15px; min-width: 280px; border: 1px solid #00ffff; }
 .popup-password input { padding: 12px; font-size: 16px; background: rgba(0, 0, 0, 0.7); border: 1px solid #00ffff; border-radius: 25px; text-align: center; color: white; font-family: 'Space Mono', monospace; }
